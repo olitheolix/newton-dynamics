@@ -4057,7 +4057,7 @@ int NewtonCollisionIsConvexShape(const NewtonCollision* const collision)
 	return instance->IsType (dgCollision::dgCollisionConvexShape_RTTI) ? 1 : 0;
 }
 
-NEWTON_API int NewtonCollisionIsStaticShape (const NewtonCollision* const collision)
+int NewtonCollisionIsStaticShape (const NewtonCollision* const collision)
 {
 	TRACE_FUNCTION(__FUNCTION__);
 	dgCollisionInstance* const instance = (dgCollisionInstance*)collision;
