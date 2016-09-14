@@ -118,9 +118,41 @@ todo_include_todos = False
 
 # -- Options for HTML output ----------------------------------------------
 
+# --- Theme: Alabaster (default Sphinx theme)
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 html_theme = 'alabaster'
+
+# --- Theme: sphinx_py3doc_enhanced_theme
+#     https://github.com/ionelmc/sphinx-py3doc-enhanced-theme
+# import sphinx_py3doc_enhanced_theme
+# html_theme = "sphinx_py3doc_enhanced_theme"
+# html_theme_path = [sphinx_py3doc_enhanced_theme.get_html_theme_path()]
+
+# --- Theme: sphinx_readable_theme
+#     https://sphinx-readable-theme.readthedocs.io/en/latest/
+# import sphinx_readable_theme
+# html_theme_path = [sphinx_readable_theme.get_html_theme_path()]
+# html_theme = 'readable'
+
+# --- Theme: Guzzle
+#     https://github.com/guzzle/guzzle_sphinx_theme
+import guzzle_sphinx_theme
+
+# Adds an HTML table visitor to apply Bootstrap table classes
+html_translator_class = 'guzzle_sphinx_theme.HTMLTranslator'
+html_theme_path = guzzle_sphinx_theme.html_theme_path()
+html_theme = 'guzzle_sphinx_theme'
+
+# Register the theme as an extension to generate a sitemap.xml
+extensions.append("guzzle_sphinx_theme")
+
+# Guzzle theme options (see theme.conf for more information)
+html_theme_options = {
+    # Set the name of the project to appear in the sidebar
+    "project_nav_name": "Project Name",
+}
+
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the

@@ -1,1 +1,2 @@
 breathe
+guzzle_sphinx_theme
