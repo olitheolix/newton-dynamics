@@ -6,15 +6,18 @@
 Welcome to Newton Dynamics Engine's documentation!
 ==================================================
 
+The Newton Dynamics engine is a physics engine to simulate life-like physics.
+More information about its used are available on its `homepage
+<http://newtondynamics.com/forum/newton.php>`_. The source code is available
+on `Github <https://github.com/MADEAPPS/newton-dynamics>`_.
+
+
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-
-My Docu
-=======
-.. doxygenfile:: Newton.cpp
+   api
 
 
 Indices and tables
