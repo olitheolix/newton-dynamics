@@ -3086,11 +3086,15 @@ void NewtonConvexCollisionCalculateInertialMatrix(const NewtonCollision* convexC
 // Add buoyancy force and torque for bodies immersed in a fluid.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// convexCollision - fixme
+// matrix - fixme
+// shapeOrigin - fixme
+// *gravityVector - pointer to an array of floats containing the gravity vector.
+// fluidPlane - fixme
 // fluidDensity - fluid density.
-// fluidLinearViscosity - fluid linear viscosity (resistance to linear translation).
-// fluidAngularViscosity - fluid angular viscosity (resistance to rotation).
-// *const dFloat* *gravityVector - pointer to an array of floats containing the gravity vector.
+// fluidViscosity - fluid linear viscosity (resistance to linear translation).
+// accel - fixme
+// alpha - fixme
 //
 // Return: Nothing.
 //
