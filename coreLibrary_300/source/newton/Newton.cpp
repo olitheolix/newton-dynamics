@@ -93,7 +93,7 @@ void SaveCollision (const NewtonCollision* const collisionPtr)
 /*
 fixme: where does this belong?
 
-// *dFloat* globalScale - global scale factor that will scale all internal tolerance.
+// globalScale - global scale factor that will scale all internal tolerance.
 // Remarks: the physics system in theory should be dimensionless, however in practice the engine have to be implemented with
 // limited precision floating numbers and is also built for real-time simulation, it is inevitable that tolerances have to be used in order to increase performance, and 
 // reduce instabilities. These tolerances make the engine dimension dependent, for example let say a rigid body is considered at rest when 
@@ -682,7 +682,7 @@ unsigned NewtonReadThreadPerformanceTicks (const NewtonWorld* newtonWorld, unsig
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world
-// *dFloat* timestep - time step in seconds
+// timestep - time step in seconds
 //
 // Return: Nothing
 //
@@ -737,7 +737,7 @@ void NewtonWaitForUpdateToFinish (const NewtonWorld* const newtonWorld)
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world
-// *dFloat* frameRate - minimum frame rate of the simulation in frame per second. This value is clamped between 60fps and 1000fps
+// frameRate - minimum frame rate of the simulation in frame per second. This value is clamped between 60fps and 1000fps
 // 
 // Return: nothing
 //
@@ -1217,7 +1217,7 @@ void NewtonWorldRayCast(const NewtonWorld* const newtonWorld, const dFloat* cons
 // *const dFloat* *matrix - pointer to an array of at least three floats containing the beginning and orienetaion of the shape in global space.
 // *const dFloat* *target - pointer to an array of at least three floats containing the end of the ray in global space.
 // *const NewtonCollision* shape - collision shap[e use to cat the ray.
-// *dFloat* param - pointe to a variable the will contart the time to closet aproah to the collision.
+// param - pointe to a variable the will contart the time to closet aproah to the collision.
 // *void* *userData - user data to be passed to the prefilter callback.
 // *NewtonWorldRayPrefilterCallback* prefilter - user define function to be called for each body before intersection.
 // *NewtonWorldConvexCastReturnInfo* *info - pointer to an array of contacts at the point of intesections.
@@ -1486,14 +1486,14 @@ void NewtonMaterialSetDefaultCollidable(const NewtonWorld* const newtonWorld, in
 
 
 // Name: NewtonMaterialSetSurfaceThickness 
-// Set an imaginary thickness between the collision geometry of two colliding bodies who�s physics 
+// Set an imaginary thickness between the collision geometry of two colliding bodies whose physics 
 // properties are defined by this material pair 
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
-// *dFloat* thickness - material thickness a value form 0.0 to 0.125; the default surface value is 0.0 
+// thickness - material thickness a value form 0.0 to 0.125; the default surface value is 0.0 
 // 	
 // Return: Nothing.
 //
@@ -1524,8 +1524,8 @@ void NewtonMaterialSetSurfaceThickness(const NewtonWorld* const newtonWorld, int
 // *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
-// *dFloat* staticFriction -  static friction coefficients
-// *dFloat* kineticFriction - dynamic coefficient of friction
+// staticFriction -  static friction coefficients
+// kineticFriction - dynamic coefficient of friction
 // 
 // Return: Nothing.
 //
@@ -1550,7 +1550,7 @@ void NewtonMaterialSetDefaultFriction(const NewtonWorld* const newtonWorld, int 
 			material->m_staticFriction1 = stat;
 			material->m_dynamicFriction0 = kine;
 			material->m_dynamicFriction1 = kine;
-		} else {
+		} else {
 			//material->m_friction0Enable = false;
 			//material->m_friction1Enable = false;
 			material->m_flags &= ~(dgContactMaterial::m_friction0Enable | dgContactMaterial::m_friction1Enable);
@@ -1566,7 +1566,7 @@ void NewtonMaterialSetDefaultFriction(const NewtonWorld* const newtonWorld, int 
 // *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
-// *dFloat* elasticCoef - static friction coefficients
+// elasticCoef - static friction coefficients
 // 
 // Return: Nothing.
 //
@@ -1590,7 +1590,7 @@ void NewtonMaterialSetDefaultElasticity(const NewtonWorld* const newtonWorld, in
 // *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
-// *dFloat* softnessCoef - softness coefficient
+// softnessCoef - softness coefficient
 // 
 // Return: Nothing.
 //
@@ -1934,8 +1934,8 @@ dFloat NewtonMaterialGetContactMaxTangentImpact(const NewtonMaterial* const mate
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *dFloat* *positPtr   - pointer to an array of at least three floats to hold the contact position.
-// *dFloat* *normalPtr  - pointer to an array of at least three floats to hold the contact normal.
+// *positPtr   - pointer to an array of at least three floats to hold the contact position.
+// *normalPtr  - pointer to an array of at least three floats to hold the contact normal.
 // 
 // Return: Nothing.
 //
@@ -1969,7 +1969,7 @@ void NewtonMaterialGetContactPositionAndNormal(const NewtonMaterial* const mater
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *dFloat* *forcePtr  - pointer to an array of at least three floats to hold the force vector in global space.
+// *forcePtr  - pointer to an array of at least three floats to hold the force vector in global space.
 // 
 // Return: Nothing.
 //
@@ -2006,8 +2006,8 @@ void NewtonMaterialGetContactForce(const NewtonMaterial* const materialHandle, c
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *dFloat* *dir0  - pointer to an array of at least three floats to hold the contact primary tangent vector.
-// *dFloat* *dir1  - pointer to an array of at least three floats to hold the contact secondary tangent vector.
+// *dir0  - pointer to an array of at least three floats to hold the contact primary tangent vector.
+// *dir1  - pointer to an array of at least three floats to hold the contact secondary tangent vector.
 // 
 // Return: Nothing.
 //
@@ -2063,7 +2063,7 @@ NewtonCollision* NewtonMaterialGetBodyCollidingShape(const NewtonMaterial* const
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *dFloat* softness  - softness value, must be positive.
+// softness  - softness value, must be positive.
 // 
 // Return: Nothing.
 //
@@ -2083,7 +2083,7 @@ void NewtonMaterialSetContactSoftness(const NewtonMaterial* const materialHandle
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *dFloat* restitution  - elasticity value, must be positive.
+// restitution  - elasticity value, must be positive.
 // 
 // Return: Nothing.
 //
@@ -2138,8 +2138,8 @@ void NewtonMaterialSetContactFrictionState(const NewtonMaterial* const materialH
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *dFloat* staticFrictionCoef - static friction coefficient. Must be positive.
-// *dFloat* kineticFrictionCoef - static friction coefficient. Must be positive.
+// staticFrictionCoef - static friction coefficient. Must be positive.
+// kineticFrictionCoef - static friction coefficient. Must be positive.
 // index - index to the tangent vector. 0 for primary tangent vector or 1 for the secondary tangent vector.
 // 
 // Return: Nothing.
@@ -2176,7 +2176,7 @@ void NewtonMaterialSetContactFrictionCoef(const NewtonMaterial* const materialHa
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *dFloat* accel - desired contact acceleration, Must be a positive value
+// accel - desired contact acceleration, Must be a positive value
 // 
 // Return: Nothing.
 //
@@ -2199,7 +2199,7 @@ void NewtonMaterialSetContactNormalAcceleration(const NewtonMaterial* const mate
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *dFloat* accel - desired contact acceleration.
+// accel - desired contact acceleration.
 // index - index to the tangent vector. 0 for primary tangent vector or 1 for the secondary tangent vector.
 // 
 // Return: Nothing.
@@ -2292,7 +2292,7 @@ void NewtonMaterialSetContactPosition(const NewtonMaterial* const materialHandle
 // Rotate the tangent direction of the contacts until the primary direction is aligned with the alignVector.
 //
 // Parameters:
-// *const NewtonMaterial* materialHandle - pointer to a material pair.
+// *materialHandle - pointer to a material pair.
 // *const dFloat* *alignVector  - pointer to an array of at least three floats holding the aligning vector.
 // 
 // Return: Nothing.
@@ -2353,9 +2353,9 @@ NewtonCollision* NewtonCreateNull(const NewtonWorld* const newtonWorld)
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *dFloat* dx  - box side one x dimension.  
-// *dFloat* dy  - box side one y dimension.  
-// *dFloat* dz  - box side one z dimension.  
+// dx  - box side one x dimension.  
+// dy  - box side one y dimension.  
+// dz  - box side one z dimension.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2376,9 +2376,9 @@ NewtonCollision* NewtonCreateBox(const NewtonWorld* const newtonWorld, dFloat dx
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *dFloat* radiusX  - sphere radius along x axis.  
-// *dFloat* radiusY  - sphere radius along x axis.  
-// *dFloat* radiusZ  - sphere radius along x axis.  
+// radiusX  - sphere radius along x axis.  
+// radiusY  - sphere radius along x axis.  
+// radiusZ  - sphere radius along x axis.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the sphere relative to the body. If this parameter is NULL then the sphere is centered at the origin of the body.
 // 
 // Return: Pointer to the generalized sphere.
@@ -2413,8 +2413,8 @@ NewtonCollision* NewtonCreateSphere(const NewtonWorld* const newtonWorld, dFloat
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *dFloat* radius  - cone radius at the base.  
-// *dFloat* height  - cone height along the x local axis from base to tip.  
+// radius  - cone radius at the base.  
+// height  - cone height along the x local axis from base to tip.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2436,8 +2436,8 @@ NewtonCollision* NewtonCreateCone(const NewtonWorld* const newtonWorld, dFloat r
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *dFloat* radius  - capsule radius at the base.  
-// *dFloat* height  - capsule height along the x local axis from tip to tip.  
+// radius  - capsule radius at the base.  
+// height  - capsule height along the x local axis from tip to tip.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2461,8 +2461,8 @@ NewtonCollision* NewtonCreateCapsule(const NewtonWorld* const newtonWorld, dFloa
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *dFloat* radius  - cylinder radius at the base.  
-// *dFloat* height  - cylinder height along the x local axis.  
+// radius  - cylinder radius at the base.  
+// height  - cylinder height along the x local axis.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2484,8 +2484,8 @@ NewtonCollision* NewtonCreateCylinder(const NewtonWorld* const newtonWorld, dFlo
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *dFloat* radius  - ChamferCylinder radius at the base.  
-// *dFloat* height  - ChamferCylinder height along the x local axis.  
+// radius  - ChamferCylinder radius at the base.  
+// height  - ChamferCylinder height along the x local axis.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2510,7 +2510,7 @@ NewtonCollision* NewtonCreateChamferCylinder(const NewtonWorld* const newtonWorl
 // *int* count  - number of consecutive point to follow must be at least 4.  
 // *const dFloat* *vertexCloud - pointer to and array of point.  
 // *int* strideInBytes - vertex size in bytes, must be at least 12.  
-// *dFloat* tolerance - tolerance value for the hull generation. 
+// tolerance - tolerance value for the hull generation. 
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the collision mesh, NULL if the function fail to generate convex shape 
@@ -2557,7 +2557,7 @@ NewtonCollision* NewtonCreateConvexHull(const NewtonWorld* const newtonWorld, in
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // *const NewtonMesh* *mesh - special effect mesh
-// *dFloat* tolerance - tolerance value for the hull generation. 
+// tolerance - tolerance value for the hull generation. 
 // 
 // Return: Pointer to the collision mesh, NULL if the function fail to generate convex shape 
 //
@@ -3101,8 +3101,8 @@ dFloat NewtonConvexCollisionCalculateVolume(const NewtonCollision* const convexC
 //
 // Parameters:
 // *const NewtonCollision* convexCollision - is the pointer to a convex collision primitive.
-// *dFloat* *inertia - pointer to and array of a least 3 floats to hold the values of the principal inertia.
-// *dFloat* *origin - pointer to and array of a least 3 floats to hold the values of the center of mass for the principal inertia.
+// *inertia - pointer to and array of a least 3 floats to hold the values of the principal inertia.
+// *origin - pointer to and array of a least 3 floats to hold the values of the center of mass for the principal inertia.
 // 
 // Remarks: This function calculate a general inertial matrix for arbitrary convex collision including compound collisions.
 //
@@ -3131,9 +3131,9 @@ void NewtonConvexCollisionCalculateInertialMatrix(const NewtonCollision* convexC
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *dFloat* fluidDensity - fluid density.
-// *dFloat* fluidLinearViscosity - fluid linear viscosity (resistance to linear translation).
-// *dFloat* fluidAngularViscosity - fluid angular viscosity (resistance to rotation).
+// fluidDensity - fluid density.
+// fluidLinearViscosity - fluid linear viscosity (resistance to linear translation).
+// fluidAngularViscosity - fluid angular viscosity (resistance to rotation).
 // *const dFloat* *gravityVector - pointer to an array of floats containing the gravity vector.
 //
 // Return: Nothing.
@@ -3348,8 +3348,8 @@ void NewtonStaticCollisionSetDebugCallback(const NewtonCollision* const staticCo
 //
 // Remarks: when *rayHitCallback* is not null then the callback is dalled with the follwing arguments 
 // *const NewtonCollisio* collision - pointer to the collision tree
-// *dFloat* interseption - inetstion parameters of the ray
-// *dFloat* *normal - unnormalized face mormal in the space fo eth parent of the collision.  
+// interseption - inetstion parameters of the ray
+// *normal - unnormalized face mormal in the space fo eth parent of the collision.  
 // *int* faceId -  id of this face in the collision tree.
 //
 // See also: NewtonTreeCollisionGetFaceAtribute, NewtonTreeCollisionSetFaceAtribute 
@@ -3518,8 +3518,8 @@ void NewtonTreeCollisionForEachFace (const NewtonCollision* const treeCollision,
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *dFloat* *p0 - pointer to an array of at least three floats representing the ray origin in the local space of the geometry.
-// *dFloat* *p1 - pointer to an array of at least three floats representing the ray end in the local space of the geometry.
+// *p0 - pointer to an array of at least three floats representing the ray origin in the local space of the geometry.
+// *p1 - pointer to an array of at least three floats representing the ray end in the local space of the geometry.
 // *const dFloat* **vertexArray - pointer to a the vertex array of vertex.
 // *int* *vertexCount - pointer int to return the number of vertex in vertexArray.
 // *int* *vertexStrideInBytes - pointer to int to return the size of each vertex in vertexArray.
@@ -3577,7 +3577,7 @@ int NewtonTreeCollisionGetVertexListTriangleListInAABB(const NewtonCollision* co
 // *int* cellsDiagonals -
 // *unsigned short* elevationMap -
 // *char* atributeMap -
-// *dFloat* horizontalScale -
+// horizontalScale -
 //
 // Return: Pointer to the collision.
 //
@@ -3725,11 +3725,11 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *dFloat* *point - pointer to and array of a least 3 floats representing the origin.
+// *point - pointer to and array of a least 3 floats representing the origin.
 // *const NewtonCollision* *collision -  pointer to collision primitive.
 // *const dFloat* *matrix - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
-// *dFloat* *contact - pointer to and array of a least 3 floats to contain the closest point to collisioA.
-// *dFloat* *normal - pointer to and array of a least 3 floats to contain the separating vector normal.
+// *contact - pointer to and array of a least 3 floats to contain the closest point to collisioA.
+// *normal - pointer to and array of a least 3 floats to contain the separating vector normal.
 // *int* threadIndex -Thread index form where the call is made from, zeor otherwize
 // 
 // Return: one if the two bodies are disjoint and the closest point could be found, 
@@ -3765,9 +3765,9 @@ int NewtonCollisionPointDistance(const NewtonWorld* const newtonWorld, const dFl
 // *const dFloat* *matrixA - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
 // *const NewtonCollision* *collisionB - pointer to collision primitive B.
 // *const dFloat* *matrixB - pointer to an array of 16 floats containing the offset matrix of collision primitiveB.
-// *dFloat* *contactA - pointer to and array of a least 3 floats to contain the closest point to collisionA.
-// *dFloat* *contactB - pointer to and array of a least 3 floats to contain the closest point to collisionB.
-// *dFloat* *normalAB - pointer to and array of a least 3 floats to contain the separating vector normal.
+// *contactA - pointer to and array of a least 3 floats to contain the closest point to collisionA.
+// *contactB - pointer to and array of a least 3 floats to contain the closest point to collisionB.
+// *normalAB - pointer to and array of a least 3 floats to contain the separating vector normal.
 // *int* threadIndex -Thread index form where the call is made from, zeor otherwize
 // 
 // Return: one if the tow bodies are disjoint and he closest point could be found, 
@@ -3817,9 +3817,9 @@ int NewtonCollisionIntersectionTest (const NewtonWorld* const newtonWorld, const
 // *const dFloat* *matrixA - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
 // *const NewtonCollision* *collisionB - pointer to collision primitive B.
 // *const dFloat* *matrixB - pointer to an array of 16 floats containing the offset matrix of collision primitiveB.
-// *dFloat* *contacts - pointer to and array of a least 3 times maxSize floats to contain the collision contact points.
-// *dFloat* *normals - pointer to and array of a least 3 times maxSize floats to contain the collision contact normals.
-// *dFloat* *penetration - pointer to and array of a least maxSize floats to contain the collision penetration at each contact.
+// *contacts - pointer to and array of a least 3 times maxSize floats to contain the collision contact points.
+// *normals - pointer to and array of a least 3 times maxSize floats to contain the collision contact normals.
+// *penetration - pointer to and array of a least maxSize floats to contain the collision penetration at each contact.
 // *int* threadIndex -Thread index form where the call is made from, zeor otherwize
 // 
 // Return: the number of contact points.
@@ -3863,10 +3863,10 @@ int NewtonCollisionCollide (const NewtonWorld* const newtonWorld, int maxSize,
 // *const dFloat* *matrixB - pointer to an array of 16 floats containing the offset matrix of collision primitiveB.
 // *const dFloat* *velocB - pointer to and array of a least 3 times maxSize floats containing the linear velocity of collision primitiveB.
 // *const dFloat* *omegaB - pointer to and array of a least 3 times maxSize floats containing the angular velocity of collision primitiveB.
-// *dFloat* *timeOfImpact - pointer to least 1 float variable to contain the time of the intersection.
-// *dFloat* *contacts - pointer to and array of a least 3 times maxSize floats to contain the collision contact points.
-// *dFloat* *normals - pointer to and array of a least 3 times maxSize floats to contain the collision contact normals.
-// *dFloat* *penetration - pointer to and array of a least maxSize floats to contain the collision penetration at each contact.
+// *timeOfImpact - pointer to least 1 float variable to contain the time of the intersection.
+// *contacts - pointer to and array of a least 3 times maxSize floats to contain the collision contact points.
+// *normals - pointer to and array of a least 3 times maxSize floats to contain the collision contact normals.
+// *penetration - pointer to and array of a least maxSize floats to contain the collision penetration at each contact.
 // *int* threadIndex -Thread index form where the call is made from, zeor otherwize
 // 
 // Return: the number of contact points.
@@ -3909,7 +3909,7 @@ int NewtonCollisionCollideContinue(const NewtonWorld* const newtonWorld, int max
 // Parameters:
 // *const NewtonCollision* *collisionPtr - pointer to the collision object.
 // *const dFloat* *dir - pointer to an array of at least three floats representing the search direction.
-// *dFloat* *vertex - pointer to an array of at least three floats to hold the collision most extreme vertex along the search direction.
+// *vertex - pointer to an array of at least three floats to hold the collision most extreme vertex along the search direction.
 //
 // Return: nothing.
 //
@@ -3942,7 +3942,7 @@ void NewtonCollisionSupportVertex(const NewtonCollision* const collisionPtr, con
 // *const NewtonCollision* *collisionPtr - pointer to the collision object.
 // *const dFloat* *p0 - pointer to an array of at least three floats representing the ray origin in the local space of the geometry.
 // *const dFloat* *p1 - pointer to an array of at least three floats representing the ray end in the local space of the geometry.
-// *dFloat* *normal - pointer to an array of at least three floats to hold the normal at the intersection point.
+// *normal - pointer to an array of at least three floats to hold the normal at the intersection point.
 // *int* *attribute - pointer to an array of at least one floats to hold the ID of the face hit by the ray.
 //
 // Return: the parametric value of the intersection, between 0.0 and 1.0, an value larger than 1.0 if the ray miss.
@@ -3984,8 +3984,8 @@ dFloat NewtonCollisionRayCast(const NewtonCollision* const collisionPtr, const d
 // Parameters:
 // *const NewtonCollision* *collisionPtr - pointer to the collision object.
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix used as the coordinate system and center of the AABB. 
-// *dFloat* *p0 - pointer to an array of at least three floats to hold minimum value for the AABB.
-// *dFloat* *p1 - pointer to an array of at least three floats to hold maximum value for the AABB.
+// *p0 - pointer to an array of at least three floats to hold minimum value for the AABB.
+// *p1 - pointer to an array of at least three floats to hold maximum value for the AABB.
 //
 // Return: Nothing.
 //
@@ -4341,7 +4341,7 @@ void NewtonCollisionGetInfo(const NewtonCollision* const collision, NewtonCollis
 //
 // Parameters:
 // *const dFloat* matrix - pointer to the 4x4 rotation matrix.
-// *dFloat* angles - pointer to an array of at least three floats to hold the Euler angles.
+// angles - pointer to an array of at least three floats to hold the Euler angles.
 //
 // Return: Nothing.
 //
@@ -4377,7 +4377,7 @@ void NewtonGetEulerAngle(const dFloat* const matrix, dFloat* const angles0, dFlo
 // Build a rotation matrix from the Euler angles in radians.
 //
 // Parameters:
-// *dFloat* matrix - pointer to the 4x4 rotation matrix.
+// matrix - pointer to the 4x4 rotation matrix.
 // *const dFloat* angles - pointer to an array of at least three floats to hold the Euler angles.
 //
 // Return: Nothing.
@@ -4411,11 +4411,11 @@ void NewtonSetEulerAngle(const dFloat* const angles, dFloat* const matrix)
 // Calculates the acceleration to satisfy the specified the spring damper system. 
 //
 // Parameters:
-// *dFloat* dt - integration time step.
-// *dFloat* ks - spring stiffness, it must be a positive value.
-// *dFloat* x - spring position.
-// *dFloat* kd - desired spring damper, it must be a positive value.
-// *dFloat* s - spring velocity.
+// dt - integration time step.
+// ks - spring stiffness, it must be a positive value.
+// x - spring position.
+// kd - desired spring damper, it must be a positive value.
+// s - spring velocity.
 //
 // return: the spring acceleration.
 //
@@ -4841,10 +4841,10 @@ NewtonBodyDestructor NewtonBodyGetDestructorCallback (const NewtonBody* const bo
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *dFloat* mass - mass value. 
-// *dFloat* Ixx - moment of inertia of the first principal axis of inertia of the body.
-// *dFloat* Iyy - moment of inertia of the first principal axis of inertia of the body.
-// *dFloat* Izz - moment of inertia of the first principal axis of inertia of the body.
+// mass - mass value. 
+// Ixx - moment of inertia of the first principal axis of inertia of the body.
+// Iyy - moment of inertia of the first principal axis of inertia of the body.
+// Izz - moment of inertia of the first principal axis of inertia of the body.
 //
 // Return: Nothing.
 //
@@ -4890,10 +4890,10 @@ void  NewtonBodySetMassProperties (const NewtonBody* const bodyPtr, dFloat mass,
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *dFloat* *mass - pointer to a variable that will hold the mass value of the body.
-// *dFloat* *Ixx - pointer to a variable that will hold the moment of inertia of the first principal axis of inertia of the body.
-// *dFloat* *Iyy - pointer to a variable that will hold the moment of inertia of the first principal axis of inertia of the body.
-// *dFloat* *Izz - pointer to a variable that will hold the moment of inertia of the first principal axis of inertia of the body.
+// *mass - pointer to a variable that will hold the mass value of the body.
+// *Ixx - pointer to a variable that will hold the moment of inertia of the first principal axis of inertia of the body.
+// *Iyy - pointer to a variable that will hold the moment of inertia of the first principal axis of inertia of the body.
+// *Izz - pointer to a variable that will hold the moment of inertia of the first principal axis of inertia of the body.
 //
 // Return: Nothing.
 //
@@ -4922,10 +4922,10 @@ void  NewtonBodyGetMass(const NewtonBody* const bodyPtr, dFloat* const mass, dFl
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *dFloat* *invMass - pointer to a variable that will hold the mass inverse value of the body.
-// *dFloat* *invIxx - pointer to a variable that will hold the moment of inertia inverse of the first principal axis of inertia of the body.
-// *dFloat* *invIyy - pointer to a variable that will hold the moment of inertia inverse of the first principal axis of inertia of the body.
-// *dFloat* *invIzz - pointer to a variable that will hold the moment of inertia inverse of the first principal axis of inertia of the body.
+// *invMass - pointer to a variable that will hold the mass inverse value of the body.
+// *invIxx - pointer to a variable that will hold the moment of inertia inverse of the first principal axis of inertia of the body.
+// *invIyy - pointer to a variable that will hold the moment of inertia inverse of the first principal axis of inertia of the body.
+// *invIzz - pointer to a variable that will hold the moment of inertia inverse of the first principal axis of inertia of the body.
 //
 // Return: Nothing.
 //
@@ -5194,9 +5194,9 @@ void NewtonBodyGetForce(const NewtonBody* const bodyPtr, dFloat* const vectorPtr
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *dFloat* timestep - time step that the force will be applyed. 
+// timestep - time step that the force will be applyed. 
 // *const dFloat* *desiredVeloc - pointer to an array of 3 floats containing the desired velocity.
-// *dFloat* *forceOut - pointer to an array of 3 floats to hold the calculated net force.
+// *forceOut - pointer to an array of 3 floats to hold the calculated net force.
 //
 // Remark: this function can be useful when creating object for game play.
 // 
@@ -5357,7 +5357,7 @@ void NewtonBodySetCentreOfMass(const NewtonBody* const bodyPtr, const dFloat* co
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *dFloat* *comPtr - pointer to an array of 3 floats to hold the relative offset of the center of mass of the body.
+// *comPtr - pointer to an array of 3 floats to hold the relative offset of the center of mass of the body.
 //
 // Return: Nothing.
 //
@@ -5962,8 +5962,8 @@ void NewtonBodySetSleepState(const NewtonBody* const bodyPtr, int state)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - is the pointer to the body.
-// *dFloat* *p0 - pointer to an array of at least three floats to hold minimum value for the AABB.
-// *dFloat* *p1 - pointer to an array of at least three floats to hold maximum value for the AABB.
+// *p0 - pointer to an array of at least three floats to hold minimum value for the AABB.
+// *p1 - pointer to an array of at least three floats to hold maximum value for the AABB.
 //
 void NewtonBodyGetAABB(const NewtonBody* const bodyPtr, dFloat* const p0, dFloat* const p1)	
 {
@@ -6066,7 +6066,7 @@ void NewtonBodySetOmegaNoSleep(const NewtonBody* const bodyPtr, const dFloat* co
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - is the pointer to the body
-// *dFloat* *omega - pointer to an array of at least three floats to hold the angular velocity vector.
+// *omega - pointer to an array of at least three floats to hold the angular velocity vector.
 //
 // See also: NewtonBodySetOmega
 void NewtonBodyGetOmega(const NewtonBody* const bodyPtr, dFloat* const omega)
@@ -6087,7 +6087,7 @@ void NewtonBodyGetOmega(const NewtonBody* const bodyPtr, dFloat* const omega)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - is the pointer to the body.
-// *dFloat* linearDamp - linear damping coefficient.
+// linearDamp - linear damping coefficient.
 //
 // Remarks: the default value of *linearDamp* is clamped to a value between 0.0 and 1.0; the default value is 0.1,
 // There is a non zero implicit attenuation value of 0.0001 assume by the integrator.
@@ -6131,7 +6131,7 @@ dFloat NewtonBodyGetLinearDamping(const NewtonBody* const bodyPtr)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - is the pointer to the body.
-// *dFloat* *angularDamp - pointer to an array of at least three floats containing the angular damping coefficients for the principal axis of the body.
+// *angularDamp - pointer to an array of at least three floats containing the angular damping coefficients for the principal axis of the body.
 //
 // Remarks: the default value of *angularDamp* is clamped to a value between 0.0 and 1.0; the default value is 0.1,
 // There is a non zero implicit attenuation value of 0.0001 assumed by the integrator.
@@ -6159,7 +6159,7 @@ void  NewtonBodySetAngularDamping(const NewtonBody* const bodyPtr, const dFloat*
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - is the pointer to the body.
-// *dFloat* *angularDamp - pointer to an array of at least three floats to hold the angular damping coefficient for the principal axis of the body.
+// *angularDamp - pointer to an array of at least three floats to hold the angular damping coefficient for the principal axis of the body.
 //
 // See also: NewtonBodySetAngularDamping
 void  NewtonBodyGetAngularDamping(const NewtonBody* const bodyPtr, dFloat* angularDamp)
@@ -6379,7 +6379,7 @@ void NewtonBallSetUserCallback(const NewtonJoint* const ball, NewtonBallCallback
 //
 // Parameters:
 // *const NewtonJoint* *ball - pointer to the joint.
-// *dFloat* *angle - pointer to an array of a least three floats to hold the joint relative Euler angles.
+// *angle - pointer to an array of a least three floats to hold the joint relative Euler angles.
 //
 // Return: nothing.
 //
@@ -6405,7 +6405,7 @@ void NewtonBallGetJointAngle (const NewtonJoint* const ball, dFloat* angle)
 //
 // Parameters:
 // *const NewtonJoint* *ball - pointer to the joint.
-// *dFloat* *omega - pointer to an array of a least three floats to hold the joint relative angular velocity.
+// *omega - pointer to an array of a least three floats to hold the joint relative angular velocity.
 //
 // Return: nothing.
 //
@@ -6430,7 +6430,7 @@ void NewtonBallGetJointOmega(const NewtonJoint* const ball, dFloat* omega)
 //
 // Parameters:
 // *const NewtonJoint* *ball - pointer to the joint.
-// *dFloat* *force - pointer to an array of a least three floats to hold the force value of the joint.
+// *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
 //
@@ -6556,7 +6556,7 @@ dFloat NewtonHingeGetJointOmega(const NewtonJoint* const hinge)
 // Parameters:
 // *const NewtonJoint* *Hinge - pointer to the joint.
 // *NewtonHingeSliderUpdateDesc* *desc - is the pointer to and the Hinge or slide structure.
-// *dFloat* angle - is the desired hinge stop angle 
+// angle - is the desired hinge stop angle 
 //
 // Return: the relative angular acceleration needed to stop the hinge.
 //
@@ -6577,7 +6577,7 @@ dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const Newt
 //
 // Parameters:
 // *const NewtonJoint* *Hinge - pointer to the joint.
-// *dFloat* *force - pointer to an array of a least three floats to hold the force value of the joint.
+// *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
 //
@@ -6701,7 +6701,7 @@ dFloat NewtonSliderGetJointVeloc(const NewtonJoint* Slider)
 // Parameters:
 // *const NewtonJoint* *slider - pointer to the joint.
 // *NewtonSliderSliderUpdateDesc* *desc - is the pointer to the Slider or slide structure.
-// *dFloat* distance - desired stop distance relative to the pivot point
+// distance - desired stop distance relative to the pivot point
 //
 // Return: the relative linear acceleration needed to stop the slider.
 //
@@ -6722,7 +6722,7 @@ dFloat NewtonSliderCalculateStopAccel(const NewtonJoint* const slider, const New
 //
 // Parameters:
 // *const NewtonJoint* *Slider - pointer to the joint.
-// *dFloat* *force - pointer to an array of a least three floats to hold the force value of the joint.
+// *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
 //
@@ -6895,7 +6895,7 @@ dFloat NewtonCorkscrewGetJointOmega(const NewtonJoint* const corkscrew)
 // Parameters:
 // *const NewtonJoint* *Corkscrew - pointer to the joint.
 // *NewtonCorkscrewSliderUpdateDesc* *desc - is the pointer to the Corkscrew or slide structure.
-// *dFloat* angle - is the desired corkscrew stop angle 
+// angle - is the desired corkscrew stop angle 
 //
 // Return: the relative angular acceleration needed to stop the corkscrew.
 //
@@ -6918,7 +6918,7 @@ dFloat NewtonCorkscrewCalculateStopAlpha (const NewtonJoint* const corkscrew, co
 // Parameters:
 // *const NewtonJoint* *corkscrew - pointer to the joint.
 // *NewtonCorkscrewCorkscrewUpdateDesc* *desc - is the pointer to the Corkscrew or slide structure.
-// *dFloat* distance - desired stop distance relative to the pivot point
+// distance - desired stop distance relative to the pivot point
 //
 // Return: the relative linear acceleration needed to stop the corkscrew.
 //
@@ -6937,7 +6937,7 @@ dFloat NewtonCorkscrewCalculateStopAccel(const NewtonJoint* const corkscrew, con
 //
 // Parameters:
 // *const NewtonJoint* *Corkscrew - pointer to the joint.
-// *dFloat* *force - pointer to an array of a least three floats to hold the force value of the joint.
+// *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
 //
@@ -7121,7 +7121,7 @@ dFloat NewtonUniversalGetJointOmega1(const NewtonJoint* const universal)
 // Parameters:
 // *const NewtonJoint* *Universal - pointer to the joint.
 // *NewtonUniversalSliderUpdateDesc* *desc - is the pointer to the Universal or slide structure.
-// *dFloat* angle - is the desired universal stop angle rotation around pin0
+// angle - is the desired universal stop angle rotation around pin0
 //
 // Return: the relative angular acceleration needed to stop the universal.
 //
@@ -7143,7 +7143,7 @@ dFloat NewtonUniversalCalculateStopAlpha0(const NewtonJoint* const universal, co
 // Parameters:
 // *const NewtonJoint* *Universal - pointer to the joint.
 // *NewtonUniversalSliderUpdateDesc* *desc - is the pointer to and the Universal or slide structure.
-// *dFloat* angle - is the desired universal stop angle rotation around pin1
+// angle - is the desired universal stop angle rotation around pin1
 //
 // Return: the relative angular acceleration needed to stop the universal.
 //
@@ -7166,7 +7166,7 @@ dFloat NewtonUniversalCalculateStopAlpha1(const NewtonJoint* const universal, co
 //
 // Parameters:
 // *const NewtonJoint* *Universal - pointer to the joint.
-// *dFloat* *force - pointer to an array of a least three floats to hold the force value of the joint.
+// *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
 //
@@ -7225,7 +7225,7 @@ NewtonJoint* NewtonConstraintCreateUpVector (const NewtonWorld* const newtonWorl
 //
 // Parameters:
 // *const NewtonJoint* *upVector - pointer to the joint.
-// *dFloat* *pin - pointer to an array of a least three floats to hold the up vector direction in global space.
+// *pin - pointer to an array of a least three floats to hold the up vector direction in global space.
 //
 // Return: nothing.
 //
@@ -7253,7 +7253,7 @@ void NewtonUpVectorGetPin(const NewtonJoint* const upVector, dFloat *pin)
 //
 // Parameters:
 // *const NewtonJoint* *upVector - pointer to the joint.
-// *dFloat* *pin - pointer to an array of a least three floats containing the up vector direction in global space.
+// *pin - pointer to an array of a least three floats containing the up vector direction in global space.
 //
 // Return: nothing.
 //
@@ -7365,7 +7365,7 @@ void NewtonUserJointAddLinearRow(const NewtonJoint* const joint, const dFloat* c
 //
 // Parameters:
 // *const NewtonJoint* *joint - pointer to the joint.
-// *dFloat* relativeAngleError - relative angle error between both bodies around pin axis.  
+// relativeAngleError - relative angle error between both bodies around pin axis.  
 // *const dFloat* *pin - pointer of a unit vector in global space along which the relative position, velocity and acceleration between the bodies will be driven to zero.
 //
 // Remark: An angular constraint row calculates the Jacobian derivatives and relative acceleration required to enforce the constraint condition at
@@ -7435,7 +7435,7 @@ void NewtonUserJointGetGeneralRow(const NewtonJoint* const joint, int index, dFl
 //
 // Parameters:
 // *const NewtonJoint* *joint - pointer to the joint.
-// *dFloat* friction - maximum friction value for this row. It must be a positive value between 0.0 and INFINITY.  
+// friction - maximum friction value for this row. It must be a positive value between 0.0 and INFINITY.  
 //
 // Remark: This function will override the default friction values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint friction is a Max friction force, for angular constraint friction is a 
@@ -7454,7 +7454,7 @@ void NewtonUserJointSetRowMaximumFriction(const NewtonJoint* const joint, dFloat
 //
 // Parameters:
 // *const NewtonJoint* *joint - pointer to the joint.
-// *dFloat* friction -  friction value for this row. It must be a negative value between 0.0 and -INFINITY.  
+// friction -  friction value for this row. It must be a negative value between 0.0 and -INFINITY.  
 //
 // Remark: This function will override the default friction values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint friction is a Min friction force, for angular constraint friction is a 
@@ -7473,7 +7473,7 @@ void NewtonUserJointSetRowMinimumFriction(const NewtonJoint* const joint, dFloat
 //
 // Parameters:
 // *const NewtonJoint* *joint - pointer to the joint.
-// *dFloat* acceleration -  desired acceleration value for this row. 
+// acceleration -  desired acceleration value for this row. 
 //
 // Remark: This function will override the default acceleration values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint acceleration is a linear acceleration, for angular constraint acceleration is an 
@@ -7499,8 +7499,8 @@ dFloat NewtonUserCalculateRowZeroAccelaration (const NewtonJoint* const joint)
 //
 // Parameters:
 // *const NewtonJoint* *joint - pointer to the joint.
-// *dFloat* springK - desired spring stiffness, it must be a positive value.
-// *dFloat* springD - desired spring damper, it must be a positive value.
+// springK - desired spring stiffness, it must be a positive value.
+// springD - desired spring damper, it must be a positive value.
 //
 // Remark: This function will override the default acceleration values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint acceleration is a linear acceleration, for angular constraint acceleration is an 
@@ -7525,7 +7525,7 @@ void NewtonUserJointSetRowSpringDamperAcceleration(const NewtonJoint* const join
 //
 // Parameters:
 // *const NewtonJoint* *joint - pointer to the joint.
-// *dFloat* stiffness - row stiffness, it must be a values between 0.0 and 1.0, the default is 0.9. 
+// stiffness - row stiffness, it must be a values between 0.0 and 1.0, the default is 0.9. 
 //
 // Remark: This function will override the default stiffness value set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // the row stiffness is the percentage of the constraint force that will be applied to the rigid bodies. Ideally the value should be
@@ -7775,7 +7775,7 @@ int NewtonJointGetCollisionState(const NewtonJoint* const joint)
 //
 // Parameters:
 // *const NewtonJoint* *joint - pointer to the joint.
-// *dFloat* stiffness - stiffness coefficient, a value between 0, and 1.0, the default value for most joint is 0.9
+// stiffness - stiffness coefficient, a value between 0, and 1.0, the default value for most joint is 0.9
 //
 // Return: nothing.
 //
@@ -7804,7 +7804,7 @@ void NewtonJointSetStiffness(const NewtonJoint* const joint, dFloat stiffness)
 //
 // Parameters:
 // *const NewtonJoint* *joint - pointer to the joint.
-// *dFloat* stiffness - stiffness coefficient, a value between 0, and 1.0, the default value for most joint is 0.9
+// stiffness - stiffness coefficient, a value between 0, and 1.0, the default value for most joint is 0.9
 //
 // Return: stiffness coefficient.
 //
