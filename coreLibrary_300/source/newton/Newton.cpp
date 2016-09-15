@@ -340,6 +340,7 @@ void NewtonGetDeviceString (const NewtonWorld* const newtonWorld, int deviceInde
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *int* threadIndex -  thread index from whe thsi function is called, zero if call form outsize a newton update
 //
 // Remarks: this function should use to present racing conditions when when a call back ins executed form a mutithreaded loop. 
 // In general most call back are thread safe when they do not write to object outside the scope of the call back.
@@ -682,8 +683,6 @@ unsigned NewtonReadThreadPerformanceTicks (const NewtonWorld* newtonWorld, unsig
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
 // *dFloat* timestep - time step in seconds
-// *dFloat* int concurrent - is set to zero the funtion will return after the update is finish
-// is 1 the function will return immediately and the update will run in parallel with the application. 
 //
 // Return: Nothing
 //
@@ -804,37 +803,12 @@ void NewtonDestroyAllBodies(const NewtonWorld* const newtonWorld)
 	world->DestroyAllBodies ();
 }
 
-// Name: NewtonSetWorldSize 
-// Set the size of the Newton world.
-//
-// Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
-// *const dFloat* *minPtr - is the minimum point of the world bounding box 
-// *const dFloat* *maxPtr - is the maximum point of the world bounding box 
-// 
-// Return: Nothing.
-//
-// Remarks: The Newton world must have a finite size. The size of the world is set to a box +- 100 units in all three dimensions
-// at creation time and after a call to the function _NewtonRemoveAllBodies_
-//
-// See also: NewtonSetBodyLeaveWorldEvent
-/*
-void NewtonSetWorldSize(const NewtonWorld* const newtonWorld, const dFloat* const minPtr, const dFloat* const maxPtr)
-{
-	TRACE_FUNCTION(__FUNCTION__);
-	Newton* const world = (Newton *) newtonWorld;
-	dgVector p0 (minPtr[0], minPtr[1], minPtr[2], dgFloat32(1.0f)); 
-	dgVector p1 (maxPtr[0], maxPtr[1], maxPtr[2], dgFloat32(1.0f)); 
-	world->SetWorldSize(p0, p1); 
-}
-*/
-
 // Name: NewtonSetIslandUpdateEvent 
 // Set a function callback to be call on each island update.
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
-// *NewtonIslandUpdate* slandUpdate - application defined callback 
+// *NewtonIslandUpdate* islandUpdate - application defined callback 
 // 
 // Return: Nothing.
 //
@@ -894,6 +868,7 @@ NewtonBody* NewtonWorldGetFirstBody(const NewtonWorld* const newtonWorld)
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// curBody - fixme
 //
 // Return: nothing
 // 
@@ -923,7 +898,7 @@ NewtonBody* NewtonWorldGetNextBody(const NewtonWorld* const newtonWorld, const N
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
 // *NewtonJointIterator* callback - application define callback 
-// *void* callback - application define userdata 
+// *userData - pointer to the user defined user data value.
 //
 // Return: nothing
 // 
@@ -960,11 +935,11 @@ void NewtonWorldForEachJointDo(const NewtonWorld* const newtonWorld, NewtonJoint
 // Iterate thought every body in the world that intersect the AABB calling the function callback.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
-// *const dFloat* *p0 - pointer to an array of at least three floats to hold minimum value for the AABB.
-// *const dFloat* *p1 - pointer to an array of at least three floats to hold maximum value for the AABB.
-// *NewtonBodyIterator* callback - application define callback 
-// *void* callback - application define userdata 
+// *newtonWorld - is the pointer to the Newton world.
+// *p0 - pointer to an array of at least three floats to hold minimum value for the AABB.
+// *p1 - pointer to an array of at least three floats to hold maximum value for the AABB.
+// *NewtonBodyIterator* callback - application defined callback 
+// *userData - pointer to the user defined user data value.
 //
 // Return: nothing
 // 
@@ -1021,7 +996,7 @@ int NewtonWorldFloatSize ()
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the newton world.
-// *void* *userDataPtr - pointer to the user defined user data value.
+// *void* *userData - pointer to the user defined user data value.
 //
 // Return: Nothing.
 //
@@ -1189,13 +1164,14 @@ int NewtonWorldGetConstraintCount(const NewtonWorld* const newtonWorld)
 // Shoot a ray from p0 to p1 and call the application callback with each ray intersection.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the world.
-// *const dFloat* *p0 - pointer to an array of at least three floats containing the beginning of the ray in global space.
-// *const dFloat* *p1 - pointer to an array of at least three floats containing the end of the ray in global space.
-// *NewtonWorldRayFilterCallback* filter - user define function to be called for each body hit during the ray scan.
-// *void* *userData - user data to be passed to the filter callback.
-// *NewtonWorldRayPrefilterCallback* prefilter - user define function to be called for each body before intersection.
-//
+// NewtonWorld* *newtonWorld - is the pointer to the world.
+// *p0 - pointer to an array of at least three floats containing the beginning of the ray in global space.
+// *p1 - pointer to an array of at least three floats containing the end of the ray in global space.
+// NewtonWorldRayFilterCallback* filter - user define function to be called for each body hit during the ray scan.
+// void* *userData - user data to be passed to the filter callback.
+// NewtonWorldRayPrefilterCallback* prefilter - user define function to be called for each body before intersection.
+// *int* threadIndex -  thread index from whe thsi function is called, zero if call form outsize a newton update
+// 
 // Return: nothing
 // 
 // Remarks: The ray cast function will call the application with each body intersecting the line segment. 
@@ -1241,7 +1217,7 @@ void NewtonWorldRayCast(const NewtonWorld* const newtonWorld, const dFloat* cons
 // *const dFloat* *matrix - pointer to an array of at least three floats containing the beginning and orienetaion of the shape in global space.
 // *const dFloat* *target - pointer to an array of at least three floats containing the end of the ray in global space.
 // *const NewtonCollision* shape - collision shap[e use to cat the ray.
-// *dFloat* hitParam - pointe to a variable the will contart the time to closet aproah to the collision.
+// *dFloat* param - pointe to a variable the will contart the time to closet aproah to the collision.
 // *void* *userData - user data to be passed to the prefilter callback.
 // *NewtonWorldRayPrefilterCallback* prefilter - user define function to be called for each body before intersection.
 // *NewtonWorldConvexCastReturnInfo* *info - pointer to an array of contacts at the point of intesections.
