@@ -2312,6 +2312,7 @@ NewtonCollision* NewtonCreateNull(const NewtonWorld* const newtonWorld)
 // dx  - box side one x dimension.  
 // dy  - box side one y dimension.  
 // dz  - box side one z dimension.  
+// shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2335,6 +2336,7 @@ NewtonCollision* NewtonCreateBox(const NewtonWorld* const newtonWorld, dFloat dx
 // radiusX  - sphere radius along x axis.  
 // radiusY  - sphere radius along x axis.  
 // radiusZ  - sphere radius along x axis.  
+// shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the sphere relative to the body. If this parameter is NULL then the sphere is centered at the origin of the body.
 // 
 // Return: Pointer to the generalized sphere.
@@ -2371,6 +2373,7 @@ NewtonCollision* NewtonCreateSphere(const NewtonWorld* const newtonWorld, dFloat
 // *newtonWorld - is the pointer to the Newton world.
 // radius  - cone radius at the base.  
 // height  - cone height along the x local axis from base to tip.  
+// shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2392,8 +2395,10 @@ NewtonCollision* NewtonCreateCone(const NewtonWorld* const newtonWorld, dFloat r
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// radius  - capsule radius at the base.  
+// radio0  - fixme
+// radio1  - fixmexxx
 // height  - capsule height along the x local axis from tip to tip.  
+// shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2419,6 +2424,7 @@ NewtonCollision* NewtonCreateCapsule(const NewtonWorld* const newtonWorld, dFloa
 // *newtonWorld - is the pointer to the Newton world.
 // radius  - cylinder radius at the base.  
 // height  - cylinder height along the x local axis.  
+// shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2442,6 +2448,7 @@ NewtonCollision* NewtonCreateCylinder(const NewtonWorld* const newtonWorld, dFlo
 // *newtonWorld - is the pointer to the Newton world.
 // radius  - ChamferCylinder radius at the base.  
 // height  - ChamferCylinder height along the x local axis.  
+// shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the box
@@ -2467,6 +2474,7 @@ NewtonCollision* NewtonCreateChamferCylinder(const NewtonWorld* const newtonWorl
 // *const dFloat* *vertexCloud - pointer to and array of point.  
 // *int* strideInBytes - vertex size in bytes, must be at least 12.  
 // tolerance - tolerance value for the hull generation. 
+// shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
 // 
 // Return: Pointer to the collision mesh, NULL if the function fail to generate convex shape 
@@ -2514,6 +2522,7 @@ NewtonCollision* NewtonCreateConvexHull(const NewtonWorld* const newtonWorld, in
 // *newtonWorld - is the pointer to the Newton world.
 // *const NewtonMesh* *mesh - special effect mesh
 // tolerance - tolerance value for the hull generation. 
+// shapeID - fixme
 // 
 // Return: Pointer to the collision mesh, NULL if the function fail to generate convex shape 
 //
@@ -2537,7 +2546,7 @@ NewtonCollision* NewtonCreateConvexHullFromMesh(const NewtonWorld* const newtonW
 // *newtonWorld - is the pointer to the Newton world.
 // *int* count - number of primitives in the array.
 // *const NewtonCollision* **collisionPrimitiveArray - pointer to an array of convex collision primitives. This array must be filled with convex collision primitives before this function is called.
-// *int* shapeID
+// shapeID: fixme
 //
 // Return: Pointer to the compound collision.
 //
@@ -3010,6 +3019,8 @@ int NewtonConvexHullGetVertexData (const NewtonCollision* const convexHullCollis
 //
 // Parameters:
 // *const NewtonCollision* convexHullCollision - is the pointer to a convex collision hull primitive.
+// face - fixme
+// faceIndices - fixme
 // 
 // Return: user face count of face. 
 //
@@ -3234,6 +3245,7 @@ int NewtonUserMeshCollisionContinuousOverlapTest (const NewtonUserMeshCollisionC
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
+// shapeID - fixme
 //
 // Return: Pointer to the collision tree.
 //
@@ -3532,12 +3544,13 @@ int NewtonTreeCollisionGetVertexListTriangleListInAABB(const NewtonCollision* co
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *int* width -
-// *int* height - 
-// *int* cellsDiagonals -
-// *unsigned short* elevationMap -
-// *char* atributeMap -
-// horizontalScale -
+// *int* width - fixme
+// *int* height -  fixme
+// *int* cellsDiagonals - fixme
+// *unsigned short* elevationMap - fixme
+// *char* atributeMap - fixme
+// horizontalScale - fixme
+// shapeID - fixme
 //
 // Return: Pointer to the collision.
 //
@@ -3562,6 +3575,7 @@ int NewtonTreeCollisionGetVertexListTriangleListInAABB(const NewtonCollision* co
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
+// shapeID - fixme
 //
 // Return: Pointer to the collision.
 //
