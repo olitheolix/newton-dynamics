@@ -1438,53 +1438,6 @@ void NewtonMaterialSetDefaultCollidable(const NewtonWorld* const newtonWorld, in
 }
 
 
-
-// Name: NewtonMaterialSetContinuousCollisionMode 
-// Set the material interaction between two physics materials to enable or disable continuous collision.
-// continuous collision is on by defaults.
-//
-// Parameters:
-// *newtonWorld - is the pointer to the Newton world
-// id0 - group id0
-// id1 - group id1
-// *int* state - state for this material: 1 = continuous collision on; 0 = continuous collision off, default mode is on
-// 
-// Return: Nothing.
-//
-// Remarks: continuous collision mode enable allow the engine to predict colliding contact on rigid bodies
-// Moving at high speed of subject to strong forces.
-//
-// Remarks: continuous collision mode does not prevent rigid bodies from inter penetration instead it prevent bodies from 
-// passing trough each others by extrapolating contact points when the bodies normal contact calculation determine the bodies are not colliding. 
-//
-// Remarks: for performance reason the bodies angular velocities is only use on the broad face of the collision, 
-// but not on the contact calculation. 
-// 
-// Remarks: continuous collision does not perform back tracking to determine time of contact, instead it extrapolate contact by incrementally 
-// extruding the collision geometries of the two colliding bodies along the linear velocity of the bodies during the time step, 
-// if during the extrusion colliding contact are found, a collision is declared and the normal contact resolution is called. 
-//
-// Remarks: for continuous collision to be active the continuous collision mode must on the material pair of the colliding bodies as well as on at least one of the two colliding bodies.
-//
-// Remarks: Because there is penalty of about 40% to 80% depending of the shape complexity of the collision geometry, this feature is set 
-// off by default. It is the job of the application to determine what bodies need this feature on. Good guidelines are: very small objects, 
-// and bodies that move a height speed.  
-// 
-// See also: NewtonBodySetContinuousCollisionMode
-//void NewtonMaterialSetContinuousCollisionMode(const NewtonWorld* const newtonWorld, int id0, int id1, int state)
-//{
-//	TRACE_FUNCTION(__FUNCTION__);
-//	Newton* const world = (Newton *)newtonWorld;
-//	dgContactMaterial* const material = world->GetMaterial (dgUnsigned32 (id0), dgUnsigned32 (id1));
-	//material->m_collisionContinueCollisionEnable = state ? true : false;
-//	if (state) {
-//		material->m_flags |= dgContactMaterial::m_collisionContinueCollisionEnable;
-//	} else {
-//		material->m_flags &= ~dgContactMaterial::m_collisionContinueCollisionEnable;
-//	}
-//}
-
-
 // Name: NewtonMaterialSetSurfaceThickness 
 // Set an imaginary thickness between the collision geometry of two colliding bodies whose physics 
 // properties are defined by this material pair 
