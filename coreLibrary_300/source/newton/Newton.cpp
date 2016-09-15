@@ -57,7 +57,13 @@
 
 
 
+/** @defgroup Misc
+    Misc
+    @{
+*/
+
 //#define SAVE_COLLISION
+
 
 #ifdef SAVE_COLLISION
 void SerializeFile (void* serializeHandle, const void* buffer, size_t size)
@@ -85,6 +91,8 @@ void SaveCollision (const NewtonCollision* const collisionPtr)
 
 
 /*
+fixme: where does this belong?
+
 // *dFloat* globalScale - global scale factor that will scale all internal tolerance.
 // Remarks: the physics system in theory should be dimensionless, however in practice the engine have to be implemented with
 // limited precision floating numbers and is also built for real-time simulation, it is inevitable that tolerances have to be used in order to increase performance, and 
@@ -96,7 +104,6 @@ void SaveCollision (const NewtonCollision* const collisionPtr)
 // the *globaScale* must be 39. The exact conversion factor does not have to be exact, but the closer it is to reality the better performance the application will get.
 // Applications that are already using meters as the unit system must pass 1.0 as *globalSscale*.
 */
-
 
 
 // Name: NewtonGetMemoryUsed 
@@ -144,13 +151,13 @@ void NewtonFree (void* const ptr)
 	dgFreeStack(ptr); 
 }
 
+/** @} */ // end of group Misc
 
 
-// ***************************************************************************************************************
-//
-// Name: World interface 
-//
-// ***************************************************************************************************************
+/** @defgroup World
+    World interface
+    @{
+*/
 
 // Name: NewtonCreate 
 // Create an instance of the Newton world.
@@ -1343,13 +1350,12 @@ void NewtonIslandGetBodyAABB(const void* const island, int bodyIndex, dFloat* co
 	}
 }
 
+/** @} */ // end of group World
 
-
-// ***************************************************************************************************************
-//
-// Name: GroupID interface
-//
-// ***************************************************************************************************************
+/** @defgroup GroupID
+    GroupID interface
+    @{
+*/
 
 
 // Name: NewtonMaterialGetDefaultGroupID 
@@ -1413,12 +1419,13 @@ void NewtonMaterialDestroyAllGroupID(const NewtonWorld* const newtonWorld)
 	world->	RemoveAllGroupID();
 }
 
+/** @} */ // end of GroupID
 
-// ***************************************************************************************************************
-//
-// Name: Material setup interface
-//
-// ***************************************************************************************************************
+/** @defgroup MaterialSetup
+    Material setup interface
+    @{
+*/
+
 
 // Name: NewtonMaterialSetDefaultCollidable 
 // Set the material interaction between two physics materials  to be collidable or non-collidable by default.
@@ -1765,14 +1772,16 @@ NewtonMaterial* NewtonWorldGetNextMaterial(const NewtonWorld* const newtonWorld,
 	return (NewtonMaterial*)world->GetNextMaterial ((dgContactMaterial*) material);
 }
 
+/** @} */ // end of MaterialSetup
 
 
-// ***************************************************************************************************************
-//
-// Name: Contact behavior control interface
-//
-// ***************************************************************************************************************
-/*
+/** @defgroup ContactBehaviour
+    Contact behavior control interface
+    @{
+*/
+
+/* fixme: can this function be deleted?
+
 // Name: NewtonMaterialDisableContact 
 // Disable processing for the contact. 
 //
@@ -2327,12 +2336,13 @@ void NewtonMaterialContactRotateTangentDirections(const NewtonMaterial* const ma
 	}
 }
 
+/** @} */ // end of ContactBehaviour
 
-// **********************************************************************************************
-//
-// Name: Convex collision primitives interface
-//
-// **********************************************************************************************
+/** @defgroup CshapesConvexSimple
+    Convex collision primitives interface
+    @{
+*/
+
 
 // Name: NewtonCreateNull 
 // Create a transparent collision primitive.
@@ -3186,11 +3196,13 @@ const void* NewtonCollisionDataPointer (const NewtonCollision* const convexColli
 	return coll->GetChildShape();
 }
 
-// **********************************************************************************************
-//
-// Name: Complex collision primitives interface
-//
-// **********************************************************************************************
+/** @} */ // end of CshapesConvexSimple
+
+/** @defgroup CshapesConvexComplex
+    Complex collision primitives interface
+    @{
+*/
+
 
 // Name: NewtonCreateUserMeshCollision 
 // Create a complex collision geometry to be controlled by the application.
@@ -3717,12 +3729,13 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 	return instance->GetChildShape()->GetSkinThickness();
 }
 
-// **********************************************************************************************
-//
-// Name: Generic collision library functions
-//
-// **********************************************************************************************
+/** @} */ // end of CshapesConvexComples
 
+
+/** @defgroup CollisionLibraryGeneric
+    Generic collision library functions
+    @{
+*/
 
 // Name: NewtonCollisionPointDistance 
 // Calculate the closest point between a point and convex collision primitive.
@@ -4331,11 +4344,13 @@ void NewtonCollisionGetInfo(const NewtonCollision* const collision, NewtonCollis
 }
 
 
-// **********************************************************************************************
-//
-// Name: Transform utility functions 
-//
-// **********************************************************************************************
+/** @} */ // end of CollisionLibraryGeneric
+
+
+/** @defgroup TransUtil
+    Transform utility functions 
+    @{
+*/
 
 
 // Name: NewtonGetEulerAngle 
@@ -4438,14 +4453,12 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 	return accel;
 }
 
+/** @} */ // end of TransUtil
 
-
-
-// **********************************************************************************************
-//
-// Name: Rigid body interface
-//
-// **********************************************************************************************
+/** @defgroup RigidBodyInterface
+    Rigid Body Interface
+    @{
+*/
 
 
 // Name: NewtonCreateBody 
@@ -6278,11 +6291,13 @@ void NewtonBodyIntegrateVelocity (const NewtonBody* const bodyPtr, dFloat timest
 	}
 }
 
-// ***************************************************************************************************************
-//
-// Name: Ball and Socket joint interface
-//
-// ***************************************************************************************************************
+/** @} */ // end of RigidBodyInterface
+
+/** @defgroup ConstraintBall
+    Ball and Socket joint interface
+    @{
+*/
+
 
 // Name: NewtonConstraintCreateBall
 // Create a ball an socket joint. 
@@ -6454,11 +6469,12 @@ void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
 }
 
 
-// ***************************************************************************************************************
-//
-// Name: Hinge joint interface
-//
-// ***************************************************************************************************************
+/** @} */ // end of ConstraintBall
+
+/** @defgroup JointHinge
+    Hinge joint interface
+    @{
+
 
 // Name:  NewtonConstraintCreateHinge
 // Create a hinge joint. 
@@ -6599,11 +6615,12 @@ void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const forc
 	force[2] = forceVector.m_z;
 }
 
-// ***************************************************************************************************************
-//
-// Name: Slider joint interface
-//
-// ***************************************************************************************************************
+/** @} */ // end of JointHinge
+
+/** @defgroup JointSlider
+    Slider joint interface
+    @{
+*/
 
 // Name: NewtonConstraintCreateSlider
 // Create a slider joint. 
@@ -6744,11 +6761,12 @@ void NewtonSliderGetJointForce(const NewtonJoint* const slider, dFloat* const fo
 }
 
 
-// ***************************************************************************************************************
-//
-// Name: Corkscrew joint interface
-//
-// ***************************************************************************************************************
+/** @} */ // end of JointSlider
+
+/** @defgroup JointCorkscrew
+    Corkscrew joint interface
+    @{
+*/
 
 // Name: NewtonConstraintCreateCorkscrew
 // Create a corkscrew joint. 
@@ -6958,11 +6976,12 @@ void NewtonCorkscrewGetJointForce(const NewtonJoint* const corkscrew, dFloat* co
 }
 
 
-// ***************************************************************************************************************
-//
-// Name: Universal joint interface
-//
-// ***************************************************************************************************************
+/** @} */ // end of
+
+/** @defgroup JointUniversal
+    Universal joint interface
+    @{
+*/
 
 // Name: NewtonConstraintCreateUniversal
 // Create a universal joint. 
@@ -7186,11 +7205,12 @@ void NewtonUniversalGetJointForce(const NewtonJoint* const universal, dFloat* co
 }
 
 
-// ***************************************************************************************************************
-//
-// Name: UpVector joint Interface
-//
-// ***************************************************************************************************************
+/** @} */ // end of JointUniversal
+
+/** @defgroup JointUpVector
+    UpVector joint Interface
+    @{
+*/
 
 // Name: NewtonConstraintCreateUpVector
 // Create a UpVector joint. 
@@ -7271,12 +7291,12 @@ void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 	contraint->SetPinDir (pinVector);
 }
 
+/** @} */ // end of JointUniversal
 
-// ***************************************************************************************************************
-//
-// Name: User defined joint interface
-//
-// ***************************************************************************************************************
+/** @defgroup JointUser
+    User defined joint interface
+    @{
+*/
 
 // Name: NewtonConstraintCreateUserJoint
 // Create a user define bilateral joint. 
@@ -7572,12 +7592,12 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 }
 
 
+/** @} */ // end of JointUser
 
-// ***************************************************************************************************************
-//
-// Name: Joint common function s
-//
-// ***************************************************************************************************************
+/** @defgroup JointCommon
+    Joint common function s
+    @{
+*/
 
 // Name: NewtonJointSetUserData
 // Store a user defined data value with the joint.
@@ -7868,14 +7888,13 @@ void NewtonDestroyJoint(const NewtonWorld* const newtonWorld, const NewtonJoint*
 	world->DestroyJoint ((dgConstraint*) joint);
 }
 
+/** @} */ // end of JointCommon
 
+/** @defgroup SpecialEffectMesh
+    Special effect mesh interface
+    @{
+*/
 
-
-// ***************************************************************************************************************
-//
-// Name: Special effect mesh interface
-//
-// ***************************************************************************************************************
 NewtonMesh* NewtonMeshCreate(const NewtonWorld* const newtonWorld)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -8753,6 +8772,13 @@ const int* NewtonDeformableMeshSegmentGetIndexList (const NewtonCollision* const
 	return NULL;
 }
 
+/** @} */ // end of
+
+/** @defgroup Unclassified
+
+    @{
+*/
+
 
 NewtonSkeletonContainer* NewtonSkeletonContainerCreate(NewtonWorld* const worldPtr, NewtonBody* const rootBone, NewtonSkeletontDestructor destructor)
 {
@@ -8903,3 +8929,4 @@ void NewtonCollisionAggregateSetSelfCollision(void* const aggregatePtr, int stat
 	dgBroadPhaseAggregate* const aggregate = (dgBroadPhaseAggregate*) aggregatePtr;
 	aggregate->SetSelfCollision(state ? true : false);
 }
+/** @} */ // end of
