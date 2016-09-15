@@ -122,6 +122,11 @@ int NewtonGetMemoryUsed()
 	return dgMemoryAllocator::GetGlobalMemoryUsed();
 }
 
+// fixme: needs docu
+// Parameters:
+//   mallocFnt - is a pointer to the memory allocator callback function. If this parameter is NULL the standard *malloc* function is used.
+//   mfreeFnt - is a pointer to the memory release callback function. If this parameter is NULL the standard *free* function is used.
+//
 void NewtonSetMemorySystem (NewtonAllocMemory mallocFnt, NewtonFreeMemory mfreeFnt)
 {
 	dgMemFree _free;
@@ -161,12 +166,6 @@ void NewtonFree (void* const ptr)
 
 // Name: NewtonCreate 
 // Create an instance of the Newton world.
-//
-// Parameters:
-// *NewtonAllocMemory* mallocFnt -	is a pointer to the memory allocator callback function. If this parameter is 
-//									NULL the standard *malloc* function is used.
-// *NewtonFreeMemory* mfreeFnt -	is a pointer to the memory release callback function. If this parameter is NULL
-//									the standard *free* function is used.
 // 
 // Return: a pointer to an instance of the Newton world.
 //
@@ -187,7 +186,7 @@ NewtonWorld* NewtonCreate()
 // Destroy an instance of the Newton world.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+//   *newtonWorld - pointer to the Newton world.
 // 
 // Return: Nothing.
 //
@@ -1326,19 +1325,31 @@ NewtonBody* NewtonIslandGetBody(const void* const island, int bodyIndex)
 // Return the AABB of the body on this island
 //
 // Parameters:
-// *const void* *island - is the pointer to current island
-// *int* bodyIndex - index to the body in current island  
+//   island - is the pointer to current island
+//   bodyIndex - index to the body in current island  
+//   p0 - fixme
+//   p1 - fixme
 // 
 // Remarks: This function can only be called from an island update callback.
 //
-//Remarks: The application can set a function callback to be called just after the array of all bodies making an island of connected bodies are collected. 
-//This function will be called just before the array is accepted for solution and integration. 
-//The function callback may return one to validate the array of zero to freeze it.
-//This functionality can be used by the application to implement in game physics LOD. For example the application can determine the AABB of the 
-//island and check against the view frustum, if the entire island AABB is invisible then the application can suspend simulation even if they are not in equilibrium.
-//another functionality is the implementation of visual debuggers, and also the implementation of auto frozen bodies under arbitrary condition set by the logic of the application.
-//
-//Remarks: The application should not modify any parameter of the origin body when the callback is called, nor it should create or destroy any body or joint. Do so will result in unpredictable malfunction.
+// Remarks: The application can set a function callback to be called
+// just after the array of all bodies making an island of connected
+// bodies are collected. This function will be called just before the
+// array is accepted for solution and integration. The function
+// callback may return one to validate the array of zero to freeze it.
+// This functionality can be used by the application to implement in
+// game physics LOD. For example the application can determine the AABB
+// of the island and check against the view frustum, if the entire
+// island AABB is invisible then the application can suspend simulation
+// even if they are not in equilibrium. another functionality is the
+// implementation of visual debuggers, and also the implementation of
+// auto frozen bodies under arbitrary condition set by the logic of the
+// application.
+// 
+// Remarks: The application should not modify any parameter of the
+// origin body when the callback is called, nor it should create or
+// destroy any body or joint. Do so will result in unpredictable
+// malfunction.
 //
 // See also: NewtonSetIslandUpdateEvent
 void NewtonIslandGetBodyAABB(const void* const island, int bodyIndex, dFloat* const p0, dFloat* const p1)
