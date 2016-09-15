@@ -1419,8 +1419,8 @@ void NewtonMaterialDestroyAllGroupID(const NewtonWorld* const newtonWorld)
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
-// *int* id0 - group id0
-// *int* id1 - group id1
+// id0 - group id0
+// id1 - group id1
 // *int* state - state for this material: 1 = collidable; 0 = non collidable
 // 
 // Return: Nothing.
@@ -1445,8 +1445,8 @@ void NewtonMaterialSetDefaultCollidable(const NewtonWorld* const newtonWorld, in
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
-// *int* id0 - group id0
-// *int* id1 - group id1
+// id0 - group id0
+// id1 - group id1
 // *int* state - state for this material: 1 = continuous collision on; 0 = continuous collision off, default mode is on
 // 
 // Return: Nothing.
@@ -1491,8 +1491,8 @@ void NewtonMaterialSetDefaultCollidable(const NewtonWorld* const newtonWorld, in
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
-// *int* id0 - group id0
-// *int* id1 - group id1
+// id0 - group id0
+// id1 - group id1
 // *dFloat* thickness - material thickness a value form 0.0 to 0.125; the default surface value is 0.0 
 // 	
 // Return: Nothing.
@@ -1522,8 +1522,8 @@ void NewtonMaterialSetSurfaceThickness(const NewtonWorld* const newtonWorld, int
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
-// *int* id0 - group id0
-// *int* id1 - group id1
+// id0 - group id0
+// id1 - group id1
 // *dFloat* staticFriction -  static friction coefficients
 // *dFloat* kineticFriction - dynamic coefficient of friction
 // 
@@ -1564,8 +1564,8 @@ void NewtonMaterialSetDefaultFriction(const NewtonWorld* const newtonWorld, int 
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
-// *int* id0 - group id0
-// *int* id1 - group id1
+// id0 - group id0
+// id1 - group id1
 // *dFloat* elasticCoef - static friction coefficients
 // 
 // Return: Nothing.
@@ -1588,8 +1588,8 @@ void NewtonMaterialSetDefaultElasticity(const NewtonWorld* const newtonWorld, in
 //
 // Parameters:
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
-// *int* id0 - group id0
-// *int* id1 - group id1
+// id0 - group id0
+// id1 - group id1
 // *dFloat* softnessCoef - softness coefficient
 // 
 // Return: Nothing.
@@ -1620,8 +1620,8 @@ void NewtonMaterialSetCallbackUserData (const NewtonWorld* const newtonWorld, in
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *id0 - group id0.
-// *id1 - group id1.
+// id0 - group id0.
+// id1 - group id1.
 // *aabbOverlap - address of the event function called when the AABB of tow bodyes overlap. This parameter can be NULL.
 // *processCallback - address of the event function called for every contact resulting from contact calculation. This parameter can be NULL.
 // 
@@ -1669,8 +1669,8 @@ void NewtonMaterialSetContactGenerationCallback (const NewtonWorld* const newton
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *id0 - group id0.
-// *id1 - group id1.
+// id0 - group id0.
+// id1 - group id1.
 // *compoundAabbOverlap: fixme (can this be NULL?)
 // 
 // Return: Nothing.
@@ -1707,8 +1707,8 @@ void NewtonMaterialSetCompoundCollisionCallback(const NewtonWorld* const newtonW
 //
 // Parameters:
 // NewtonWorld *newtonWorld - is the pointer to the Newton world.
-// *id0 - group id0.
-// *id1 - group id1.
+// id0 - group id0.
+// id1 - group id1.
 // 
 // Return: Nothing.
 void* NewtonMaterialGetUserData (const NewtonWorld* const newtonWorld, int id0, int id1)
@@ -1885,7 +1885,7 @@ dFloat NewtonMaterialGetContactNormalSpeed(const NewtonMaterial* const materialH
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
-// *int* index - index to the tangent vector. This value can be 0 for primary tangent direction or 1 for the secondary tangent direction.
+// index - index to the tangent vector. This value can be 0 for primary tangent direction or 1 for the secondary tangent direction.
 // 
 // Return: Contact tangent speed. 
 //
@@ -2104,7 +2104,7 @@ void NewtonMaterialSetContactElasticity(const NewtonMaterial* const materialHand
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
 // *int* state* - new state. 0 makes the contact frictionless along the index tangent vector.
-// *int* index - index to the tangent vector. 0 for primary tangent vector or 1 for the secondary tangent vector.
+// index - index to the tangent vector. 0 for primary tangent vector or 1 for the secondary tangent vector.
 // 
 // Return: Nothing.
 //
@@ -2140,7 +2140,7 @@ void NewtonMaterialSetContactFrictionState(const NewtonMaterial* const materialH
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
 // *dFloat* staticFrictionCoef - static friction coefficient. Must be positive.
 // *dFloat* kineticFrictionCoef - static friction coefficient. Must be positive.
-// *int* index - index to the tangent vector. 0 for primary tangent vector or 1 for the secondary tangent vector.
+// index - index to the tangent vector. 0 for primary tangent vector or 1 for the secondary tangent vector.
 // 
 // Return: Nothing.
 //
@@ -2200,7 +2200,7 @@ void NewtonMaterialSetContactNormalAcceleration(const NewtonMaterial* const mate
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
 // *dFloat* accel - desired contact acceleration.
-// *int* index - index to the tangent vector. 0 for primary tangent vector or 1 for the secondary tangent vector.
+// index - index to the tangent vector. 0 for primary tangent vector or 1 for the secondary tangent vector.
 // 
 // Return: Nothing.
 //
@@ -5695,7 +5695,7 @@ NewtonCollision* NewtonBodyGetCollision(const NewtonBody* const bodyPtr)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *int* id - id of a previously created material group.
+// id - id of a previously created material group.
 //
 // Return: Nothing.
 //
@@ -5716,7 +5716,6 @@ void NewtonBodySetMaterialGroupID(const NewtonBody* const bodyPtr, int id)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *int* id - id of a previously created material group.
 //
 // Return: Nothing.
 //
