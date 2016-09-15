@@ -1619,12 +1619,11 @@ void NewtonMaterialSetCallbackUserData (const NewtonWorld* const newtonWorld, in
 // Set userData and the functions event handlers for the material interaction between two physics materials .
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
-// *int* id0 - group id0.
-// *int* id1 - group id1.
-// *void* *userData - user data value.
-// *NewtonOnAABBOverlap* aabbOverlap - address of the event function called when the AABB of tow bodyes overlap. This parameter can be NULL.
-// *NewtonContactsProcess* processCallback - address of the event function called for every contact resulting from contact calculation. This parameter can be NULL.
+// *newtonWorld - is the pointer to the Newton world.
+// *id0 - group id0.
+// *id1 - group id1.
+// *aabbOverlap - address of the event function called when the AABB of tow bodyes overlap. This parameter can be NULL.
+// *processCallback - address of the event function called for every contact resulting from contact calculation. This parameter can be NULL.
 // 
 // Return: Nothing.
 //
@@ -1672,7 +1671,7 @@ void NewtonMaterialSetContactGenerationCallback (const NewtonWorld* const newton
 // *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
 // *int* id0 - group id0.
 // *int* id1 - group id1.
-// *void* *userData - user data value.
+// *userData - user data value.
 // *NewtonOnAABBOverlap* aabbOverlap - address of the event function called before contact calculation for collision. This parameter can be NULL.
 // *NewtonContactsProcess* processCallback - address of the event function called for every contact resulting from contact calculation. This parameter can be NULL.
 // *NewtonContactEnd* endCallback - address of the event function called after all contacts are processed. This parameter can be NULL.
@@ -1710,9 +1709,9 @@ void NewtonMaterialSetCompoundCollisionCallback(const NewtonWorld* const newtonW
 // Get userData associated with this material.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
-// *int* id0 - group id0.
-// *int* id1 - group id1.
+// NewtonWorld *newtonWorld - is the pointer to the Newton world.
+// *id0 - group id0.
+// *id1 - group id1.
 // 
 // Return: Nothing.
 void* NewtonMaterialGetUserData (const NewtonWorld* const newtonWorld, int id0, int id1)
