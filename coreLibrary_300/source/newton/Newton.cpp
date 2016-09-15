@@ -1887,6 +1887,7 @@ dFloat NewtonMaterialGetContactMaxTangentImpact(const NewtonMaterial* const mate
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
+// *body - pointer to body
 // *positPtr   - pointer to an array of at least three floats to hold the contact position.
 // *normalPtr  - pointer to an array of at least three floats to hold the contact normal.
 // 
@@ -1922,6 +1923,7 @@ void NewtonMaterialGetContactPositionAndNormal(const NewtonMaterial* const mater
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
+// *body - pointer to body
 // *forcePtr  - pointer to an array of at least three floats to hold the force vector in global space.
 // 
 // Return: Nothing.
@@ -1959,6 +1961,7 @@ void NewtonMaterialGetContactForce(const NewtonMaterial* const materialHandle, c
 //
 // Parameters:
 // *const NewtonMaterial* materialHandle - pointer to a material pair.
+// *body - pointer to body
 // *dir0  - pointer to an array of at least three floats to hold the contact primary tangent vector.
 // *dir1  - pointer to an array of at least three floats to hold the contact secondary tangent vector.
 // 
