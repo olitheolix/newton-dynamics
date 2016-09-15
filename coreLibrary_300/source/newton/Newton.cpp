@@ -1668,13 +1668,10 @@ void NewtonMaterialSetContactGenerationCallback (const NewtonWorld* const newton
 // Set userData and the functions event handlers for the material interaction between two physics materials .
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
-// *int* id0 - group id0.
-// *int* id1 - group id1.
-// *userData - user data value.
-// *NewtonOnAABBOverlap* aabbOverlap - address of the event function called before contact calculation for collision. This parameter can be NULL.
-// *NewtonContactsProcess* processCallback - address of the event function called for every contact resulting from contact calculation. This parameter can be NULL.
-// *NewtonContactEnd* endCallback - address of the event function called after all contacts are processed. This parameter can be NULL.
+// *newtonWorld - is the pointer to the Newton world.
+// *id0 - group id0.
+// *id1 - group id1.
+// *compoundAabbOverlap: fixme (can this be NULL?)
 // 
 // Return: Nothing.
 //
