@@ -239,7 +239,7 @@ void NewtonSetContactMergeTolerance (const NewtonWorld* const newtonWorld, dFloa
 // Reset all internal states of the engine.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // 
 // Remarks: When an application wants to reset the state of all the objects in the world to a predefined initial condition, 
 // just setting the initial position and velocity is not sufficient to reproduce equal runs since the engine maintain 
@@ -339,7 +339,7 @@ void NewtonGetDeviceString (const NewtonWorld* const newtonWorld, int deviceInde
 // this function block all other threads from executing the same subsequent code simultaneously. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *int* threadIndex -  thread index from whe thsi function is called, zero if call form outsize a newton update
 //
 // Remarks: this function should use to present racing conditions when when a call back ins executed form a mutithreaded loop. 
@@ -392,7 +392,7 @@ void NewtonYield ()
 // this function block all other threads from executing the same subsequent code simultaneously. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 //
 //
 // Remarks: this function should use to present racing conditions when when a call back ins executed form a mutithreaded loop. 
@@ -425,7 +425,7 @@ void NewtonWorldCriticalSectionUnlock(const NewtonWorld* const newtonWorld)
 // Set the maximum number of thread the engine is allowed to use by the application.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // *int* threads - max number of threaded allowed  
 // 
 // Return: Nothing
@@ -451,7 +451,7 @@ void NewtonSetThreadsCount(const NewtonWorld* const newtonWorld, int threads)
 // Get the total number of thread running in the engine.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // 
 // Return: number threads
 //
@@ -473,7 +473,7 @@ int NewtonGetThreadsCount(const NewtonWorld* const newtonWorld)
 // Get the maximu number of thread abialble.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // 
 // Return: number threads
 //
@@ -497,7 +497,7 @@ int NewtonGetMaxThreadsCount(const NewtonWorld* const newtonWorld)
 // Get the current thread the Engine is running
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // 
 // Return: the index to the current workir thread runnin the call back. -1 if the function is called ourxoed of a call back
 //
@@ -519,7 +519,7 @@ int NewtonGetThreadNumber(const NewtonWorld* const newtonWorld)
 // Enable or disable solver to resolve constraint forces in multi threaded mode when large island configurations. Mode is disabled by default.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // *int* mode - solver mode 1 enable parallel mode 0 disable parallel mode, default 
 // 
 // Return: Nothing
@@ -573,7 +573,7 @@ int NewtonGetMultiThreadSolverOnSingleIsland(const NewtonWorld* const newtonWorl
 // Set the solver precision mode.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // *int* model - model of operation 0 = exact, 1 = adaptive, n = linear. The default is adaptive.
 // 
 // Return: Nothing
@@ -619,7 +619,7 @@ void NewtonSetSolverConvergenceQuality (const NewtonWorld* const newtonWorld, in
 // Set coulomb model of friction.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // *int* model - friction model;  0 = exact coulomb, 1 = adaptive coulomb, The default is exact.
 // 
 // Return: Nothing.
@@ -681,7 +681,7 @@ unsigned NewtonReadThreadPerformanceTicks (const NewtonWorld* newtonWorld, unsig
 // Advance the simulation by an amount of time.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // *dFloat* timestep - time step in seconds
 //
 // Return: Nothing
@@ -736,7 +736,7 @@ void NewtonWaitForUpdateToFinish (const NewtonWorld* const newtonWorld)
 // Set the minimum frame rate at which the simulation can run.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // *dFloat* frameRate - minimum frame rate of the simulation in frame per second. This value is clamped between 60fps and 1000fps
 // 
 // Return: nothing
@@ -758,7 +758,7 @@ void NewtonSetMinimumFrameRate(const NewtonWorld* const newtonWorld, dFloat fram
 // Return the correct time step for this simulation update.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 //
 // Remark: This application can used this function to get the current simulation time step. 
 // 
@@ -775,7 +775,7 @@ dFloat NewtonGetTimeStep(const NewtonWorld* const newtonWorld)
 // Remove all bodies and joints from the newton world.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is a pointer to the Newton world
+// *newtonWorld - is a pointer to the Newton world
 // 
 // Return: Nothing
 //
@@ -807,7 +807,7 @@ void NewtonDestroyAllBodies(const NewtonWorld* const newtonWorld)
 // Set a function callback to be call on each island update.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // *NewtonIslandUpdate* islandUpdate - application defined callback 
 // 
 // Return: Nothing.
@@ -835,7 +835,7 @@ void NewtonSetIslandUpdateEvent(const NewtonWorld* const newtonWorld, NewtonIsla
 // get th first body in the body in the world body list.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 //
 // Return: nothing
 // 
@@ -867,7 +867,7 @@ NewtonBody* NewtonWorldGetFirstBody(const NewtonWorld* const newtonWorld)
 // get the fixt body in the general body.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // curBody - fixme
 //
 // Return: nothing
@@ -896,7 +896,7 @@ NewtonBody* NewtonWorldGetNextBody(const NewtonWorld* const newtonWorld, const N
 // Iterate thought every joint in the world calling the function callback.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *NewtonJointIterator* callback - application define callback 
 // *userData - pointer to the user defined user data value.
 //
@@ -995,7 +995,7 @@ int NewtonWorldFloatSize ()
 // Store a user defined data value with the world.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the newton world.
+// *newtonWorld - is the pointer to the newton world.
 // *void* *userData - pointer to the user defined user data value.
 //
 // Return: Nothing.
@@ -1015,7 +1015,7 @@ void NewtonWorldSetUserData(const NewtonWorld* const newtonWorld, void* const us
 // Retrieve a user previously stored user define value with the world.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 //
 // Return: user data value.
 //
@@ -1034,7 +1034,7 @@ void* NewtonWorldGetUserData(const NewtonWorld* const newtonWorld)
 // set a function pointer as destructor call back.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *NewtonWorldDestructorCallback* destructor - function poiter callback
 //
 // Remarks: The application can store a user defined destructor call back function to be called at the  time the world is to be destroyed
@@ -1052,7 +1052,7 @@ void NewtonWorldSetDestructorCallback(const NewtonWorld* const newtonWorld, Newt
 // Return the function call back Pointer.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 //
 // Remarks: The application can store a user defined destructor call back function to be called at the  time the world is to be destroyed
 // 
@@ -1131,7 +1131,7 @@ void* NewtonWorldGetPostListener (const NewtonWorld* const newtonWorld, const ch
 // return the total number of rigid bodies in the world.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // 
 // Return: number of rigid bodies in this world.
 //
@@ -1146,7 +1146,7 @@ int NewtonWorldGetBodyCount(const NewtonWorld* const newtonWorld)
 // return the total number of constraints in the world.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 //
 // remark: this function will return the total number of joint including contacts
 // 
@@ -1213,7 +1213,7 @@ void NewtonWorldRayCast(const NewtonWorld* const newtonWorld, const dFloat* cons
 // cast a simple convex shape along the ray that goes for the matrix position to the destination and get the firsts contacts of collision.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the world.
+// *newtonWorld - is the pointer to the world.
 // *const dFloat* *matrix - pointer to an array of at least three floats containing the beginning and orienetaion of the shape in global space.
 // *const dFloat* *target - pointer to an array of at least three floats containing the end of the ray in global space.
 // *const NewtonCollision* shape - collision shap[e use to cat the ray.
@@ -1349,7 +1349,7 @@ void NewtonIslandGetBodyAABB(const void* const island, int bodyIndex, dFloat* co
 // Get the value of the default MaterialGroupID.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // 
 // Return: The ID number for the default Group ID.
 //
@@ -1368,7 +1368,7 @@ int NewtonMaterialGetDefaultGroupID(const NewtonWorld* const newtonWorld)
 // Create a new MaterialGroupID.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // 
 // Return: The ID of a new GroupID.
 //
@@ -1390,7 +1390,7 @@ int NewtonMaterialCreateGroupID(const NewtonWorld* const newtonWorld)
 // Remove all groups ID from the Newton world.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // 
 // Return: Nothing.
 //
@@ -1418,7 +1418,7 @@ void NewtonMaterialDestroyAllGroupID(const NewtonWorld* const newtonWorld)
 // Set the material interaction between two physics materials  to be collidable or non-collidable by default.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
 // *int* state - state for this material: 1 = collidable; 0 = non collidable
@@ -1444,7 +1444,7 @@ void NewtonMaterialSetDefaultCollidable(const NewtonWorld* const newtonWorld, in
 // continuous collision is on by defaults.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
 // *int* state - state for this material: 1 = continuous collision on; 0 = continuous collision off, default mode is on
@@ -1490,7 +1490,7 @@ void NewtonMaterialSetDefaultCollidable(const NewtonWorld* const newtonWorld, in
 // properties are defined by this material pair 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
 // *dFloat* thickness - material thickness a value form 0.0 to 0.125; the default surface value is 0.0 
@@ -1521,7 +1521,7 @@ void NewtonMaterialSetSurfaceThickness(const NewtonWorld* const newtonWorld, int
 // Set the default coefficients of friction for the material interaction between two physics materials .
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
 // *dFloat* staticFriction -  static friction coefficients
@@ -1563,7 +1563,7 @@ void NewtonMaterialSetDefaultFriction(const NewtonWorld* const newtonWorld, int 
 // Set the default coefficients of restitution (elasticity) for the material interaction between two physics materials .
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
 // *dFloat* elasticCoef - static friction coefficients
@@ -1587,7 +1587,7 @@ void NewtonMaterialSetDefaultElasticity(const NewtonWorld* const newtonWorld, in
 // Set the default softness coefficients for the material interaction between two physics materials .
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world
+// *newtonWorld - is the pointer to the Newton world
 // id0 - group id0
 // id1 - group id1
 // *dFloat* softnessCoef - softness coefficient
@@ -1725,7 +1725,7 @@ void* NewtonMaterialGetUserData (const NewtonWorld* const newtonWorld, int id0, 
 // Get the first Material pair from the material array.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // 
 // Return: the first material.
 //
@@ -1741,7 +1741,7 @@ NewtonMaterial* NewtonWorldGetFirstMaterial(const NewtonWorld* const newtonWorld
 // Get the next Material pair from the material array.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const NewtonMaterial* *material - corrent material
 // 
 // Return: next material in material array or NULL if material is the last material in the list.
@@ -2331,7 +2331,7 @@ void NewtonMaterialContactRotateTangentDirections(const NewtonMaterial* const ma
 // Create a transparent collision primitive.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // 
 // Return: Pointer to the collision object.
 //
@@ -2352,7 +2352,7 @@ NewtonCollision* NewtonCreateNull(const NewtonWorld* const newtonWorld)
 // Create a box primitive for collision.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *dFloat* dx  - box side one x dimension.  
 // *dFloat* dy  - box side one y dimension.  
 // *dFloat* dz  - box side one z dimension.  
@@ -2375,7 +2375,7 @@ NewtonCollision* NewtonCreateBox(const NewtonWorld* const newtonWorld, dFloat dx
 // Create a generalized ellipsoid primitive..
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *dFloat* radiusX  - sphere radius along x axis.  
 // *dFloat* radiusY  - sphere radius along x axis.  
 // *dFloat* radiusZ  - sphere radius along x axis.  
@@ -2412,7 +2412,7 @@ NewtonCollision* NewtonCreateSphere(const NewtonWorld* const newtonWorld, dFloat
 // Create a cone primitive for collision.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *dFloat* radius  - cone radius at the base.  
 // *dFloat* height  - cone height along the x local axis from base to tip.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
@@ -2435,7 +2435,7 @@ NewtonCollision* NewtonCreateCone(const NewtonWorld* const newtonWorld, dFloat r
 // Create a capsule primitive for collision.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *dFloat* radius  - capsule radius at the base.  
 // *dFloat* height  - capsule height along the x local axis from tip to tip.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
@@ -2460,7 +2460,7 @@ NewtonCollision* NewtonCreateCapsule(const NewtonWorld* const newtonWorld, dFloa
 // Create a cylinder primitive for collision.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *dFloat* radius  - cylinder radius at the base.  
 // *dFloat* height  - cylinder height along the x local axis.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
@@ -2483,7 +2483,7 @@ NewtonCollision* NewtonCreateCylinder(const NewtonWorld* const newtonWorld, dFlo
 // Create a ChamferCylinder primitive for collision.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *dFloat* radius  - ChamferCylinder radius at the base.  
 // *dFloat* height  - ChamferCylinder height along the x local axis.  
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
@@ -2506,7 +2506,7 @@ NewtonCollision* NewtonCreateChamferCylinder(const NewtonWorld* const newtonWorl
 // Create a ConvexHull primitive from collision from a cloud of points.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *int* count  - number of consecutive point to follow must be at least 4.  
 // *const dFloat* *vertexCloud - pointer to and array of point.  
 // *int* strideInBytes - vertex size in bytes, must be at least 12.  
@@ -2555,7 +2555,7 @@ NewtonCollision* NewtonCreateConvexHull(const NewtonWorld* const newtonWorld, in
 // Create a ConvexHull primitive from a special effect mesh.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const NewtonMesh* *mesh - special effect mesh
 // *dFloat* tolerance - tolerance value for the hull generation. 
 // 
@@ -2578,7 +2578,7 @@ NewtonCollision* NewtonCreateConvexHullFromMesh(const NewtonWorld* const newtonW
 // Create a container to hold an array of convex collision primitives. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *int* count - number of primitives in the array.
 // *const NewtonCollision* **collisionPrimitiveArray - pointer to an array of convex collision primitives. This array must be filled with convex collision primitives before this function is called.
 // *int* shapeID
@@ -2729,7 +2729,7 @@ NewtonCollision* NewtonCompoundCollisionGetCollisionFromNode (NewtonCollision* c
 // Create a compound collision from a concave mesh by an approximate convex partition
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const NewtonMesh* *mesh - pointed concave mesh.
 // *int* maxsubShapesCount, 
 // *int* shapeID
@@ -3191,7 +3191,7 @@ const void* NewtonCollisionDataPointer (const NewtonCollision* const convexColli
 // Create a complex collision geometry to be controlled by the application.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const dFloat* *minBox - pointer to an array of at least three floats to hold minimum value for the box relative to the collision.
 // *const dFloat* *maxBox - pointer to an array of at least three floats to hold maximum value for the box relative to the collision.
 // *void* *userData - pointer to user data to be used as context for event callback.
@@ -3273,7 +3273,7 @@ int NewtonUserMeshCollisionContinuousOverlapTest (const NewtonUserMeshCollisionC
 // Create an empty complex collision geometry tree. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 //
 // Return: Pointer to the collision tree.
 //
@@ -3458,7 +3458,7 @@ void NewtonTreeCollisionEndBuild(const NewtonCollision* const treeCollision, int
 // Get the user defined collision attributes stored with each face of the collision mesh.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const int* *faceIndexArray - pointer to the face index list passed to the function *NewtonTreeCollisionCallback userCallback*
 //
 // Return: User id of the face.
@@ -3480,7 +3480,7 @@ int NewtonTreeCollisionGetFaceAttribute(const NewtonCollision* const treeCollisi
 // Change the user defined collision attribute stored with faces of the collision mesh.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const int* *faceIndexArray - pointer to the face index list passed to the function *NewtonTreeCollisionCallback userCallback*
 // *int* attribute - value of the user defined attribute to be stored with the face.
 //
@@ -3517,7 +3517,7 @@ void NewtonTreeCollisionForEachFace (const NewtonCollision* const treeCollision,
 // collect the vertex list index list mesh intersecting the AABB in collision mesh.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *dFloat* *p0 - pointer to an array of at least three floats representing the ray origin in the local space of the geometry.
 // *dFloat* *p1 - pointer to an array of at least three floats representing the ray end in the local space of the geometry.
 // *const dFloat* **vertexArray - pointer to a the vertex array of vertex.
@@ -3571,7 +3571,7 @@ int NewtonTreeCollisionGetVertexListTriangleListInAABB(const NewtonCollision* co
 // Create a height field collision geometry. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *int* width -
 // *int* height - 
 // *int* cellsDiagonals -
@@ -3601,7 +3601,7 @@ int NewtonTreeCollisionGetVertexListTriangleListInAABB(const NewtonCollision* co
 // Create a height field collision geometry. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 //
 // Return: Pointer to the collision.
 //
@@ -3724,7 +3724,7 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 // Calculate the closest point between a point and convex collision primitive.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *dFloat* *point - pointer to and array of a least 3 floats representing the origin.
 // *const NewtonCollision* *collision -  pointer to collision primitive.
 // *const dFloat* *matrix - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
@@ -3760,7 +3760,7 @@ int NewtonCollisionPointDistance(const NewtonWorld* const newtonWorld, const dFl
 // Calculate the closest points between two disjoint convex collision primitive.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const NewtonCollision* *collisionA -  pointer to collision primitive A.
 // *const dFloat* *matrixA - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
 // *const NewtonCollision* *collisionB - pointer to collision primitive B.
@@ -3811,7 +3811,7 @@ int NewtonCollisionIntersectionTest (const NewtonWorld* const newtonWorld, const
 // Calculate contact points between two collision primitive.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *int* maxSize - size of maximum number of elements in contacts, normals, and penetration.
 // *const NewtonCollision* *collisionA -  pointer to collision primitive A.
 // *const dFloat* *matrixA - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
@@ -3852,7 +3852,7 @@ int NewtonCollisionCollide (const NewtonWorld* const newtonWorld, int maxSize,
 // Calculate time of impact of impact and contact points between two collision primitive.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *int* maxSize - size of maximum number of elements in contacts, normals, and penetration.
 // *const dFloat* timestep - maximum time interval considered for the continuous collision calculation. 
 // *const NewtonCollision* *collisionA -  pointer to collision primitive A.
@@ -4211,7 +4211,7 @@ NewtonCollision* NewtonCollisionCreateInstance (const NewtonCollision* const col
 // Serialize a * general collision shape.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const NewtonCollision* *collision - is the pointer to the collision tree shape.
 // *NewtonSerialize* serializeFunction - pointer to the event function that will do the serialization. 
 // *void* *serializeHandle	- user data that will be passed to the *NewtonSerialize* callback.
@@ -4235,7 +4235,7 @@ void NewtonCollisionSerialize(const NewtonWorld* const newtonWorld, const Newton
 // Create a collision shape via a serialization function.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *NewtonTreeCollisionCallback *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
 // *NewtonSerialize* callback - pointer to the callback function that will handle the serialization.
 // *void* *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
@@ -4261,7 +4261,7 @@ NewtonCollision* NewtonCreateCollisionFromSerialization(const NewtonWorld* const
 // Create a tree collision and load the polygon mesh via a serialization function.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *NewtonTreeCollisionCallback *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
 // *NewtonSerialize* callback - pointer to the callback function that will handle the serialization.
 // *void* *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
@@ -4448,7 +4448,7 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 // Create a rigid body.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const NewtonCollision* *collisionPtr - pointer to the collision object.
 //
 // Return: Pointer to the rigid body.
@@ -4533,7 +4533,7 @@ NewtonBody* NewtonCreateDeformableBody (const NewtonWorld* const newtonWorld, co
 // Destroy a rigid body.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const NewtonBody* *bodyPtr - pointer to the body to be destroyed.
 //
 // Return: Nothing.
@@ -6192,7 +6192,7 @@ void NewtonBodyGetPointVelocity (const NewtonBody* const bodyPtr, const dFloat* 
 // Add an impulse to a specific point on a body.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - pointer to the Newton world.
+// *newtonWorld - pointer to the Newton world.
 // *const NewtonBody* *bodyPtr - is the pointer to the body.
 // *const dFloat* pointDeltaVeloc - pointer to an array of at least three floats containing the desired change in velocity to point pointPosit.
 // *const dFloat* pointPosit	- pointer to an array of at least three floats containing the center of the impulse in global space.
@@ -6225,7 +6225,7 @@ void NewtonBodyAddImpulse(const NewtonBody* const bodyPtr, const dFloat* const p
 // Add an train of impulses to a specific point on a body.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - pointer to the Newton world.
+// *newtonWorld - pointer to the Newton world.
 // *const NewtonBody* *bodyPtr - is the pointer to the body.
 // int impulseCount	- number of impulses and distances in the array distance	
 // int strideInByte	- sized in bytes of vector impulse and 
@@ -6285,7 +6285,7 @@ void NewtonBodyIntegrateVelocity (const NewtonBody* const bodyPtr, dFloat timest
 // Create a ball an socket joint. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const NewtonCollision* *pivotPoint - is origin of ball and socket in global space.
 // *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
 // *const NewtonBody* *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
@@ -6462,7 +6462,7 @@ void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
 // Create a hinge joint. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const dFloat* *pivotPoint - is origin of the hinge in global space.
 // *const dFloat* *pinDir - is the line of action of the hinge in global space.
 // *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
@@ -6608,7 +6608,7 @@ void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const forc
 // Create a slider joint. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const dFloat* *pivotPoint - is origin of the slider in global space.
 // *const dFloat* *pinDir - is the line of action of the slider in global space.
 // *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
@@ -6754,7 +6754,7 @@ void NewtonSliderGetJointForce(const NewtonJoint* const slider, dFloat* const fo
 // Create a corkscrew joint. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const dFloat* *pivotPoint - is origin of the corkscrew in global space.
 // *const dFloat* *pinDir - is the line of action of the corkscrew in global space.
 // *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
@@ -6969,7 +6969,7 @@ void NewtonCorkscrewGetJointForce(const NewtonJoint* const corkscrew, dFloat* co
 // Create a universal joint. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const dFloat* *pivotPoint - is origin of the universal joint in global space.
 // *const dFloat* *pinDir0 - first axis of rotation fixed on childBody body and perpendicular to pinDir1.
 // *const dFloat* *pinDir1 - second axis of rotation fixed on parentBody body and perpendicular to pinDir0.
@@ -7198,7 +7198,7 @@ void NewtonUniversalGetJointForce(const NewtonJoint* const universal, dFloat* co
 // Create a UpVector joint. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *const dFloat* *pinDir - is the aligning vector.
 // *const NewtonBody* *body - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
 //
@@ -7284,7 +7284,7 @@ void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 // Create a user define bilateral joint. 
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the Newton world.
+// *newtonWorld - is the pointer to the Newton world.
 // *in*t maxDOF - is the maximum number of degree of freedom controlled by this joint. 
 // *NewtonUserBilateralCallback* submitConstraints - pointer to the joint constraint definition function call back.
 // *NewtonUserBilateralGetInfoCallback* getInfo - pointer to callback for collecting joint information.
@@ -7854,7 +7854,7 @@ void NewtonJointSetDestructor(const NewtonJoint* const joint, NewtonConstraintDe
 // destroy a joint.
 //
 // Parameters:
-// *const NewtonWorld* *newtonWorld - is the pointer to the body.
+// *newtonWorld - is the pointer to the body.
 // *const NewtonJoint* *joint - pointer to joint to be destroyed
 //
 // Return: nothing
