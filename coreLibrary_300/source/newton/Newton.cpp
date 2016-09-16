@@ -493,7 +493,7 @@ int NewtonGetMaxThreadsCount(const NewtonWorld* const newtonWorld)
 
 
 /*
-// Name: NewtonGetThreadNumber 
+// fixme: delete NewtonGetThreadNumber ?
 // Get the current thread the Engine is running
 //
 // Parameters:
@@ -754,7 +754,7 @@ void NewtonSetMinimumFrameRate(const NewtonWorld* const newtonWorld, dFloat fram
 }
 
 /*
-// Name: NewtonGetTimeStep 
+// fixme: delete NewtonGetTimeStep?
 // Return the correct time step for this simulation update.
 //
 // Parameters:
@@ -1716,9 +1716,7 @@ NewtonMaterial* NewtonWorldGetNextMaterial(const NewtonWorld* const newtonWorld,
     @{
 */
 
-/* fixme: can this function be deleted?
-
-// Name: NewtonMaterialDisableContact 
+// fixme: delete NewtonMaterialDisableContact?
 // Disable processing for the contact. 
 //
 // Parameters:
@@ -1729,12 +1727,12 @@ NewtonMaterial* NewtonWorldGetNextMaterial(const NewtonWorld* const newtonWorld,
 // Remarks: This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback
-void NewtonMaterialDisableContact(const NewtonMaterial* const materialHandle)
-{
-	material = (dgContactMaterial*) materialHandle;
-	dgContactMaterial* const material->m_collisionEnable = false;
-}
-*/
+// void NewtonMaterialDisableContact(const NewtonMaterial* const materialHandle)
+// {
+// 	material = (dgContactMaterial*) materialHandle;
+// 	dgContactMaterial* const material->m_collisionEnable = false;
+// }
+
 
 // Name: NewtonMaterialGetMaterialPairUserData 
 // Get the userData set by the application when it created this material pair.
@@ -1777,7 +1775,7 @@ return 0;
 }
 
 /*
-// Name: NewtonMaterialGetCurrentTimestep 
+// fixme: delete NewtonMaterialGetCurrentTimestep?
 // Get the current time step.
 //
 // Parameters:
@@ -4238,7 +4236,7 @@ NewtonCollision* NewtonCreateCollisionFromSerialization(const NewtonWorld* const
 }
 
 /*
-// Name: NewtonCreateTreeCollisionFromSerialization
+// fixme: delete NewtonCreateTreeCollisionFromSerialization?
 // Create a tree collision and load the polygon mesh via a serialization function.
 //
 // Parameters:
@@ -4291,7 +4289,7 @@ NewtonCollision* NewtonCreateTreeCollisionFromSerialization(const NewtonWorld* c
 //
 // Parameters:
 // collision - is the pointer to a convex collision primitive.
-// *NewtonCollisionInfoRecord* *collisionInfo - pointer to a collision information record.
+// *collisionInfo - pointer to a collision information record.
 //
 // Remarks: This function can be used by the application for writing file format and for serialization.
 //
