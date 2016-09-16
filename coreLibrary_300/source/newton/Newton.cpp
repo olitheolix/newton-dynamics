@@ -3543,9 +3543,11 @@ int NewtonTreeCollisionGetVertexListTriangleListInAABB(const NewtonCollision* co
 // *newtonWorld - is the pointer to the Newton world.
 // width - fixme
 // height -  fixme
-// cellsDiagonals - fixme
-// *unsigned short* elevationMap - fixme
-// *char* atributeMap - fixme
+// gridsDiagonals - fixme
+// elevationdatType - fixme
+// elevationMap - fixme
+// attributeMap - fixme
+// verticalScale - fixme
 // horizontalScale - fixme
 // shapeID - fixme
 //
