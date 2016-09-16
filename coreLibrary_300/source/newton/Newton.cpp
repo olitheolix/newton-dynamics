@@ -4322,7 +4322,8 @@ void NewtonCollisionGetInfo(const NewtonCollision* const collision, NewtonCollis
 //
 // Parameters:
 // matrix - pointer to the 4x4 rotation matrix.
-// angles - pointer to an array of at least three floats to hold the Euler angles.
+// angles0 - fixme
+// angles1 - pointer to an array of at least three floats to hold the Euler angles.
 //
 // Return: Nothing.
 //
