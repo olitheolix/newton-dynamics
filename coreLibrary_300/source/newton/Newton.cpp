@@ -3163,11 +3163,14 @@ const void* NewtonCollisionDataPointer (const NewtonCollision* const convexColli
 // *minBox - pointer to an array of at least three floats to hold minimum value for the box relative to the collision.
 // *maxBox - pointer to an array of at least three floats to hold maximum value for the box relative to the collision.
 // *userData - pointer to user data to be used as context for event callback.
-// *NewtonUserMeshCollisionCollideCallback* collideCallback - pointer to an event function for providing Newton with the polygon inside a given box region.
-// *NewtonUserMeshCollisionRayHitCallback* rayHitCallback   - pointer to an event function for providing Newton with ray intersection information.
-// *NewtonUserMeshCollisionDestroyCallback* destroyCallback	- pointer to an event function for destroying any data allocated for use by the application.
-// *NewtonUserMeshCollisionGetCollisionInfo* getInfoCallback -  xxxxx 
-// *NewtonUserMeshCollisionGetFacesInAABB* facesInAABBCallback - xxxxxxxxxx
+// collideCallback - pointer to an event function for providing Newton with the polygon inside a given box region.
+// rayHitCallback  - pointer to an event function for providing Newton with ray intersection information.
+// destroyCallback - pointer to an event function for destroying any data allocated for use by the application.
+// getInfoCallback -  fixme
+// getAABBOverlapTestCallback - fixme
+// facesInAABBCallback - fixme
+// serializeCallback - fixme
+// shapeID - fixme
 //
 // Return: Pointer to the user collision.
 //
