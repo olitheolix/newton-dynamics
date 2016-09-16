@@ -4218,9 +4218,8 @@ void NewtonCollisionSerialize(const NewtonWorld* const newtonWorld, const Newton
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
-// callback - pointer to the callback function that will handle the serialization.
-// *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
+// deserializeFunction - pointer to the event function that will do the deserialization. 
+// *serializeHandle  - user data that will be passed to the _NewtonSerialize_ callback.
 //
 // Return: Nothing.
 //
