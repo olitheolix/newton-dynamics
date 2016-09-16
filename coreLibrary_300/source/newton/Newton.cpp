@@ -7266,9 +7266,9 @@ void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *in*t maxDOF - is the maximum number of degree of freedom controlled by this joint. 
-// *NewtonUserBilateralCallback* submitConstraints - pointer to the joint constraint definition function call back.
-// *NewtonUserBilateralGetInfoCallback* getInfo - pointer to callback for collecting joint information.
+// maxDOF - is the maximum number of degree of freedom controlled by this joint. 
+// submitConstraints - pointer to the joint constraint definition function call back.
+// getInfo - pointer to callback for collecting joint information.
 // *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
 // *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
@@ -7313,7 +7313,7 @@ NewtonJoint* NewtonConstraintCreateUserJoint(const NewtonWorld* const newtonWorl
 // *joint - pointer to the joint.
 // *pivot0 - pointer of a vector in global space fixed on body zero.  
 // *pivot1 - pointer of a vector in global space fixed on body one.  
-// *pin - pointer of a unit vector in global space along which the relative position, velocity and acceleration between the bodies will be driven to zero.
+// *dir - pointer of a unit vector in global space along which the relative position, velocity and acceleration between the bodies will be driven to zero.
 //
 // Remark: A linear constraint row calculates the Jacobian derivatives and relative acceleration required to enforce the constraint condition at
 // the attachment point and the pin direction considered fixed to both bodies. 
@@ -7480,8 +7480,8 @@ dFloat NewtonUserCalculateRowZeroAccelaration (const NewtonJoint* const joint)
 //
 // Parameters:
 // *joint - pointer to the joint.
-// springK - desired spring stiffness, it must be a positive value.
-// springD - desired spring damper, it must be a positive value.
+// spring - desired spring stiffness, it must be a positive value.
+// damper - desired damper coefficient, it must be a positive value.
 //
 // Remark: This function will override the default acceleration values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint acceleration is a linear acceleration, for angular constraint acceleration is an 
@@ -7525,7 +7525,7 @@ void NewtonUserJointSetRowStiffness(const NewtonJoint* const joint, dFloat stiff
 //
 // Parameters:
 // *joint - pointer to the joint.
-//  row - index to the constraint row. 
+// row - index to the constraint row. 
 //
 // Remark: This function can be call for any of the previews row for this particular joint, The application must keep track of the meaning of the row.
 // 
@@ -7544,7 +7544,7 @@ dFloat NewtonUserJointGetRowForce(const NewtonJoint* const joint, int row)
 //
 // Parameters:
 // *joint - pointer to the joint.
-// *NewtonUserBilateralCallback* getFeedback - pointer to the joint constraint definition function call back.
+// getFeedback - pointer to the joint constraint definition function call back.
 //
 // See also: NewtonUserJointGetRowForce  
 void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint, NewtonUserBilateralCallback getFeedback)
