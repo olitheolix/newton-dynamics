@@ -6433,10 +6433,11 @@ void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
 
 /** @defgroup JointHinge
     Hinge joint interface
+    fixme: all functions are commented out. Can we delete them?
     @{
 
 
-// Name:  NewtonConstraintCreateHinge
+// fixme:  NewtonConstraintCreateHinge
 // Create a hinge joint. 
 //
 // Parameters:
@@ -6461,7 +6462,7 @@ NewtonJoint*  NewtonConstraintCreateHinge(const NewtonWorld* const newtonWorld, 
 }
 
 
-// Name: NewtonHingeSetUserCallback
+// fixme: NewtonHingeSetUserCallback
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
@@ -6485,7 +6486,7 @@ void NewtonHingeSetUserCallback(const NewtonJoint* const hinge, NewtonHingeCallb
 }
 
 
-// Name: NewtonHingeGetJointAngle
+// fixme: NewtonHingeGetJointAngle
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
@@ -6507,7 +6508,7 @@ dFloat NewtonHingeGetJointAngle (const NewtonJoint* const hinge)
 
 }
 
-// Name: NewtonHingeGetJointOmega
+// fixme: NewtonHingeGetJointOmega
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
@@ -6528,7 +6529,7 @@ dFloat NewtonHingeGetJointOmega(const NewtonJoint* const hinge)
 	return contraint->GetJointOmega ();
 }
 
-// Name: NewtonHingeGetJointForce
+// fixme: NewtonHingeGetJointForce
 // Calculate the angular acceleration needed to stop the hinge at the desired angle.
 //
 // Parameters:
@@ -6550,7 +6551,7 @@ dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const Newt
 	return contraint->CalculateStopAlpha (angle, (dgJointCallbackParam*) desc);
 }
 
-// Name: NewtonHingeGetJointForce
+// fixme: NewtonHingeGetJointForce
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
