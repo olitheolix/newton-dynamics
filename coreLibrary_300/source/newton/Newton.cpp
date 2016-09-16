@@ -2544,8 +2544,6 @@ NewtonCollision* NewtonCreateConvexHullFromMesh(const NewtonWorld* const newtonW
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *int* count - number of primitives in the array.
-// *const NewtonCollision* **collisionPrimitiveArray - pointer to an array of convex collision primitives. This array must be filled with convex collision primitives before this function is called.
 // shapeID: fixme
 //
 // Return: Pointer to the compound collision.
@@ -2695,10 +2693,10 @@ NewtonCollision* NewtonCompoundCollisionGetCollisionFromNode (NewtonCollision* c
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *const NewtonMesh* *mesh - pointed concave mesh.
-// *int* maxsubShapesCount, 
-// *int* shapeID
-// *int* subShapeId
+// *convexAproximation - fixme
+// hullTolerance - fixme
+// shapeID - fixme
+// subShapeID - fixme
 //
 //
 // Return: Pointer to the compound collision.
