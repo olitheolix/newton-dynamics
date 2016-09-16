@@ -3453,8 +3453,9 @@ int NewtonTreeCollisionGetFaceAttribute(const NewtonCollision* const treeCollisi
 // Change the user defined collision attribute stored with faces of the collision mesh.
 //
 // Parameters:
-// *newtonWorld - is the pointer to the Newton world.
-// *faceIndexArray - pointer to the face index list passed to the function *NewtonTreeCollisionCallback userCallback*
+// *treeCollision - fixme
+// *faceIndexArray - pointer to the face index list passed to the NewtonTreeCollisionCallback function
+// indexCount - fixme
 // attribute - value of the user defined attribute to be stored with the face.
 //
 // Return: User id of the face.
@@ -3490,7 +3491,7 @@ void NewtonTreeCollisionForEachFace (const NewtonCollision* const treeCollision,
 // collect the vertex list index list mesh intersecting the AABB in collision mesh.
 //
 // Parameters:
-// *newtonWorld - is the pointer to the Newton world.
+// *treeCollision - fixme
 // *p0 - pointer to an array of at least three floats representing the ray origin in the local space of the geometry.
 // *p1 - pointer to an array of at least three floats representing the ray end in the local space of the geometry.
 // **vertexArray - pointer to a the vertex array of vertex.
