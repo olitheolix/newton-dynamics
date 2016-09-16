@@ -5378,7 +5378,7 @@ NewtonJoint* NewtonBodyGetFirstJoint(const NewtonBody* const bodyPtr)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *const NewtonJoint* *joint - pointer to current joint.
+// *joint - pointer to current joint.
 //
 // Return: Joint is at least one joint is attached to the body, NULL if not joint is attached
 //
@@ -5416,7 +5416,7 @@ NewtonJoint* NewtonBodyGetFirstContactJoint(const NewtonBody* const bodyPtr)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *const NewtonJoint* *contactJoint - pointer to corrent contact joint.
+// *contactJoint - pointer to corrent contact joint.
 //
 // Return: Contact if the body is colliding with anther body, NULL otherwise
 //
@@ -5448,7 +5448,7 @@ int NewtonJointIsActive(const NewtonJoint* const jointPtr)
 // Return to number of contact in this contact joint.
 //
 // Parameters:
-// *const NewtonJoint* *contactJoint - pointer to corrent contact joint.
+// *contactJoint - pointer to corrent contact joint.
 //
 // Return: number of contacts.
 //
@@ -5470,7 +5470,7 @@ int NewtonContactJointGetContactCount(const NewtonJoint* const contactJoint)
 // Return to pointer to the first contact from the contact array of the contact joint.
 //
 // Parameters:
-// *const NewtonJoint* *contactJoint - pointer to a contact joint.
+// *contactJoint - pointer to a contact joint.
 //
 // Return: a pointer to the first contact from the contact array, NULL if no contacts exist
 //
@@ -5490,7 +5490,7 @@ void* NewtonContactJointGetFirstContact(const NewtonJoint* const contactJoint)
 // Return a pointer to the next contact from the contact array of the contact joint.
 //
 // Parameters:
-// *const NewtonJoint* *contactJoint - pointer to a contact joint.
+// *contactJoint - pointer to a contact joint.
 // *void* *contact - pointer to current contact.
 //
 // Return: a pointer to the next contact in the contact array,  NULL if no contacts exist.
@@ -5514,7 +5514,7 @@ void* NewtonContactJointGetNextContact(const NewtonJoint* const contactJoint, vo
 // Return to the next contact from the contact array of the contact joint.
 //
 // Parameters:
-// *const NewtonJoint* *contactJoint - pointer to corrent contact joint.
+// *contactJoint - pointer to corrent contact joint.
 //
 // Return: first contact contact array of the joint contact exist, NULL otherwise
 //
@@ -5546,7 +5546,7 @@ dFloat NewtonContactJointGetClosestDistance(const NewtonJoint* const contactJoin
 // Return to the next contact from the contact array of the contact joint.
 //
 // Parameters:
-// *const NewtonJoint* *contactJoint - pointer to corrent contact joint.
+// *contactJoint - pointer to corrent contact joint.
 //
 // Return: first contact contact array of the joint contact exist, NULL otherwise
 //
@@ -6283,7 +6283,7 @@ NewtonJoint* NewtonConstraintCreateBall(const NewtonWorld* const newtonWorld,
 // Set the ball and socket cone and twist limits.
 //
 // Parameters:
-// *const NewtonJoint* *ball - is the pointer to a ball and socket joint.
+// *ball - is the pointer to a ball and socket joint.
 // *const NewtonCollision* *pin - pointer to a unit vector defining the cone axis in global space.
 // maxConeAngle - max angle in radians the attached body is allow to swing relative to the pin axis, a value of zero will disable this limits. 
 // maxTwistAngle - max angle in radians the attached body is allow to twist relative to the pin axis, a value of zero will disable this limits. 
@@ -6327,7 +6327,7 @@ void NewtonBallSetConeLimits(const NewtonJoint* const ball, const dFloat* pin, d
 // Set an update call back to be called when either of the two bodies linked by the joint is active.
 //
 // Parameters:
-// *const NewtonJoint* *ball - pointer to the joint.
+// *ball - pointer to the joint.
 // *NewtonBallCallback* callback - pointer to the joint function call back.
 //
 // Return: nothing.
@@ -6351,7 +6351,7 @@ void NewtonBallSetUserCallback(const NewtonJoint* const ball, NewtonBallCallback
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *ball - pointer to the joint.
+// *ball - pointer to the joint.
 // *angle - pointer to an array of a least three floats to hold the joint relative Euler angles.
 //
 // Return: nothing.
@@ -6377,7 +6377,7 @@ void NewtonBallGetJointAngle (const NewtonJoint* const ball, dFloat* angle)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *ball - pointer to the joint.
+// *ball - pointer to the joint.
 // *omega - pointer to an array of a least three floats to hold the joint relative angular velocity.
 //
 // Return: nothing.
@@ -6402,7 +6402,7 @@ void NewtonBallGetJointOmega(const NewtonJoint* const ball, dFloat* omega)
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
-// *const NewtonJoint* *ball - pointer to the joint.
+// *ball - pointer to the joint.
 // *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
@@ -6460,7 +6460,7 @@ NewtonJoint*  NewtonConstraintCreateHinge(const NewtonWorld* const newtonWorld, 
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
-// *const NewtonJoint* *Hinge - pointer to the joint.
+// *Hinge - pointer to the joint.
 // *NewtonHingeCallback* callback - pointer to the joint function call back.
 //
 // Return: nothing.
@@ -6484,7 +6484,7 @@ void NewtonHingeSetUserCallback(const NewtonJoint* const hinge, NewtonHingeCallb
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Hinge - pointer to the joint.
+// *Hinge - pointer to the joint.
 //
 // Return: the joint angle relative to the hinge pin.
 //
@@ -6506,7 +6506,7 @@ dFloat NewtonHingeGetJointAngle (const NewtonJoint* const hinge)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Hinge - pointer to the joint.
+// *Hinge - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
@@ -6527,7 +6527,7 @@ dFloat NewtonHingeGetJointOmega(const NewtonJoint* const hinge)
 // Calculate the angular acceleration needed to stop the hinge at the desired angle.
 //
 // Parameters:
-// *const NewtonJoint* *Hinge - pointer to the joint.
+// *Hinge - pointer to the joint.
 // *NewtonHingeSliderUpdateDesc* *desc - is the pointer to and the Hinge or slide structure.
 // angle - is the desired hinge stop angle 
 //
@@ -6549,7 +6549,7 @@ dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const Newt
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
-// *const NewtonJoint* *Hinge - pointer to the joint.
+// *Hinge - pointer to the joint.
 // *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
@@ -6606,7 +6606,7 @@ NewtonJoint* NewtonConstraintCreateSlider(const NewtonWorld* const newtonWorld, 
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
-// *const NewtonJoint* *Slider - pointer to the joint.
+// *Slider - pointer to the joint.
 // *NewtonSliderCallback* callback - pointer to the joint function call back.
 //
 // Return: nothing.
@@ -6629,7 +6629,7 @@ void NewtonSliderSetUserCallback(const NewtonJoint* const slider, NewtonSliderCa
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Slider - pointer to the joint.
+// *Slider - pointer to the joint.
 //
 // Return: the joint angle relative to the hinge pin.
 //
@@ -6650,7 +6650,7 @@ dFloat NewtonSliderGetJointPosit (const NewtonJoint* Slider)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Slider - pointer to the joint.
+// *Slider - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
@@ -6672,7 +6672,7 @@ dFloat NewtonSliderGetJointVeloc(const NewtonJoint* Slider)
 // Calculate the angular acceleration needed to stop the slider at the desired angle.
 //
 // Parameters:
-// *const NewtonJoint* *slider - pointer to the joint.
+// *slider - pointer to the joint.
 // *NewtonSliderSliderUpdateDesc* *desc - is the pointer to the Slider or slide structure.
 // distance - desired stop distance relative to the pivot point
 //
@@ -6694,7 +6694,7 @@ dFloat NewtonSliderCalculateStopAccel(const NewtonJoint* const slider, const New
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
-// *const NewtonJoint* *Slider - pointer to the joint.
+// *Slider - pointer to the joint.
 // *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
@@ -6751,7 +6751,7 @@ NewtonJoint* NewtonConstraintCreateCorkscrew(const NewtonWorld* const newtonWorl
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
-// *const NewtonJoint* *Corkscrew - pointer to the joint.
+// *Corkscrew - pointer to the joint.
 // *NewtonCorkscrewCallback* callback - pointer to the joint function call back.
 //
 // Return: nothing.
@@ -6780,7 +6780,7 @@ void NewtonCorkscrewSetUserCallback(const NewtonJoint* const corkscrew, NewtonCo
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Corkscrew - pointer to the joint.
+// *Corkscrew - pointer to the joint.
 //
 // Return: the joint angle relative to the hinge pin.
 //
@@ -6801,7 +6801,7 @@ dFloat NewtonCorkscrewGetJointPosit (const NewtonJoint* const corkscrew)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Corkscrew - pointer to the joint.
+// *Corkscrew - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
@@ -6822,7 +6822,7 @@ dFloat NewtonCorkscrewGetJointVeloc(const NewtonJoint* const corkscrew)
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Corkscrew - pointer to the joint.
+// *Corkscrew - pointer to the joint.
 //
 // Return: the joint angle relative to the corkscrew pin.
 //
@@ -6844,7 +6844,7 @@ dFloat NewtonCorkscrewGetJointAngle (const NewtonJoint* const corkscrew)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Corkscrew - pointer to the joint.
+// *Corkscrew - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
@@ -6866,7 +6866,7 @@ dFloat NewtonCorkscrewGetJointOmega(const NewtonJoint* const corkscrew)
 // Calculate the angular acceleration needed to stop the corkscrew at the desired angle.
 //
 // Parameters:
-// *const NewtonJoint* *Corkscrew - pointer to the joint.
+// *Corkscrew - pointer to the joint.
 // *NewtonCorkscrewSliderUpdateDesc* *desc - is the pointer to the Corkscrew or slide structure.
 // angle - is the desired corkscrew stop angle 
 //
@@ -6889,7 +6889,7 @@ dFloat NewtonCorkscrewCalculateStopAlpha (const NewtonJoint* const corkscrew, co
 // Calculate the angular acceleration needed to stop the corkscrew at the desired angle.
 //
 // Parameters:
-// *const NewtonJoint* *corkscrew - pointer to the joint.
+// *corkscrew - pointer to the joint.
 // *NewtonCorkscrewCorkscrewUpdateDesc* *desc - is the pointer to the Corkscrew or slide structure.
 // distance - desired stop distance relative to the pivot point
 //
@@ -6909,7 +6909,7 @@ dFloat NewtonCorkscrewCalculateStopAccel(const NewtonJoint* const corkscrew, con
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
-// *const NewtonJoint* *Corkscrew - pointer to the joint.
+// *Corkscrew - pointer to the joint.
 // *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
@@ -6974,7 +6974,7 @@ NewtonJoint* NewtonConstraintCreateUniversal(const NewtonWorld* const newtonWorl
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
-// *const NewtonJoint* *Universal - pointer to the joint.
+// *Universal - pointer to the joint.
 // *NewtonUniversalCallback* callback - pointer to the joint function call back.
 //
 // Return: nothing.
@@ -7004,7 +7004,7 @@ void NewtonUniversalSetUserCallback(const NewtonJoint* const universal, NewtonUn
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Universal - pointer to the joint.
+// *Universal - pointer to the joint.
 //
 // Return: the joint angle relative to the universal pin0.
 //
@@ -7025,7 +7025,7 @@ dFloat NewtonUniversalGetJointAngle0(const NewtonJoint* const universal)
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Universal - pointer to the joint.
+// *Universal - pointer to the joint.
 //
 // Return: the joint angle relative to the universal pin1.
 //
@@ -7047,7 +7047,7 @@ dFloat NewtonUniversalGetJointAngle1(const NewtonJoint* const universal)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Universal - pointer to the joint.
+// *Universal - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin0 axis.
 //
@@ -7069,7 +7069,7 @@ dFloat NewtonUniversalGetJointOmega0(const NewtonJoint* const universal)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *const NewtonJoint* *Universal - pointer to the joint.
+// *Universal - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin1 axis.
 //
@@ -7092,7 +7092,7 @@ dFloat NewtonUniversalGetJointOmega1(const NewtonJoint* const universal)
 // Calculate the angular acceleration needed to stop the universal at the desired angle.
 //
 // Parameters:
-// *const NewtonJoint* *Universal - pointer to the joint.
+// *Universal - pointer to the joint.
 // *NewtonUniversalSliderUpdateDesc* *desc - is the pointer to the Universal or slide structure.
 // angle - is the desired universal stop angle rotation around pin0
 //
@@ -7114,7 +7114,7 @@ dFloat NewtonUniversalCalculateStopAlpha0(const NewtonJoint* const universal, co
 // Calculate the angular acceleration needed to stop the universal at the desired angle.
 //
 // Parameters:
-// *const NewtonJoint* *Universal - pointer to the joint.
+// *Universal - pointer to the joint.
 // *NewtonUniversalSliderUpdateDesc* *desc - is the pointer to and the Universal or slide structure.
 // angle - is the desired universal stop angle rotation around pin1
 //
@@ -7138,7 +7138,7 @@ dFloat NewtonUniversalCalculateStopAlpha1(const NewtonJoint* const universal, co
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
-// *const NewtonJoint* *Universal - pointer to the joint.
+// *Universal - pointer to the joint.
 // *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
@@ -7197,7 +7197,7 @@ NewtonJoint* NewtonConstraintCreateUpVector (const NewtonWorld* const newtonWorl
 // Get the up vector pin of this joint in global space.
 //
 // Parameters:
-// *const NewtonJoint* *upVector - pointer to the joint.
+// *upVector - pointer to the joint.
 // *pin - pointer to an array of a least three floats to hold the up vector direction in global space.
 //
 // Return: nothing.
@@ -7225,7 +7225,7 @@ void NewtonUpVectorGetPin(const NewtonJoint* const upVector, dFloat *pin)
 // Set the up vector pin of this joint in global space.
 //
 // Parameters:
-// *const NewtonJoint* *upVector - pointer to the joint.
+// *upVector - pointer to the joint.
 // *pin - pointer to an array of a least three floats containing the up vector direction in global space.
 //
 // Return: nothing.
@@ -7302,7 +7302,7 @@ NewtonJoint* NewtonConstraintCreateUserJoint(const NewtonWorld* const newtonWorl
 // Add a linear restricted degree of freedom. 
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // *pivot0 - pointer of a vector in global space fixed on body zero.  
 // *pivot1 - pointer of a vector in global space fixed on body one.  
 // *pin - pointer of a unit vector in global space along which the relative position, velocity and acceleration between the bodies will be driven to zero.
@@ -7337,7 +7337,7 @@ void NewtonUserJointAddLinearRow(const NewtonJoint* const joint, const dFloat* c
 // Add an angular restricted degree of freedom. 
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // relativeAngleError - relative angle error between both bodies around pin axis.  
 // *pin - pointer of a unit vector in global space along which the relative position, velocity and acceleration between the bodies will be driven to zero.
 //
@@ -7369,7 +7369,7 @@ void NewtonUserJointAddAngularRow(const NewtonJoint* const joint, dFloat relativ
 // set the general linear and angular Jacobian for the desired degree of freedom  
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // *jacobian0 - pointer of a set of six values defining the linear and angular Jacobian for body0.
 // *jacobian1 - pointer of a set of six values defining the linear and angular Jacobian for body1.
 //
@@ -7407,7 +7407,7 @@ void NewtonUserJointGetGeneralRow(const NewtonJoint* const joint, int index, dFl
 // Set the maximum friction value the solver is allow to apply to the joint row. 
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // friction - maximum friction value for this row. It must be a positive value between 0.0 and INFINITY.  
 //
 // Remark: This function will override the default friction values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
@@ -7426,7 +7426,7 @@ void NewtonUserJointSetRowMaximumFriction(const NewtonJoint* const joint, dFloat
 // Set the minimum friction value the solver is allow to apply to the joint row. 
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // friction -  friction value for this row. It must be a negative value between 0.0 and -INFINITY.  
 //
 // Remark: This function will override the default friction values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
@@ -7445,7 +7445,7 @@ void NewtonUserJointSetRowMinimumFriction(const NewtonJoint* const joint, dFloat
 // Set the value for the desired acceleration for the current constraint row. 
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // acceleration -  desired acceleration value for this row. 
 //
 // Remark: This function will override the default acceleration values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
@@ -7471,7 +7471,7 @@ dFloat NewtonUserCalculateRowZeroAccelaration (const NewtonJoint* const joint)
 // Calculates the row acceleration to satisfy the specified the spring damper system. 
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // springK - desired spring stiffness, it must be a positive value.
 // springD - desired spring damper, it must be a positive value.
 //
@@ -7497,7 +7497,7 @@ void NewtonUserJointSetRowSpringDamperAcceleration(const NewtonJoint* const join
 // Set the maximum percentage of the constraint force that will be applied to the constraint row. 
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // stiffness - row stiffness, it must be a values between 0.0 and 1.0, the default is 0.9. 
 //
 // Remark: This function will override the default stiffness value set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
@@ -7516,7 +7516,7 @@ void NewtonUserJointSetRowStiffness(const NewtonJoint* const joint, dFloat stiff
 // Return the magnitude previews force or torque value calculated by the solver for this constraint row. 
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 //  row - index to the constraint row. 
 //
 // Remark: This function can be call for any of the previews row for this particular joint, The application must keep track of the meaning of the row.
@@ -7535,7 +7535,7 @@ dFloat NewtonUserJointGetRowForce(const NewtonJoint* const joint, int row)
 // Set a constrain callback to collect the force calculated by the solver to enforce this constraint
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // *NewtonUserBilateralCallback* getFeedback - pointer to the joint constraint definition function call back.
 //
 // See also: NewtonUserJointGetRowForce  
@@ -7558,7 +7558,7 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 // Store a user defined data value with the joint.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // *void* *userDataPtr - pointer to the user defined user data value.
 //
 // Return: Nothing.
@@ -7578,7 +7578,7 @@ void NewtonJointSetUserData(const NewtonJoint* const joint, void* const userData
 // Retrieve a user defined data value stored with the joint.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 //
 // Return: The user defined data.
 //
@@ -7598,7 +7598,7 @@ void* NewtonJointGetUserData(const NewtonJoint* const joint)
 // Retrieve the first rigid body controlled by this joint.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 //
 // Return: pointer the first body
 // 
@@ -7623,7 +7623,7 @@ NewtonBody* NewtonJointGetBody0(const NewtonJoint* const joint)
 // Retrieve the second rigid body controlled by this joint.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 //
 // Return: pointer the second body.
 // 
@@ -7649,7 +7649,7 @@ NewtonBody* NewtonJointGetBody1(const NewtonJoint* const joint)
 // Get creation parameters for this joint.
 //
 // Parameters:
-// *const NewtonJoint* joint - is the pointer to a convex collision primitive.
+// joint - is the pointer to a convex collision primitive.
 // *NewtonJointRecord* *jointInfo - pointer to a collision information record.
 //
 // Remarks: This function can be used by the application for writing file format and for serialization.
@@ -7666,7 +7666,7 @@ void NewtonJointGetInfo(const NewtonJoint* const joint, NewtonJointRecord* const
 // Get the first body connected by this joint.
 //
 // Parameters:
-// *const NewtonJoint* joint - is the pointer to a convex collision primitive.
+// joint - is the pointer to a convex collision primitive.
 //
 //
 // See also: 
@@ -7684,7 +7684,7 @@ NewtonBody* NewtonJointGetBody0(const NewtonJoint* const joint)
 // Get the second body connected by this joint.
 //
 // Parameters:
-// *const NewtonJoint* joint - is the pointer to a convex collision primitive.
+// joint - is the pointer to a convex collision primitive.
 //
 // See also: 
 NewtonBody* NewtonJointGetBody1(const NewtonJoint* const joint)
@@ -7701,7 +7701,7 @@ NewtonBody* NewtonJointGetBody1(const NewtonJoint* const joint)
 // Enable or disable collision between the two bodies linked by this joint. The default state is collision disable when the joint is created.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // state - collision state, zero mean disable collision, non zero enable collision between linked bodies.
 //
 // Return: nothing.
@@ -7725,7 +7725,7 @@ void NewtonJointSetCollisionState(const NewtonJoint* const joint, int state)
 // Get the collision state of the two bodies linked by the joint.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 //
 // Return: the collision state.
 //
@@ -7747,7 +7747,7 @@ int NewtonJointGetCollisionState(const NewtonJoint* const joint)
 // Set the strength coefficient to be applied to the joint reaction forces.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // stiffness - stiffness coefficient, a value between 0, and 1.0, the default value for most joint is 0.9
 //
 // Return: nothing.
@@ -7776,7 +7776,7 @@ void NewtonJointSetStiffness(const NewtonJoint* const joint, dFloat stiffness)
 // Get the strength coefficient bing applied to the joint reaction forces.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // stiffness - stiffness coefficient, a value between 0, and 1.0, the default value for most joint is 0.9
 //
 // Return: stiffness coefficient.
@@ -7806,7 +7806,7 @@ dFloat NewtonJointGetStiffness(const NewtonJoint* const joint)
 // Register a destructor callback to be called when the joint is about to be destroyed.
 //
 // Parameters:
-// *const NewtonJoint* *joint - pointer to the joint.
+// *joint - pointer to the joint.
 // *NewtonJointCallback* destructor - pointer to the joint destructor callback.
 //
 // Return: nothing.
@@ -7828,7 +7828,7 @@ void NewtonJointSetDestructor(const NewtonJoint* const joint, NewtonConstraintDe
 //
 // Parameters:
 // *newtonWorld - is the pointer to the body.
-// *const NewtonJoint* *joint - pointer to joint to be destroyed
+// *joint - pointer to joint to be destroyed
 //
 // Return: nothing
 // 
