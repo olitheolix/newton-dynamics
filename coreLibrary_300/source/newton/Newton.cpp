@@ -3282,7 +3282,7 @@ NewtonCollision* NewtonCreateTreeCollisionFromMesh (const NewtonWorld* const new
 //
 // Parameters:
 // *staticCollision - is the pointer to the static collision (a CollisionTree of a HeightFieldCollision)
-// *NewtonTreeCollisionCallback *userCallback - pointer to an event function to call before Newton evaluates the polygons colliding with a body. This parameter can be NULL.     
+// *userCallback - pointer to an event function to call before Newton evaluates the polygons colliding with a body. This parameter can be NULL.     
 //
 // Remarks: because debug display display report all the faces of a collision primitive, it could get slow on very large static collision.
 // this function can be used for debugging purpose to just report only faces intersection the collision AABB of the collision shape colliding with the polyginal mesh collision.  
@@ -4190,13 +4190,13 @@ NewtonCollision* NewtonCollisionCreateInstance (const NewtonCollision* const col
 
 
 // Name: NewtonCollisionSerialize
-// Serialize a * general collision shape.
+// Serialize a general collision shape.
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // *collision - is the pointer to the collision tree shape.
-// *NewtonSerialize* serializeFunction - pointer to the event function that will do the serialization. 
-// *serializeHandle	- user data that will be passed to the *NewtonSerialize* callback.
+// serializeFunction - pointer to the event function that will do the serialization. 
+// *serializeHandle	- user data that will be passed to the _NewtonSerialize_ callback.
 //
 // Return: Nothing.
 //
@@ -4218,8 +4218,8 @@ void NewtonCollisionSerialize(const NewtonWorld* const newtonWorld, const Newton
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *NewtonTreeCollisionCallback *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
-// *NewtonSerialize* callback - pointer to the callback function that will handle the serialization.
+// *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
+// callback - pointer to the callback function that will handle the serialization.
 // *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
 //
 // Return: Nothing.
@@ -4244,8 +4244,8 @@ NewtonCollision* NewtonCreateCollisionFromSerialization(const NewtonWorld* const
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *NewtonTreeCollisionCallback *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
-// *NewtonSerialize* callback - pointer to the callback function that will handle the serialization.
+// *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
+// callback - pointer to the callback function that will handle the serialization.
 // *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
 //
 // Return: Nothing.
