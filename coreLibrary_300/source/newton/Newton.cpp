@@ -7567,7 +7567,7 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 //
 // Parameters:
 // *joint - pointer to the joint.
-// *userDataPtr - pointer to the user defined user data value.
+// *userData - pointer to the user defined user data value.
 //
 // Return: Nothing.
 //
@@ -7602,7 +7602,7 @@ void* NewtonJointGetUserData(const NewtonJoint* const joint)
 }
 
 /*
-// Name: NewtonJointGetBody0
+// fixme: delete NewtonJointGetBody0/
 // Retrieve the first rigid body controlled by this joint.
 //
 // Parameters:
@@ -7627,7 +7627,7 @@ NewtonBody* NewtonJointGetBody0(const NewtonJoint* const joint)
 }
 
 
-// Name: NewtonJointGetBody1
+// fixme: delete NewtonJointGetBody1?
 // Retrieve the second rigid body controlled by this joint.
 //
 // Parameters:
@@ -7658,7 +7658,7 @@ NewtonBody* NewtonJointGetBody1(const NewtonJoint* const joint)
 //
 // Parameters:
 // joint - is the pointer to a convex collision primitive.
-// *NewtonJointRecord* *jointInfo - pointer to a collision information record.
+// *jointInfo - pointer to a collision information record.
 //
 // Remarks: This function can be used by the application for writing file format and for serialization.
 //
@@ -7674,7 +7674,7 @@ void NewtonJointGetInfo(const NewtonJoint* const joint, NewtonJointRecord* const
 // Get the first body connected by this joint.
 //
 // Parameters:
-// joint - is the pointer to a convex collision primitive.
+// *joint - is the pointer to a convex collision primitive.
 //
 //
 // See also: 
@@ -7692,7 +7692,7 @@ NewtonBody* NewtonJointGetBody0(const NewtonJoint* const joint)
 // Get the second body connected by this joint.
 //
 // Parameters:
-// joint - is the pointer to a convex collision primitive.
+// *joint - is the pointer to a convex collision primitive.
 //
 // See also: 
 NewtonBody* NewtonJointGetBody1(const NewtonJoint* const joint)
@@ -7785,7 +7785,6 @@ void NewtonJointSetStiffness(const NewtonJoint* const joint, dFloat stiffness)
 //
 // Parameters:
 // *joint - pointer to the joint.
-// stiffness - stiffness coefficient, a value between 0, and 1.0, the default value for most joint is 0.9
 //
 // Return: stiffness coefficient.
 //
@@ -7815,7 +7814,7 @@ dFloat NewtonJointGetStiffness(const NewtonJoint* const joint)
 //
 // Parameters:
 // *joint - pointer to the joint.
-// *NewtonJointCallback* destructor - pointer to the joint destructor callback.
+// destructor - pointer to the joint destructor callback.
 //
 // Return: nothing.
 //
