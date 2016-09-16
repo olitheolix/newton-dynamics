@@ -6982,8 +6982,8 @@ NewtonJoint* NewtonConstraintCreateUniversal(const NewtonWorld* const newtonWorl
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
-// *Universal - pointer to the joint.
-// *NewtonUniversalCallback* callback - pointer to the joint function call back.
+// *universal - pointer to the joint.
+// callback - pointer to the joint function call back.
 //
 // Return: nothing.
 //
@@ -7012,7 +7012,7 @@ void NewtonUniversalSetUserCallback(const NewtonJoint* const universal, NewtonUn
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *Universal - pointer to the joint.
+// *universal - pointer to the joint.
 //
 // Return: the joint angle relative to the universal pin0.
 //
@@ -7033,7 +7033,7 @@ dFloat NewtonUniversalGetJointAngle0(const NewtonJoint* const universal)
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *Universal - pointer to the joint.
+// *universal - pointer to the joint.
 //
 // Return: the joint angle relative to the universal pin1.
 //
@@ -7055,7 +7055,7 @@ dFloat NewtonUniversalGetJointAngle1(const NewtonJoint* const universal)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *Universal - pointer to the joint.
+// *universal - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin0 axis.
 //
@@ -7077,7 +7077,7 @@ dFloat NewtonUniversalGetJointOmega0(const NewtonJoint* const universal)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *Universal - pointer to the joint.
+// *universal - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin1 axis.
 //
@@ -7100,8 +7100,8 @@ dFloat NewtonUniversalGetJointOmega1(const NewtonJoint* const universal)
 // Calculate the angular acceleration needed to stop the universal at the desired angle.
 //
 // Parameters:
-// *Universal - pointer to the joint.
-// *NewtonUniversalSliderUpdateDesc* *desc - is the pointer to the Universal or slide structure.
+// *universal - pointer to the joint.
+// *desc - is the pointer to the Universal or slide structure.
 // angle - is the desired universal stop angle rotation around pin0
 //
 // Return: the relative angular acceleration needed to stop the universal.
@@ -7122,8 +7122,8 @@ dFloat NewtonUniversalCalculateStopAlpha0(const NewtonJoint* const universal, co
 // Calculate the angular acceleration needed to stop the universal at the desired angle.
 //
 // Parameters:
-// *Universal - pointer to the joint.
-// *NewtonUniversalSliderUpdateDesc* *desc - is the pointer to and the Universal or slide structure.
+// *universal - pointer to the joint.
+// *desc - is the pointer to and the Universal or slide structure.
 // angle - is the desired universal stop angle rotation around pin1
 //
 // Return: the relative angular acceleration needed to stop the universal.
@@ -7146,7 +7146,7 @@ dFloat NewtonUniversalCalculateStopAlpha1(const NewtonJoint* const universal, co
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
-// *Universal - pointer to the joint.
+// *universal - pointer to the joint.
 // *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
