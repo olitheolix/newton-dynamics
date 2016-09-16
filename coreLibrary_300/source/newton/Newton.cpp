@@ -3430,8 +3430,9 @@ void NewtonTreeCollisionEndBuild(const NewtonCollision* const treeCollision, int
 // Get the user defined collision attributes stored with each face of the collision mesh.
 //
 // Parameters:
-// *newtonWorld - is the pointer to the Newton world.
-// *const int* *faceIndexArray - pointer to the face index list passed to the function *NewtonTreeCollisionCallback userCallback*
+// treeCollision - fixme
+// *faceIndexArray - pointer to the face index list passed to the function *NewtonTreeCollisionCallback userCallback
+// indexCount - fixme
 //
 // Return: User id of the face.
 //
@@ -3453,7 +3454,7 @@ int NewtonTreeCollisionGetFaceAttribute(const NewtonCollision* const treeCollisi
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *const int* *faceIndexArray - pointer to the face index list passed to the function *NewtonTreeCollisionCallback userCallback*
+// *faceIndexArray - pointer to the face index list passed to the function *NewtonTreeCollisionCallback userCallback*
 // attribute - value of the user defined attribute to be stored with the face.
 //
 // Return: User id of the face.
@@ -3495,9 +3496,9 @@ void NewtonTreeCollisionForEachFace (const NewtonCollision* const treeCollision,
 // **vertexArray - pointer to a the vertex array of vertex.
 // *vertexCount - pointer int to return the number of vertex in vertexArray.
 // *vertexStrideInBytes - pointer to int to return the size of each vertex in vertexArray.
-// *const int* *indexList - pointer to array on integers containing the triangles intersection the aabb. 
-// *const int* maxIndexCount - maximum number of indices the function will copy to indexList. 
-// *const int* *faceAttribute - pointer to array on integers top contain the face containing the .  
+// *indexList - pointer to array on integers containing the triangles intersection the aabb. 
+// maxIndexCount - maximum number of indices the function will copy to indexList. 
+// *faceAttribute - pointer to array on integers top contain the face containing the .  
 //
 // Return: the number of triangles in indexList.
 //
@@ -4567,7 +4568,7 @@ int NewtonBodyGetSimulationState(const NewtonBody* const bodyPtr)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body to be changed.
-// *const int* state - the new simulation state 0: disabled 1: active
+// state - the new simulation state 0: disabled 1: active
 //
 // Return: Nothing.
 //
