@@ -5387,7 +5387,7 @@ NewtonJoint* NewtonBodyGetFirstJoint(const NewtonBody* const bodyPtr)
 //
 // Parameters:
 // *bodyPtr - pointer to the body.
-// *joint - pointer to current joint.
+// *jointPtr - pointer to current joint.
 //
 // Return: Joint is at least one joint is attached to the body, NULL if not joint is attached
 //
@@ -5425,7 +5425,7 @@ NewtonJoint* NewtonBodyGetFirstContactJoint(const NewtonBody* const bodyPtr)
 //
 // Parameters:
 // *bodyPtr - pointer to the body.
-// *contactJoint - pointer to corrent contact joint.
+// *contactPtr - pointer to corrent contact joint.
 //
 // Return: Contact if the body is colliding with anther body, NULL otherwise
 //
@@ -5524,6 +5524,7 @@ void* NewtonContactJointGetNextContact(const NewtonJoint* const contactJoint, vo
 //
 // Parameters:
 // *contactJoint - pointer to corrent contact joint.
+// *contact - pointer to current contact.
 //
 // Return: first contact contact array of the joint contact exist, NULL otherwise
 //
@@ -5555,7 +5556,7 @@ dFloat NewtonContactJointGetClosestDistance(const NewtonJoint* const contactJoin
 // Return to the next contact from the contact array of the contact joint.
 //
 // Parameters:
-// *contactJoint - pointer to corrent contact joint.
+// *contact - pointer to current contact.
 //
 // Return: first contact contact array of the joint contact exist, NULL otherwise
 //
