@@ -2333,9 +2333,7 @@ NewtonCollision* NewtonCreateBox(const NewtonWorld* const newtonWorld, dFloat dx
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// radiusX  - sphere radius along x axis.  
-// radiusY  - sphere radius along x axis.  
-// radiusZ  - sphere radius along x axis.  
+// radius  - sphere radius
 // shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the sphere relative to the body. If this parameter is NULL then the sphere is centered at the origin of the body.
 // 
@@ -2396,7 +2394,7 @@ NewtonCollision* NewtonCreateCone(const NewtonWorld* const newtonWorld, dFloat r
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // radio0  - fixme
-// radio1  - fixmexxx
+// radio1  - fixme
 // height  - capsule height along the x local axis from tip to tip.  
 // shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
@@ -2422,7 +2420,8 @@ NewtonCollision* NewtonCreateCapsule(const NewtonWorld* const newtonWorld, dFloa
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// radius  - cylinder radius at the base.  
+// radio0  - fixme
+// radio1  - fixme
 // height  - cylinder height along the x local axis.  
 // shapeID - fixme
 // *const dFloat* *offsetMatrix - pointer to an array of 16 floats containing the offset matrix of the box relative to the body. If this parameter is NULL, then the primitive is centered at the origin of the body.
