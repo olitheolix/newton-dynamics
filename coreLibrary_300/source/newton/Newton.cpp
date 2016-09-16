@@ -996,7 +996,7 @@ int NewtonWorldFloatSize ()
 //
 // Parameters:
 // *newtonWorld - is the pointer to the newton world.
-// *void* *userData - pointer to the user defined user data value.
+// *userData - pointer to the user defined user data value.
 //
 // Return: Nothing.
 //
@@ -1218,7 +1218,7 @@ void NewtonWorldRayCast(const NewtonWorld* const newtonWorld, const dFloat* cons
 // *target - pointer to an array of at least three floats containing the end of the ray in global space.
 // *const NewtonCollision* shape - collision shap[e use to cat the ray.
 // param - pointe to a variable the will contart the time to closet aproah to the collision.
-// *void* *userData - user data to be passed to the prefilter callback.
+// *userData - user data to be passed to the prefilter callback.
 // *NewtonWorldRayPrefilterCallback* prefilter - user define function to be called for each body before intersection.
 // *NewtonWorldConvexCastReturnInfo* *info - pointer to an array of contacts at the point of intesections.
 // maxContactsCount - maximun number of contacts to be conclaculated, the variable sould be initialized to the capaciaty of *info* 
@@ -3162,7 +3162,7 @@ const void* NewtonCollisionDataPointer (const NewtonCollision* const convexColli
 // *newtonWorld - is the pointer to the Newton world.
 // *minBox - pointer to an array of at least three floats to hold minimum value for the box relative to the collision.
 // *maxBox - pointer to an array of at least three floats to hold maximum value for the box relative to the collision.
-// *void* *userData - pointer to user data to be used as context for event callback.
+// *userData - pointer to user data to be used as context for event callback.
 // *NewtonUserMeshCollisionCollideCallback* collideCallback - pointer to an event function for providing Newton with the polygon inside a given box region.
 // *NewtonUserMeshCollisionRayHitCallback* rayHitCallback   - pointer to an event function for providing Newton with ray intersection information.
 // *NewtonUserMeshCollisionDestroyCallback* destroyCallback	- pointer to an event function for destroying any data allocated for use by the application.
@@ -3989,7 +3989,7 @@ void NewtonCollisionCalculateAABB(const NewtonCollision* const collisionPtr, con
 // *const NewtonBody* *collisionPtr - is the pointer to the collision objects.
 // *const dFloat32* *matrix - is the pointer to the collision objects.
 // *NewtonCollisionIterator* callback - application define callback 
-// *void* *userDataPtr - pointer to the user defined user data value.
+// *userDataPtr - pointer to the user defined user data value.
 //
 // Return: nothing
 //
@@ -4187,7 +4187,7 @@ NewtonCollision* NewtonCollisionCreateInstance (const NewtonCollision* const col
 // *newtonWorld - is the pointer to the Newton world.
 // *const NewtonCollision* *collision - is the pointer to the collision tree shape.
 // *NewtonSerialize* serializeFunction - pointer to the event function that will do the serialization. 
-// *void* *serializeHandle	- user data that will be passed to the *NewtonSerialize* callback.
+// *serializeHandle	- user data that will be passed to the *NewtonSerialize* callback.
 //
 // Return: Nothing.
 //
@@ -4211,7 +4211,7 @@ void NewtonCollisionSerialize(const NewtonWorld* const newtonWorld, const Newton
 // *newtonWorld - is the pointer to the Newton world.
 // *NewtonTreeCollisionCallback *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
 // *NewtonSerialize* callback - pointer to the callback function that will handle the serialization.
-// *void* *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
+// *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
 //
 // Return: Nothing.
 //
@@ -4237,7 +4237,7 @@ NewtonCollision* NewtonCreateCollisionFromSerialization(const NewtonWorld* const
 // *newtonWorld - is the pointer to the Newton world.
 // *NewtonTreeCollisionCallback *userCallback - pointer to an event function to call before Newton is begins collecting polygons that are colliding with a body. This parameter can be NULL.
 // *NewtonSerialize* callback - pointer to the callback function that will handle the serialization.
-// *void* *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
+// *userData	- user data that will be passed as the argument to *NewtonSerialize* callback.
 //
 // Return: Nothing.
 //
@@ -4623,7 +4623,7 @@ int NewtonBodyGetID (const NewtonBody* const bodyPtr)
 //
 // Parameters:
 // *const NewtonBody* *bodyPtr - pointer to the body.
-// *void* *userDataPtr - pointer to the user defined user data value.
+// *userDataPtr - pointer to the user defined user data value.
 //
 // Return: Nothing.
 //
@@ -5491,7 +5491,7 @@ void* NewtonContactJointGetFirstContact(const NewtonJoint* const contactJoint)
 //
 // Parameters:
 // *contactJoint - pointer to a contact joint.
-// *void* *contact - pointer to current contact.
+// *contact - pointer to current contact.
 //
 // Return: a pointer to the next contact in the contact array,  NULL if no contacts exist.
 //
@@ -7559,7 +7559,7 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 //
 // Parameters:
 // *joint - pointer to the joint.
-// *void* *userDataPtr - pointer to the user defined user data value.
+// *userDataPtr - pointer to the user defined user data value.
 //
 // Return: Nothing.
 //
