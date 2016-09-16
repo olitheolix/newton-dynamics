@@ -3995,9 +3995,9 @@ void NewtonCollisionCalculateAABB(const NewtonCollision* const collisionPtr, con
 // Iterate thought polygon of the collision geometry of a body calling the function callback. 
 //
 // Parameters:
-// *const NewtonBody* *collisionPtr - is the pointer to the collision objects.
-// *const dFloat32* *matrix - is the pointer to the collision objects.
-// *NewtonCollisionIterator* callback - application define callback 
+// *collisionPtr - is the pointer to the collision objects.
+// *matrixPtr - is the pointer to the collision objects.
+// callback - application define callback 
 // *userDataPtr - pointer to the user defined user data value.
 //
 // Return: nothing
@@ -4516,7 +4516,7 @@ NewtonBody* NewtonCreateDeformableBody (const NewtonWorld* const newtonWorld, co
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *const NewtonBody* *bodyPtr - pointer to the body to be destroyed.
+// *bodyPtr - pointer to the body to be destroyed.
 //
 // Return: Nothing.
 //
@@ -4555,7 +4555,7 @@ void NewtonBodyDisableSimulation(const NewtonBody* const bodyPtr)
 // Gets the current simulation state of the specified body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body to be inspected.
+// *bodyPtr - pointer to the body to be inspected.
 //
 // Return: the current simulation state 0: disabled 1: active.
 //
@@ -4572,7 +4572,7 @@ int NewtonBodyGetSimulationState(const NewtonBody* const bodyPtr)
 // Sets the current simulation state of the specified body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body to be changed.
+// *bodyPtr - pointer to the body to be changed.
 // state - the new simulation state 0: disabled 1: active
 //
 // Return: Nothing.
@@ -4631,7 +4631,7 @@ int NewtonBodyGetID (const NewtonBody* const bodyPtr)
 // Store a user defined data value with the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *userDataPtr - pointer to the user defined user data value.
 //
 // Return: Nothing.
@@ -4651,7 +4651,7 @@ void  NewtonBodySetUserData(const NewtonBody* const bodyPtr, void* const userDat
 // Retrieve a user defined data value stored with the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: The user defined data.
 //
@@ -4671,7 +4671,7 @@ void* NewtonBodyGetUserData(const NewtonBody* const bodyPtr)
 // Retrieve get the pointer to the world from the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: the world that own this body.
 //
@@ -4691,7 +4691,7 @@ NewtonWorld* NewtonBodyGetWorld(const NewtonBody* const bodyPtr)
 // Assign a transformation event function to the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *NewtonSetTransform callback - pointer to a function callback in used to update the transformation matrix of the visual object that represents the rigid body.
 //
 // Return: Nothing.
@@ -4715,7 +4715,7 @@ void  NewtonBodySetTransformCallback(const NewtonBody* const bodyPtr, NewtonSetT
 // Assign a transformation event function to the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *NewtonSetTransform callback - pointer to a function callback in used to update the transformation matrix of the visual object that represents the rigid body.
 //
 // Return: Nothing.
@@ -4739,7 +4739,7 @@ NewtonSetTransform NewtonBodyGetTransformCallback (const NewtonBody* const bodyP
 // Assign an event function for applying external force and torque to a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *NewtonApplyForceAndTorque callback - pointer to a function callback used to apply force and torque to a rigid body.
 //
 // Return: Nothing.
@@ -4762,7 +4762,7 @@ void  NewtonBodySetForceAndTorqueCallback(const NewtonBody* const bodyPtr, Newto
 // Return the pointer to the current force and torque call back function.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: pointer to the force call back.
 //
@@ -4789,7 +4789,7 @@ NewtonApplyForceAndTorque NewtonBodyGetForceAndTorqueCallback(const NewtonBody* 
 // Assign an event function to be called when this body is about to be destroyed.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body to be destroyed.
+// *bodyPtr - pointer to the body to be destroyed.
 // *NewtonBodyDestructor* callback - pointer to a function callback. 
 //
 // Return: Nothing.
@@ -4822,7 +4822,7 @@ NewtonBodyDestructor NewtonBodyGetDestructorCallback (const NewtonBody* const bo
 // Set the mass matrix of a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // mass - mass value. 
 // Ixx - moment of inertia of the first principal axis of inertia of the body.
 // Iyy - moment of inertia of the first principal axis of inertia of the body.
@@ -4871,7 +4871,7 @@ void  NewtonBodySetMassProperties (const NewtonBody* const bodyPtr, dFloat mass,
 // Get the mass matrix of a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *mass - pointer to a variable that will hold the mass value of the body.
 // *Ixx - pointer to a variable that will hold the moment of inertia of the first principal axis of inertia of the body.
 // *Iyy - pointer to a variable that will hold the moment of inertia of the first principal axis of inertia of the body.
@@ -4903,7 +4903,7 @@ void  NewtonBodyGetMass(const NewtonBody* const bodyPtr, dFloat* const mass, dFl
 // Get the inverse mass matrix of a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *invMass - pointer to a variable that will hold the mass inverse value of the body.
 // *invIxx - pointer to a variable that will hold the moment of inertia inverse of the first principal axis of inertia of the body.
 // *invIyy - pointer to a variable that will hold the moment of inertia inverse of the first principal axis of inertia of the body.
@@ -4950,7 +4950,7 @@ void NewtonBodyGetInvInertiaMatrix(const NewtonBody* const bodyPtr, dFloat* cons
 // Set the transformation matrix of a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *matrixPtr - pointer to an array of 16 floats containing the global matrix of the rigid body.
 //
 // Return: Nothing.
@@ -4992,7 +4992,7 @@ void NewtonBodySetMatrixNoSleep (const NewtonBody* const bodyPtr, const dFloat* 
 // Apply hierarchical transformation to a body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *matrixPtr - pointer to an array of 16 floats containing the global matrix of the rigid body.
 //
 // Return: Nothing.
@@ -5026,7 +5026,7 @@ void NewtonBodySetMatrixRecursive(const NewtonBody* const bodyPtr, const dFloat*
 // Get the transformation matrix of a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *matrixPtr - pointer to an array of 16 floats that will hold the global matrix of the rigid body.
 //
 // Return: Nothing.
@@ -5058,7 +5058,7 @@ void NewtonBodyGetPosition(const NewtonBody* const bodyPtr, dFloat* const posPtr
 // Get the rotation part of the transformation matrix of a body, in form of a unit quaternion.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *rotPtr - pointer to an array of 4 floats that will hold the global rotation of the rigid body.
 //
 // Return: Nothing.
@@ -5089,7 +5089,7 @@ void NewtonBodyGetRotation(const NewtonBody* const bodyPtr, dFloat* const rotPtr
 // Set the net force applied to a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats containing the net force to be applied to the body.
 //
 // Return: Nothing.
@@ -5109,7 +5109,7 @@ void  NewtonBodySetForce(const NewtonBody* const bodyPtr, const dFloat* const ve
 // Add the net force applied to a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body to be destroyed.
+// *bodyPtr - pointer to the body to be destroyed.
 // *vectorPtr - pointer to an array of 3 floats containing the net force to be applied to the body.
 //
 // Return: Nothing.
@@ -5131,7 +5131,7 @@ void  NewtonBodyAddForce(const NewtonBody* const bodyPtr, const dFloat* const ve
 // Get the force applied on the last call to apply force and torque callback.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats to hold the net force of the body.
 //
 // Remark: this function can be useful to modify force from joint callback
@@ -5154,7 +5154,7 @@ void NewtonBodyGetForceAcc(const NewtonBody* const bodyPtr, dFloat* const vector
 // Get the net force applied to a rigid body after the last NewtonUpdate.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats to hold the net force of the body.
 //
 // Return: Nothing.
@@ -5175,7 +5175,7 @@ void NewtonBodyGetForce(const NewtonBody* const bodyPtr, dFloat* const vectorPtr
 // Calculate the next force that net to be applied to the body to archive the desired velocity in the current time step.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // timestep - time step that the force will be applyed. 
 // *desiredVeloc - pointer to an array of 3 floats containing the desired velocity.
 // *forceOut - pointer to an array of 3 floats to hold the calculated net force.
@@ -5206,7 +5206,7 @@ void NewtonBodyCalculateInverseDynamicsForce(const NewtonBody* const bodyPtr, dF
 // Set the net torque applied to a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats containing the net torque to be applied to the body.
 //
 // Return: Nothing.
@@ -5227,7 +5227,7 @@ void  NewtonBodySetTorque(const NewtonBody* const bodyPtr, const dFloat* const v
 // Add the net torque applied to a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats containing the net torque to be applied to the body.
 //
 // Return: Nothing.
@@ -5247,7 +5247,7 @@ void  NewtonBodyAddTorque(const NewtonBody* const bodyPtr, const dFloat* const v
 // Get the net torque applied to a rigid body after the last NewtonUpdate.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats to hold the net torque of the body.
 //
 // Return: Nothing.
@@ -5267,7 +5267,7 @@ void NewtonBodyGetTorque(const NewtonBody* const bodyPtr, dFloat* const vectorPt
 // Get the torque applied on the last call to apply force and torque callback.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats to hold the net force of the body.
 //
 // Remark: this function can be useful to modify torque form joint callback
@@ -5292,7 +5292,7 @@ void NewtonBodyGetTorqueAcc(const NewtonBody* const bodyPtr, dFloat* const vecto
 // Set the relative position of the center of mass of a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *comPtr - pointer to an array of 3 floats containing the relative offset of the center of mass of the body.
 //
 // Return: Nothing.
@@ -5338,7 +5338,7 @@ void NewtonBodySetCentreOfMass(const NewtonBody* const bodyPtr, const dFloat* co
 // Get the relative position of the center of mass of a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *comPtr - pointer to an array of 3 floats to hold the relative offset of the center of mass of the body.
 //
 // Return: Nothing.
@@ -5366,7 +5366,7 @@ void NewtonBodyGetCentreOfMass(const NewtonBody* const bodyPtr, dFloat* const co
 // Return a pointer to the first joint attached to this rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: Joint if at least one is attached to the body, NULL if not joint is attached
 //
@@ -5386,7 +5386,7 @@ NewtonJoint* NewtonBodyGetFirstJoint(const NewtonBody* const bodyPtr)
 // Return a pointer to the next joint attached to this body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *joint - pointer to current joint.
 //
 // Return: Joint is at least one joint is attached to the body, NULL if not joint is attached
@@ -5408,7 +5408,7 @@ NewtonJoint* NewtonBodyGetNextJoint(const NewtonBody* const bodyPtr, const Newto
 // Return a pointer to the first contact joint attached to this rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: Contact if the body is colliding with anther body, NULL otherwise
 //
@@ -5424,7 +5424,7 @@ NewtonJoint* NewtonBodyGetFirstContactJoint(const NewtonBody* const bodyPtr)
 // Return a pointer to the next contact joint attached to this rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *contactJoint - pointer to corrent contact joint.
 //
 // Return: Contact if the body is colliding with anther body, NULL otherwise
@@ -5612,7 +5612,7 @@ void* NewtonContactGetCollisionID1(const void* const contact)
 // Assign a collision primitive to the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // *const collisionPtr* *collisionPtr - pointer to the new collision geometry.
 //
 // Return: Nothing.
@@ -5657,7 +5657,7 @@ void NewtonBodySetCollisionScale (const NewtonBody* const bodyPtr, dFloat scaleX
 // Get the collision primitive of a body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: Pointer to body collision geometry.
 //
@@ -5676,7 +5676,7 @@ NewtonCollision* NewtonBodyGetCollision(const NewtonBody* const bodyPtr)
 // Assign a material group id to the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // id - id of a previously created material group.
 //
 // Return: Nothing.
@@ -5697,7 +5697,7 @@ void NewtonBodySetMaterialGroupID(const NewtonBody* const bodyPtr, int id)
 // Get the material group id of the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: Nothing.
 //
@@ -5714,7 +5714,7 @@ int NewtonBodyGetMaterialGroupID(const NewtonBody* const bodyPtr)
 // continuous collision flag is off by default in when bodies are created.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // state - collision state. 1 indicates this body may tunnel through other objects while moving at high speed. 0 ignore high speed collision checks.
 //
 // Return: Nothing.
@@ -5751,7 +5751,7 @@ void NewtonBodySetContinuousCollisionMode(const NewtonBody* const bodyPtr, unsig
 // Get the continuous collision state mode for this rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: Nothing.
 //
@@ -5776,7 +5776,7 @@ int NewtonBodyGetContinuousCollisionMode (const NewtonBody* const bodyPtr)
 // Set the collision state flag of this body when the body is connected to another body by a hierarchy of joints.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 // state - collision state. 1 indicates this body will collide with any linked body. 0 disable collision with body connected to this one by joints.
 //
 // Return: Nothing.
@@ -5800,7 +5800,7 @@ void NewtonBodySetJointRecursiveCollision(const NewtonBody* const bodyPtr, unsig
 // Get the collision state flag when the body is joint.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - pointer to the body.
+// *bodyPtr - pointer to the body.
 //
 // Return: return the collision state flag for this body.
 //
@@ -5833,7 +5833,7 @@ void NewtonBodySetMaxRotationPerStep(const NewtonBody* const bodyPtr, dFloat ang
 // get the freeze state of this body
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body to be frozen
+// *bodyPtr - is the pointer to the body to be frozen
 // 
 // Return: 1 id the bode is frozen, 0 if bode is unfrozen.
 //
@@ -5857,7 +5857,7 @@ int NewtonBodyGetFreezeState(const NewtonBody* const bodyPtr)
 // This function tells Newton to simulate or suspend simulation of this body and all other bodies in contact with it
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body to be activated
+// *bodyPtr - is the pointer to the body to be activated
 // state - 1 teels newton to freeze the bode and allconceted bodiesm, 0 to unfreze it 
 // 
 // Return: Nothing
@@ -5876,7 +5876,7 @@ void NewtonBodySetFreezeState(const NewtonBody* const bodyPtr, int state)
 // Set the auto-activation mode for this body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // state - active mode: 1 = auto-activation on (controlled by Newton). 0 = auto-activation off and body is active all the time. 
 // 
 // Return: Nothing.
@@ -5901,7 +5901,7 @@ void NewtonBodySetAutoSleep(const NewtonBody* const bodyPtr, int state)
 // Get the auto-activation state of the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // 
 // Return: Auto activation state: 1 = auto-activation on. 0 = auto-activation off.
 //
@@ -5919,7 +5919,7 @@ int NewtonBodyGetAutoSleep(const NewtonBody* const bodyPtr)
 // Return the sleep mode of a rigid body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // 
 // Return: Sleep state: 1 = active. 0 = sleeping. 
 //
@@ -5943,7 +5943,7 @@ void NewtonBodySetSleepState(const NewtonBody* const bodyPtr, int state)
 // Get the world axis aligned bounding box (AABB) of the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // *p0 - pointer to an array of at least three floats to hold minimum value for the AABB.
 // *p1 - pointer to an array of at least three floats to hold maximum value for the AABB.
 //
@@ -5972,7 +5972,7 @@ void NewtonBodyGetAABB(const NewtonBody* const bodyPtr, dFloat* const p0, dFloat
 // Set the global linear velocity of the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // *velocity - pointer to an array of at least three floats containing the velocity vector.
 //
 // See also: NewtonBodyGetVelocity
@@ -5999,7 +5999,7 @@ void NewtonBodySetVelocityNoSleep(const NewtonBody* const bodyPtr, const dFloat*
 // Get the global linear velocity of the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // *velocity - pointer to an array of at least three floats to hold the velocity vector.
 //
 // See also: NewtonBodySetVelocity
@@ -6020,7 +6020,7 @@ void NewtonBodyGetVelocity(const NewtonBody* const bodyPtr, dFloat* const veloci
 // Set the global angular velocity of the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // *omega - pointer to an array of at least three floats containing the angular velocity vector.
 //
 // See also: NewtonBodyGetOmega
@@ -6047,7 +6047,7 @@ void NewtonBodySetOmegaNoSleep(const NewtonBody* const bodyPtr, const dFloat* co
 // Get the global angular velocity of the body.
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body
+// *bodyPtr - is the pointer to the body
 // *omega - pointer to an array of at least three floats to hold the angular velocity vector.
 //
 // See also: NewtonBodySetOmega
@@ -6068,7 +6068,7 @@ void NewtonBodyGetOmega(const NewtonBody* const bodyPtr, dFloat* const omega)
 // Apply the linear viscous damping coefficient to the body. 
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // linearDamp - linear damping coefficient.
 //
 // Remarks: the default value of *linearDamp* is clamped to a value between 0.0 and 1.0; the default value is 0.1,
@@ -6094,7 +6094,7 @@ void NewtonBodySetLinearDamping(const NewtonBody* const bodyPtr, dFloat linearDa
 // Get the linear viscous damping of the body. 
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 //
 // Return: The linear damping coefficient. 
 //
@@ -6112,7 +6112,7 @@ dFloat NewtonBodyGetLinearDamping(const NewtonBody* const bodyPtr)
 // Apply the angular viscous damping coefficient to the body. 
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // *angularDamp - pointer to an array of at least three floats containing the angular damping coefficients for the principal axis of the body.
 //
 // Remarks: the default value of *angularDamp* is clamped to a value between 0.0 and 1.0; the default value is 0.1,
@@ -6140,7 +6140,7 @@ void  NewtonBodySetAngularDamping(const NewtonBody* const bodyPtr, const dFloat*
 // Get the linear viscous damping of the body. 
 //
 // Parameters:
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // *angularDamp - pointer to an array of at least three floats to hold the angular damping coefficient for the principal axis of the body.
 //
 // See also: NewtonBodySetAngularDamping
@@ -6175,7 +6175,7 @@ void NewtonBodyGetPointVelocity (const NewtonBody* const bodyPtr, const dFloat* 
 //
 // Parameters:
 // *newtonWorld - pointer to the Newton world.
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // pointDeltaVeloc - pointer to an array of at least three floats containing the desired change in velocity to point pointPosit.
 // pointPosit	- pointer to an array of at least three floats containing the center of the impulse in global space.
 //
@@ -6208,7 +6208,7 @@ void NewtonBodyAddImpulse(const NewtonBody* const bodyPtr, const dFloat* const p
 //
 // Parameters:
 // *newtonWorld - pointer to the Newton world.
-// *const NewtonBody* *bodyPtr - is the pointer to the body.
+// *bodyPtr - is the pointer to the body.
 // int impulseCount	- number of impulses and distances in the array distance	
 // int strideInByte	- sized in bytes of vector impulse and 
 // impulseArray - pointer to an array containing the desired impulse to apply ate psoition pointarray.
@@ -6269,8 +6269,8 @@ void NewtonBodyIntegrateVelocity (const NewtonBody* const bodyPtr, dFloat timest
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // *pivotPoint - is origin of ball and socket in global space.
-// *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
-// *const NewtonBody* *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
+// *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
+// *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
 // Return: Pointer to the ball and socket joint.
 //
@@ -6447,8 +6447,8 @@ void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
 // *newtonWorld - is the pointer to the Newton world.
 // *pivotPoint - is origin of the hinge in global space.
 // *pinDir - is the line of action of the hinge in global space.
-// *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
-// *const NewtonBody* *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
+// *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
+// *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
 // Return: Pointer to the hinge joint.
 //
@@ -6593,8 +6593,8 @@ void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const forc
 // *newtonWorld - is the pointer to the Newton world.
 // *pivotPoint - is origin of the slider in global space.
 // *pinDir - is the line of action of the slider in global space.
-// *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
-// *const NewtonBody* *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
+// *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
+// *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
 // Return: Pointer to the slider joint.
 //
@@ -6739,8 +6739,8 @@ void NewtonSliderGetJointForce(const NewtonJoint* const slider, dFloat* const fo
 // *newtonWorld - is the pointer to the Newton world.
 // *pivotPoint - is origin of the corkscrew in global space.
 // *pinDir - is the line of action of the corkscrew in global space.
-// *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
-// *const NewtonBody* *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
+// *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
+// *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
 // Return: Pointer to the corkscrew joint.
 //
@@ -6955,8 +6955,8 @@ void NewtonCorkscrewGetJointForce(const NewtonJoint* const corkscrew, dFloat* co
 // *pivotPoint - is origin of the universal joint in global space.
 // *pinDir0 - first axis of rotation fixed on childBody body and perpendicular to pinDir1.
 // *pinDir1 - second axis of rotation fixed on parentBody body and perpendicular to pinDir0.
-// *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
-// *const NewtonBody* *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
+// *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
+// *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
 // Return: Pointer to the universal joint.
 //
@@ -7182,7 +7182,7 @@ void NewtonUniversalGetJointForce(const NewtonJoint* const universal, dFloat* co
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // *pinDir - is the aligning vector.
-// *const NewtonBody* *body - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
+// *body - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
 //
 // Return: Pointer to the up vector joint.
 //
@@ -7270,8 +7270,8 @@ void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 // *in*t maxDOF - is the maximum number of degree of freedom controlled by this joint. 
 // *NewtonUserBilateralCallback* submitConstraints - pointer to the joint constraint definition function call back.
 // *NewtonUserBilateralGetInfoCallback* getInfo - pointer to callback for collecting joint information.
-// *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
-// *const NewtonBody* *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
+// *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
+// *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
 // Remark: Bilateral joint are constraints that can have up to 6 degree of freedoms, 3 linear and 3 angular. 
 // By restricting the motion along any number of these degree of freedom a very large number of useful joint between 
