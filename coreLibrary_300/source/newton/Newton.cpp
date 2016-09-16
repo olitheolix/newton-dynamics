@@ -4432,6 +4432,7 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // *collisionPtr - pointer to the collision object.
+// *matrixPtr - fixme
 //
 // Return: Pointer to the rigid body.
 //
@@ -4515,7 +4516,6 @@ NewtonBody* NewtonCreateDeformableBody (const NewtonWorld* const newtonWorld, co
 // Destroy a rigid body.
 //
 // Parameters:
-// *newtonWorld - is the pointer to the Newton world.
 // *bodyPtr - pointer to the body to be destroyed.
 //
 // Return: Nothing.
