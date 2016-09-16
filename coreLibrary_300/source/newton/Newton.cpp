@@ -4716,7 +4716,6 @@ void  NewtonBodySetTransformCallback(const NewtonBody* const bodyPtr, NewtonSetT
 //
 // Parameters:
 // *bodyPtr - pointer to the body.
-// *NewtonSetTransform callback - pointer to a function callback in used to update the transformation matrix of the visual object that represents the rigid body.
 //
 // Return: Nothing.
 //
@@ -4740,7 +4739,7 @@ NewtonSetTransform NewtonBodyGetTransformCallback (const NewtonBody* const bodyP
 //
 // Parameters:
 // *bodyPtr - pointer to the body.
-// *NewtonApplyForceAndTorque callback - pointer to a function callback used to apply force and torque to a rigid body.
+// callback - pointer to a function callback used to apply force and torque to a rigid body.
 //
 // Return: Nothing.
 //
@@ -4790,7 +4789,7 @@ NewtonApplyForceAndTorque NewtonBodyGetForceAndTorqueCallback(const NewtonBody* 
 //
 // Parameters:
 // *bodyPtr - pointer to the body to be destroyed.
-// *NewtonBodyDestructor* callback - pointer to a function callback. 
+// callback - pointer to a function callback. 
 //
 // Return: Nothing.
 //
@@ -4824,9 +4823,7 @@ NewtonBodyDestructor NewtonBodyGetDestructorCallback (const NewtonBody* const bo
 // Parameters:
 // *bodyPtr - pointer to the body.
 // mass - mass value. 
-// Ixx - moment of inertia of the first principal axis of inertia of the body.
-// Iyy - moment of inertia of the first principal axis of inertia of the body.
-// Izz - moment of inertia of the first principal axis of inertia of the body.
+// inertiaMatrix - fixme
 //
 // Return: Nothing.
 //
