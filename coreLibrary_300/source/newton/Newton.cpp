@@ -3798,7 +3798,9 @@ int NewtonCollisionIntersectionTest (const NewtonWorld* const newtonWorld, const
 // *contacts - pointer to and array of a least 3 times maxSize floats to contain the collision contact points.
 // *normals - pointer to and array of a least 3 times maxSize floats to contain the collision contact normals.
 // *penetration - pointer to and array of a least maxSize floats to contain the collision penetration at each contact.
-// threadIndex -Thread index form where the call is made from, zeor otherwize
+// attributeA - fixme
+// attributeB - fixme
+// threadIndex - Thread index form where the call is made from, zeor otherwize
 // 
 // Return: the number of contact points.
 //
@@ -3845,6 +3847,8 @@ int NewtonCollisionCollide (const NewtonWorld* const newtonWorld, int maxSize,
 // *contacts - pointer to and array of a least 3 times maxSize floats to contain the collision contact points.
 // *normals - pointer to and array of a least 3 times maxSize floats to contain the collision contact normals.
 // *penetration - pointer to and array of a least maxSize floats to contain the collision penetration at each contact.
+// attributeA - fixme
+// attributeB - fixme
 // threadIndex -Thread index form where the call is made from, zeor otherwize
 // 
 // Return: the number of contact points.
