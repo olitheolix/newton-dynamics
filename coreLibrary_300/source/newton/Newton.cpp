@@ -6174,7 +6174,6 @@ void NewtonBodyGetPointVelocity (const NewtonBody* const bodyPtr, const dFloat* 
 // Add an impulse to a specific point on a body.
 //
 // Parameters:
-// *newtonWorld - pointer to the Newton world.
 // *bodyPtr - is the pointer to the body.
 // pointDeltaVeloc - pointer to an array of at least three floats containing the desired change in velocity to point pointPosit.
 // pointPosit	- pointer to an array of at least three floats containing the center of the impulse in global space.
@@ -6203,14 +6202,13 @@ void NewtonBodyAddImpulse(const NewtonBody* const bodyPtr, const dFloat* const p
 }
 
 
-// Name: NewtonBodyAddImpulse
+// Name: NewtonBodyAddImpulseArray
 // Add an train of impulses to a specific point on a body.
 //
 // Parameters:
-// *newtonWorld - pointer to the Newton world.
 // *bodyPtr - is the pointer to the body.
-// int impulseCount	- number of impulses and distances in the array distance	
-// int strideInByte	- sized in bytes of vector impulse and 
+// impulseCount	- number of impulses and distances in the array distance	
+// strideInByte	- sized in bytes of vector impulse and 
 // impulseArray - pointer to an array containing the desired impulse to apply ate psoition pointarray.
 // pointArray    - pointer to an array of at least three floats containing the center of the impulse in global space.
 //
