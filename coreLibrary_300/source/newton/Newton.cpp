@@ -6759,8 +6759,8 @@ NewtonJoint* NewtonConstraintCreateCorkscrew(const NewtonWorld* const newtonWorl
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
-// *Corkscrew - pointer to the joint.
-// *NewtonCorkscrewCallback* callback - pointer to the joint function call back.
+// *corkscrew - pointer to the joint.
+// callback - pointer to the joint function call back.
 //
 // Return: nothing.
 //
@@ -6788,7 +6788,7 @@ void NewtonCorkscrewSetUserCallback(const NewtonJoint* const corkscrew, NewtonCo
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *Corkscrew - pointer to the joint.
+// *corkscrew - pointer to the joint.
 //
 // Return: the joint angle relative to the hinge pin.
 //
@@ -6809,7 +6809,7 @@ dFloat NewtonCorkscrewGetJointPosit (const NewtonJoint* const corkscrew)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *Corkscrew - pointer to the joint.
+// *corkscrew - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
@@ -6830,7 +6830,7 @@ dFloat NewtonCorkscrewGetJointVeloc(const NewtonJoint* const corkscrew)
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
-// *Corkscrew - pointer to the joint.
+// *corkscrew - pointer to the joint.
 //
 // Return: the joint angle relative to the corkscrew pin.
 //
@@ -6852,7 +6852,7 @@ dFloat NewtonCorkscrewGetJointAngle (const NewtonJoint* const corkscrew)
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
-// *Corkscrew - pointer to the joint.
+// *corkscrew - pointer to the joint.
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
@@ -6874,8 +6874,8 @@ dFloat NewtonCorkscrewGetJointOmega(const NewtonJoint* const corkscrew)
 // Calculate the angular acceleration needed to stop the corkscrew at the desired angle.
 //
 // Parameters:
-// *Corkscrew - pointer to the joint.
-// *NewtonCorkscrewSliderUpdateDesc* *desc - is the pointer to the Corkscrew or slide structure.
+// *corkscrew - pointer to the joint.
+// *desc - is the pointer to the Corkscrew or slide structure.
 // angle - is the desired corkscrew stop angle 
 //
 // Return: the relative angular acceleration needed to stop the corkscrew.
@@ -6898,7 +6898,7 @@ dFloat NewtonCorkscrewCalculateStopAlpha (const NewtonJoint* const corkscrew, co
 //
 // Parameters:
 // *corkscrew - pointer to the joint.
-// *NewtonCorkscrewCorkscrewUpdateDesc* *desc - is the pointer to the Corkscrew or slide structure.
+// *desc - is the pointer to the Corkscrew or slide structure.
 // distance - desired stop distance relative to the pivot point
 //
 // Return: the relative linear acceleration needed to stop the corkscrew.
@@ -6917,7 +6917,7 @@ dFloat NewtonCorkscrewCalculateStopAccel(const NewtonJoint* const corkscrew, con
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
-// *Corkscrew - pointer to the joint.
+// *corkscrew - pointer to the joint.
 // *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
