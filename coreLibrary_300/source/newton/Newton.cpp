@@ -6612,8 +6612,8 @@ NewtonJoint* NewtonConstraintCreateSlider(const NewtonWorld* const newtonWorld, 
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
-// *Slider - pointer to the joint.
-// *NewtonSliderCallback* callback - pointer to the joint function call back.
+// *slider - pointer to the joint.
+// callback - pointer to the joint function call back.
 //
 // Return: nothing.
 //
@@ -6679,9 +6679,11 @@ dFloat NewtonSliderGetJointVeloc(const NewtonJoint* Slider)
 //
 // Parameters:
 // *slider - pointer to the joint.
-// *NewtonSliderSliderUpdateDesc* *desc - is the pointer to the Slider or slide structure.
+// *desc - is the pointer to the Slider or slide structure.
 // distance - desired stop distance relative to the pivot point
 //
+// fixme: inconsistent variable capitalisation; some functions use "slider", others "Slider".
+// 
 // Return: the relative linear acceleration needed to stop the slider.
 //
 // Remarks: this function can only be called from a *NewtonSliderCallback* and it can be used by the application to implement slider limits.
@@ -6700,7 +6702,7 @@ dFloat NewtonSliderCalculateStopAccel(const NewtonJoint* const slider, const New
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
-// *Slider - pointer to the joint.
+// *slider - pointer to the joint.
 // *force - pointer to an array of a least three floats to hold the force value of the joint.
 //
 // Return: nothing.
