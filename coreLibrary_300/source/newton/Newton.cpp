@@ -1216,7 +1216,7 @@ void NewtonWorldRayCast(const NewtonWorld* const newtonWorld, const dFloat* cons
 // *newtonWorld - is the pointer to the world.
 // *matrix - pointer to an array of at least three floats containing the beginning and orienetaion of the shape in global space.
 // *target - pointer to an array of at least three floats containing the end of the ray in global space.
-// *const NewtonCollision* shape - collision shap[e use to cat the ray.
+// shape - collision shap[e use to cat the ray.
 // param - pointe to a variable the will contart the time to closet aproah to the collision.
 // *userData - user data to be passed to the prefilter callback.
 // *NewtonWorldRayPrefilterCallback* prefilter - user define function to be called for each body before intersection.
@@ -2954,7 +2954,7 @@ int NewtonFracturedCompoundMeshPartGetIndexCount (const void* const segment)
 // Return the trigger volume flag of this shape.
 //
 // Parameters:
-// *const NewtonCollision* convexCollision - is the pointer to a convex collision primitive.
+// convexCollision - is the pointer to a convex collision primitive.
 // 
 // Return: 0 if collision shape is solid, non zero is collision shape is a trigger volume.
 //
@@ -2972,7 +2972,7 @@ int NewtonCollisionGetMode(const NewtonCollision* const convexCollision)
 // Set a flag on a convex collision shape to indicate that no contacts should calculated for this shape.
 //
 // Parameters:
-// *const NewtonCollision* convexCollision - is the pointer to a convex collision primitive.
+// convexCollision - is the pointer to a convex collision primitive.
 // *unsigned* triggerMode - 1 set diecable contact calculation 0 enable contact calculation.
 // 
 // Return: nothing
@@ -3015,7 +3015,7 @@ int NewtonConvexHullGetVertexData (const NewtonCollision* const convexHullCollis
 // Return the number of vertices of face and copy each index into array faceIndices.
 //
 // Parameters:
-// *const NewtonCollision* convexHullCollision - is the pointer to a convex collision hull primitive.
+// convexHullCollision - is the pointer to a convex collision hull primitive.
 // face - fixme
 // faceIndices - fixme
 // 
@@ -3043,7 +3043,7 @@ int NewtonConvexHullGetFaceIndices(const NewtonCollision* const convexHullCollis
 // calculate the total volume defined by a convex collision geometry.
 //
 // Parameters:
-// *const NewtonCollision* *convexCollision - pointer to the collision.
+// *convexCollision - pointer to the collision.
 //
 // Return: collision geometry volume. This function will return zero if the body collision geometry is no convex.
 //
@@ -3064,7 +3064,7 @@ dFloat NewtonConvexCollisionCalculateVolume(const NewtonCollision* const convexC
 // Calculate the three principal axis and the the values of the inertia matrix of a convex collision objects.
 //
 // Parameters:
-// *const NewtonCollision* convexCollision - is the pointer to a convex collision primitive.
+// convexCollision - is the pointer to a convex collision primitive.
 // *inertia - pointer to and array of a least 3 floats to hold the values of the principal inertia.
 // *origin - pointer to and array of a least 3 floats to hold the values of the center of mass for the principal inertia.
 // 
@@ -3281,7 +3281,7 @@ NewtonCollision* NewtonCreateTreeCollisionFromMesh (const NewtonWorld* const new
 // set a function call back to be call during the face query of a collision tree. 
 //
 // Parameters:
-// *const NewtonCollision* *staticCollision - is the pointer to the static collision (a CollisionTree of a HeightFieldCollision)
+// *staticCollision - is the pointer to the static collision (a CollisionTree of a HeightFieldCollision)
 // *NewtonTreeCollisionCallback *userCallback - pointer to an event function to call before Newton evaluates the polygons colliding with a body. This parameter can be NULL.     
 //
 // Remarks: because debug display display report all the faces of a collision primitive, it could get slow on very large static collision.
@@ -3305,8 +3305,8 @@ void NewtonStaticCollisionSetDebugCallback(const NewtonCollision* const staticCo
 // set a function call back to be called during the face query of a collision tree. 
 //
 // Parameters:
-// *const NewtonCollision* *treeCollision - is the pointer to the collision tree.
-// *NewtonCollisionTreeRayCastCallback *userCallback - pointer to an event function to call before Newton evaluates the polygons colliding with a body. This parameter can be NULL.     
+// *treeCollision - is the pointer to the collision tree.
+// rayHitCallback  - pointer to an event function for providing Newton with ray intersection information.
 //
 // Remarks: In general a ray cast on a collision tree will stops at the first intersections with the closest face in the tree
 // that was hit by the ray. In some cases the application may be interested in the intesation with faces other than the fiorst hit. 
@@ -3360,7 +3360,7 @@ void NewtonHeightFieldSetHorizontalDisplacement (const NewtonCollision* const he
 // Prepare a *TreeCollision* to begin to accept the polygons that comprise the collision mesh.
 //
 // Parameters:
-// *const NewtonCollision* *treeCollision - is the pointer to the collision tree.
+// *treeCollision - is the pointer to the collision tree.
 //
 // Return: Nothing.
 //
@@ -3378,7 +3378,7 @@ void NewtonTreeCollisionBeginBuild(const NewtonCollision* const treeCollision)
 // Add an individual polygon to a *TreeCollision*.
 //
 // Parameters:
-// *const NewtonCollision* *treeCollision - is the pointer to the collision tree.
+// *treeCollision - is the pointer to the collision tree.
 // vertexCount - number of vertex in *vertexPtr*
 // *vertexPtr - pointer to an array of vertex. The vertex should consist of at least 3 floats each.
 // strideInBytes - size of each vertex in bytes. This value should be 12 or larger.
@@ -3403,7 +3403,7 @@ void NewtonTreeCollisionAddFace(const NewtonCollision* const treeCollision, int 
 // Finalize the construction of the polygonal mesh.
 //
 // Parameters:
-// *const NewtonCollision* *treeCollision - is the pointer to the collision tree.
+// *treeCollision - is the pointer to the collision tree.
 // optimize - flag that indicates to Newton whether it should optimize this mesh. Set to 1 to optimize the mesh, otherwise 0.
 //
 // Return: Nothing.
@@ -3704,7 +3704,7 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // *point - pointer to and array of a least 3 floats representing the origin.
-// *const NewtonCollision* *collision -  pointer to collision primitive.
+// *collision -  pointer to collision primitive.
 // *matrix - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
 // *contact - pointer to and array of a least 3 floats to contain the closest point to collisioA.
 // *normal - pointer to and array of a least 3 floats to contain the separating vector normal.
@@ -3739,9 +3739,9 @@ int NewtonCollisionPointDistance(const NewtonWorld* const newtonWorld, const dFl
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *const NewtonCollision* *collisionA -  pointer to collision primitive A.
+// *collisionA -  pointer to collision primitive A.
 // *matrixA - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
-// *const NewtonCollision* *collisionB - pointer to collision primitive B.
+// *collisionB - pointer to collision primitive B.
 // *matrixB - pointer to an array of 16 floats containing the offset matrix of collision primitiveB.
 // *contactA - pointer to and array of a least 3 floats to contain the closest point to collisionA.
 // *contactB - pointer to and array of a least 3 floats to contain the closest point to collisionB.
@@ -3791,9 +3791,9 @@ int NewtonCollisionIntersectionTest (const NewtonWorld* const newtonWorld, const
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // maxSize - size of maximum number of elements in contacts, normals, and penetration.
-// *const NewtonCollision* *collisionA -  pointer to collision primitive A.
+// *collisionA -  pointer to collision primitive A.
 // *matrixA - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
-// *const NewtonCollision* *collisionB - pointer to collision primitive B.
+// *collisionB - pointer to collision primitive B.
 // *matrixB - pointer to an array of 16 floats containing the offset matrix of collision primitiveB.
 // *contacts - pointer to and array of a least 3 times maxSize floats to contain the collision contact points.
 // *normals - pointer to and array of a least 3 times maxSize floats to contain the collision contact normals.
@@ -3833,11 +3833,11 @@ int NewtonCollisionCollide (const NewtonWorld* const newtonWorld, int maxSize,
 // *newtonWorld - is the pointer to the Newton world.
 // maxSize - size of maximum number of elements in contacts, normals, and penetration.
 // timestep - maximum time interval considered for the continuous collision calculation. 
-// *const NewtonCollision* *collisionA -  pointer to collision primitive A.
+// *collisionA -  pointer to collision primitive A.
 // *matrixA - pointer to an array of 16 floats containing the offset matrix of collision primitiveA.
 // *velocA - pointer to and array of a least 3 times maxSize floats containing the linear velocity of collision primitiveA.
 // *omegaA - pointer to and array of a least 3 times maxSize floats containing the angular velocity of collision primitiveA.
-// *const NewtonCollision* *collisionB - pointer to collision primitive B.
+// *collisionB - pointer to collision primitive B.
 // *matrixB - pointer to an array of 16 floats containing the offset matrix of collision primitiveB.
 // *velocB - pointer to and array of a least 3 times maxSize floats containing the linear velocity of collision primitiveB.
 // *omegaB - pointer to and array of a least 3 times maxSize floats containing the angular velocity of collision primitiveB.
@@ -3885,7 +3885,7 @@ int NewtonCollisionCollideContinue(const NewtonWorld* const newtonWorld, int max
 // Calculate the most extreme point of a convex collision shape along the given direction.
 //
 // Parameters:
-// *const NewtonCollision* *collisionPtr - pointer to the collision object.
+// *collisionPtr - pointer to the collision object.
 // *dir - pointer to an array of at least three floats representing the search direction.
 // *vertex - pointer to an array of at least three floats to hold the collision most extreme vertex along the search direction.
 //
@@ -3917,7 +3917,7 @@ void NewtonCollisionSupportVertex(const NewtonCollision* const collisionPtr, con
 // Ray cast specific collision object.
 //
 // Parameters:
-// *const NewtonCollision* *collisionPtr - pointer to the collision object.
+// *collisionPtr - pointer to the collision object.
 // *p0 - pointer to an array of at least three floats representing the ray origin in the local space of the geometry.
 // *p1 - pointer to an array of at least three floats representing the ray end in the local space of the geometry.
 // *normal - pointer to an array of at least three floats to hold the normal at the intersection point.
@@ -3960,7 +3960,7 @@ dFloat NewtonCollisionRayCast(const NewtonCollision* const collisionPtr, const d
 // Calculate an axis-aligned bounding box for this collision, the box is calculated relative to *offsetMatrix*. 
 //
 // Parameters:
-// *const NewtonCollision* *collisionPtr - pointer to the collision object.
+// *collisionPtr - pointer to the collision object.
 // *offsetMatrix - pointer to an array of 16 floats containing the offset matrix used as the coordinate system and center of the AABB. 
 // *p0 - pointer to an array of at least three floats to hold minimum value for the AABB.
 // *p1 - pointer to an array of at least three floats to hold maximum value for the AABB.
@@ -4042,7 +4042,7 @@ int NewtonCollisionIsStaticShape (const NewtonCollision* const collision)
 // Store a user defined value with a convex collision primitive.
 //
 // Parameters:
-// *const NewtonCollision* collision - is the pointer to a collision primitive.
+// collision - is the pointer to a collision primitive.
 // *unsigned* id - value to store with the collision primitive.
 // 
 // Return: nothing
@@ -4062,7 +4062,7 @@ void NewtonCollisionSetUserID(const NewtonCollision* const collision, unsigned i
 // Return a user define value with a convex collision primitive.
 //
 // Parameters:
-// *const NewtonCollision* collision - is the pointer to a convex collision primitive.
+// collision - is the pointer to a convex collision primitive.
 // 
 // Return: user id
 //
@@ -4162,7 +4162,7 @@ void NewtonCollisionGetScale (const NewtonCollision* const collision, dFloat* co
 // Release a reference from this collision object returning control to Newton.
 //
 // Parameters:
-// *const NewtonCollision* *collisionPtr - pointer to the collision object
+// *collisionPtr - pointer to the collision object
 //
 // Return: Nothing.
 //
@@ -4190,7 +4190,7 @@ NewtonCollision* NewtonCollisionCreateInstance (const NewtonCollision* const col
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *const NewtonCollision* *collision - is the pointer to the collision tree shape.
+// *collision - is the pointer to the collision tree shape.
 // *NewtonSerialize* serializeFunction - pointer to the event function that will do the serialization. 
 // *serializeHandle	- user data that will be passed to the *NewtonSerialize* callback.
 //
@@ -4287,7 +4287,7 @@ NewtonCollision* NewtonCreateTreeCollisionFromSerialization(const NewtonWorld* c
 // Get creation parameters for this collision objects.
 //
 // Parameters:
-// *const NewtonCollision* collision - is the pointer to a convex collision primitive.
+// collision - is the pointer to a convex collision primitive.
 // *NewtonCollisionInfoRecord* *collisionInfo - pointer to a collision information record.
 //
 // Remarks: This function can be used by the application for writing file format and for serialization.
@@ -4427,7 +4427,7 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *const NewtonCollision* *collisionPtr - pointer to the collision object.
+// *collisionPtr - pointer to the collision object.
 //
 // Return: Pointer to the rigid body.
 //
@@ -6264,7 +6264,7 @@ void NewtonBodyIntegrateVelocity (const NewtonBody* const bodyPtr, dFloat timest
 //
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
-// *const NewtonCollision* *pivotPoint - is origin of ball and socket in global space.
+// *pivotPoint - is origin of ball and socket in global space.
 // *const NewtonBody* *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
 // *const NewtonBody* *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
@@ -6289,7 +6289,7 @@ NewtonJoint* NewtonConstraintCreateBall(const NewtonWorld* const newtonWorld,
 //
 // Parameters:
 // *ball - is the pointer to a ball and socket joint.
-// *const NewtonCollision* *pin - pointer to a unit vector defining the cone axis in global space.
+// *pin - pointer to a unit vector defining the cone axis in global space.
 // maxConeAngle - max angle in radians the attached body is allow to swing relative to the pin axis, a value of zero will disable this limits. 
 // maxTwistAngle - max angle in radians the attached body is allow to twist relative to the pin axis, a value of zero will disable this limits. 
 //
