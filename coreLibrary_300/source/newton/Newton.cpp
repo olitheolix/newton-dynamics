@@ -437,7 +437,7 @@ void NewtonWorldCriticalSectionUnlock(const NewtonWorld* const newtonWorld)
 //
 // Remarks: the function is only only have effect on the multi core version of the engine.
 //
-// See also: NewtonGetThreadNumber, NewtonGetThreadsCount
+// See also: NewtonGetThreadsCount
 void NewtonSetThreadsCount(const NewtonWorld* const newtonWorld, int threads)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -459,7 +459,7 @@ void NewtonSetThreadsCount(const NewtonWorld* const newtonWorld, int threads)
 //
 // Remarks: the function will always return 1 on the none multi core version of the library..
 //
-// See also: NewtonGetThreadNumber, NewtonSetThreadsCount, NewtonSetMultiThreadSolverOnSingleIsland 
+// See also: NewtonSetThreadsCount, NewtonSetMultiThreadSolverOnSingleIsland 
 int NewtonGetThreadsCount(const NewtonWorld* const newtonWorld)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -481,7 +481,7 @@ int NewtonGetThreadsCount(const NewtonWorld* const newtonWorld)
 //
 // Remarks: the function will always return 1 on the none multi core version of the library..
 //
-// See also: NewtonGetThreadNumber, NewtonSetThreadsCount, NewtonSetMultiThreadSolverOnSingleIsland 
+// See also: NewtonSetThreadsCount, NewtonSetMultiThreadSolverOnSingleIsland 
 int NewtonGetMaxThreadsCount(const NewtonWorld* const newtonWorld)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -594,7 +594,7 @@ int NewtonGetMultiThreadSolverOnSingleIsland(const NewtonWorld* const newtonWorl
 // of the Newton solver. This setup is best for games.
 // If you need the best realistic behavior, we recommend the use of the exact solver and exact friction model which are the defaults.
 //
-// See also: NewtonSetFrictionModel, NewtonGetThreadNumber
+// See also: NewtonSetFrictionModel
 void NewtonSetSolverModel(const NewtonWorld* const newtonWorld, int model)
 {
 	Newton* const world = (Newton *)newtonWorld;
@@ -690,9 +690,11 @@ unsigned NewtonReadThreadPerformanceTicks (const NewtonWorld* newtonWorld, unsig
 // not perform sub-steps, and does not need tuning parameters. It is the responsibility of the application to 
 // ensure that *timestep* is small enough to guarantee physics stability. 
 //
-// Return: This function call NewtonCollisionUpdate at the lower level to get the colliding contacts.
+// Return: This function call NewtonCollisionUpdate at the lower level
+// to get the colliding contacts. fixme: is this true? there is no
+// such function.
 //
-// See also: NewtonInvalidateCache, NewtonCollisionUpdate
+// See also: NewtonInvalidateCache
 void NewtonUpdate(const NewtonWorld* const newtonWorld, dFloat timestep)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -842,7 +844,7 @@ void NewtonSetIslandUpdateEvent(const NewtonWorld* const newtonWorld, NewtonIsla
 // Remarks: The application can call this function to iterate thought every body in the world. 
 //
 // Remarks: The application call this function for debugging purpose
-// See also: NewtonWorldGetNextBody, NewtonBodyForEachPolygonDo, NewtonWorldForEachBodyInAABBDo, NewtonWorldForEachJointDo
+// See also: NewtonWorldGetNextBody, NewtonWorldForEachBodyInAABBDo, NewtonWorldForEachJointDo
 NewtonBody* NewtonWorldGetFirstBody(const NewtonWorld* const newtonWorld)
 {
 	Newton* const world = (Newton *) newtonWorld;
@@ -875,7 +877,7 @@ NewtonBody* NewtonWorldGetFirstBody(const NewtonWorld* const newtonWorld)
 // Remarks: The application can call this function to iterate thought every body in the world. 
 //
 // Remarks: The application call this function for debugging purpose
-// See also: NewtonWorldGetFirstBody, NewtonBodyForEachPolygonDo, NewtonWorldForEachBodyInAABBDo, NewtonWorldForEachJointDo
+// See also: NewtonWorldGetFirstBody, NewtonWorldForEachBodyInAABBDo, NewtonWorldForEachJointDo
 NewtonBody* NewtonWorldGetNextBody(const NewtonWorld* const newtonWorld, const NewtonBody* const curBody)
 {
 	dgBody* const body = (dgBody*) curBody;
@@ -908,7 +910,7 @@ NewtonBody* NewtonWorldGetNextBody(const NewtonWorld* const newtonWorld, const N
 // Remarks: this function affect severally the performance of Newton. The application should call this function only for debugging
 // or for serialization purposes.
 //
-// See also: NewtonBodyForEachPolygonDo, NewtonWorldForEachBodyInAABBDo, NewtonWorldGetFirstBody
+// See also: NewtonWorldForEachBodyInAABBDo, NewtonWorldGetFirstBody
 void NewtonWorldForEachJointDo(const NewtonWorld* const newtonWorld, NewtonJointIterator callback, void* const userData)
 {
 	Newton* const world = (Newton *) newtonWorld;
@@ -950,7 +952,7 @@ void NewtonWorldForEachJointDo(const NewtonWorld* const newtonWorld, NewtonJoint
 // that NewtonWorldGetFirstBody, however in case where the AABB contain must of the objects in the scene, 
 // the overhead of scanning the internal Broad face collision plus the AABB test make this function more expensive.
 //
-// See also: NewtonBodyForEachPolygonDo, NewtonWorldGetFirstBody
+// See also: NewtonWorldGetFirstBody
 void NewtonWorldForEachBodyInAABBDo(const NewtonWorld* const newtonWorld, const dFloat* const p0, const dFloat* const p1, NewtonBodyIterator callback, void* const userData)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -1597,8 +1599,6 @@ void NewtonMaterialSetCallbackUserData (const NewtonWorld* const newtonWorld, in
 // Then for every call to the function *processCallback*, the application compares the impact speed for this contact with the value of 
 // *maximumImpactSpeed*, if the value is larger, then the application stores the new value along with the position, and any other quantity desired. 
 // When the application receives the call to *endCallback* the application plays a 3d sound based in the position and strength of the contact.
-//
-// See also: NewtonMaterialAsThreadSafe
 void NewtonMaterialSetCollisionCallback(const NewtonWorld* const newtonWorld, int id0, int id1, NewtonOnAABBOverlap aabbOverlap, NewtonContactsProcess processCallback)
 {
 	Newton* const world = (Newton *)newtonWorld;
@@ -2106,7 +2106,7 @@ void NewtonMaterialSetContactFrictionState(const NewtonMaterial* const materialH
 // Remarks: the value *staticFrictionCoef* and *kineticFrictionCoef* will be clamped between 0.01f and 2.0.
 // If the application wants to set a kinetic friction higher than the current static friction it must increase the static friction first.
 // 
-// See also: NewtonMaterialSetCollisionCallback, NewtonMaterialSetDefaultFriction, NewtonMaterialSetContactStaticFrictionCoef
+// See also: NewtonMaterialSetCollisionCallback, NewtonMaterialSetDefaultFriction
 void NewtonMaterialSetContactFrictionCoef(const NewtonMaterial* const materialHandle, dFloat staticFrictionCoef, dFloat kineticFrictionCoef, int index)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -3048,8 +3048,6 @@ int NewtonConvexHullGetFaceIndices(const NewtonCollision* const convexHullCollis
 // Remarks: The total volume calculated by the function is only an approximation of the ideal volume. This is not an error, it is a fact resulting from the polygonal representation of convex solids.
 //
 // Remarks: This function can be used to assist the application in calibrating features like fluid density weigh factor when calibrating buoyancy forces for more realistic result.
-//
-// See also: NewtonBodyAddBuoyancyForce
 dFloat NewtonConvexCollisionCalculateVolume(const NewtonCollision* const convexCollision)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -3254,7 +3252,7 @@ int NewtonUserMeshCollisionContinuousOverlapTest (const NewtonUserMeshCollisionC
 // Remarks: When a *TreeCollision* is assigned to a body the mass of the body is ignored in all dynamics calculations. 
 // This makes the body behave as a static body.
 //
-// See also: NewtonTreeCollisionBeginBuild, NewtonTreeCollisionAddFace, NewtonTreeCollisionEndBuild, NewtonStaticCollisionSetDebugCallback, NewtonTreeCollisionGetFaceAtribute, NewtonTreeCollisionSetFaceAtribute
+// See also: NewtonTreeCollisionBeginBuild, NewtonTreeCollisionAddFace, NewtonTreeCollisionEndBuild, NewtonStaticCollisionSetDebugCallback, NewtonTreeCollisionGetFaceAttribute, NewtonTreeCollisionSetFaceAttribute
 NewtonCollision* NewtonCreateTreeCollision(const NewtonWorld* const newtonWorld, int shapeID)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -3287,7 +3285,7 @@ NewtonCollision* NewtonCreateTreeCollisionFromMesh (const NewtonWorld* const new
 //
 // Remarks: this function is not recommended to use for production code only for debug purpose. 
 //
-// See also: NewtonTreeCollisionGetFaceAtribute, NewtonTreeCollisionSetFaceAtribute 
+// See also: NewtonTreeCollisionGetFaceAttribute, NewtonTreeCollisionSetFaceAttribute 
 void NewtonStaticCollisionSetDebugCallback(const NewtonCollision* const staticCollision, NewtonTreeCollisionCallback userCallback)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -3322,7 +3320,7 @@ void NewtonStaticCollisionSetDebugCallback(const NewtonCollision* const staticCo
 // *normal - unnormalized face mormal in the space fo eth parent of the collision.  
 // faceId -  id of this face in the collision tree.
 //
-// See also: NewtonTreeCollisionGetFaceAtribute, NewtonTreeCollisionSetFaceAtribute 
+// See also: NewtonTreeCollisionGetFaceAttribute, NewtonTreeCollisionSetFaceAttribute 
 void NewtonTreeCollisionSetUserRayCastCallback(const NewtonCollision* const treeCollision, NewtonCollisionTreeRayCastCallback rayHitCallback)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -3424,7 +3422,7 @@ void NewtonTreeCollisionEndBuild(const NewtonCollision* const treeCollision, int
 }
 
 
-// Name: NewtonTreeCollisionGetFaceAtribute 
+// Name: NewtonTreeCollisionGetFaceAttribute 
 // Get the user defined collision attributes stored with each face of the collision mesh.
 //
 // Parameters:
@@ -3437,7 +3435,7 @@ void NewtonTreeCollisionEndBuild(const NewtonCollision* const treeCollision, int
 // Remarks: This function is used to obtain the user data stored in faces of the collision geometry.
 // The application can use this user data to achieve per polygon material behavior in large static collision meshes.
 //
-// See also: NewtonTreeCollisionSetFaceAtribute, NewtonCreateTreeCollision, NewtonCreateTreeCollisionFromSerialization
+// See also: NewtonTreeCollisionSetFaceAttribute, NewtonCreateTreeCollision
 int NewtonTreeCollisionGetFaceAttribute(const NewtonCollision* const treeCollision, const int* const faceIndexArray, int indexCount)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -3447,7 +3445,7 @@ int NewtonTreeCollisionGetFaceAttribute(const NewtonCollision* const treeCollisi
 	return int (collision->GetTagId (faceIndexArray, indexCount));
 }
 
-// Name: NewtonTreeCollisionSetFaceAtribute 
+// Name: NewtonTreeCollisionSetFaceAttribute 
 // Change the user defined collision attribute stored with faces of the collision mesh.
 //
 // Parameters:
@@ -3464,7 +3462,7 @@ int NewtonTreeCollisionGetFaceAttribute(const NewtonCollision* const treeCollisi
 // For example, in a driving game, the surface of a polygon that represents the street can changed from pavement to oily or wet after
 // some collision event occurs.
 //
-// See also: NewtonTreeCollisionGetFaceAtribute, NewtonCreateTreeCollision, NewtonCreateTreeCollisionFromSerialization
+// See also: NewtonTreeCollisionGetFaceAttribute, NewtonCreateTreeCollision
 void NewtonTreeCollisionSetFaceAttribute(const NewtonCollision* const treeCollision, const int* const faceIndexArray, int indexCount, int attribute)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -4051,7 +4049,7 @@ int NewtonCollisionIsStaticShape (const NewtonCollision* const collision)
 //
 // Remarks: the application can store an id with any collision primitive. This id can be used to identify what type of collision primitive generated a contact.
 //
-// See also: NewtonMaterialGetBodyCollisionID, NewtonCollisionGetUserID, NewtonCreateBox, NewtonCreateSphere
+// See also: NewtonCollisionGetUserID, NewtonCreateBox, NewtonCreateSphere
 void NewtonCollisionSetUserID(const NewtonCollision* const collision, unsigned id)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -4070,7 +4068,7 @@ void NewtonCollisionSetUserID(const NewtonCollision* const collision, unsigned i
 //
 // Remarks: the application can store an id with any collision primitive. This id can be used to identify what type of collision primitive generated a contact.
 //
-// See also: NewtonMaterialGetBodyCollisionID, NewtonMaterialGetBodyCollisionID, NewtonCreateBox, NewtonCreateSphere
+// See also: NewtonCreateBox, NewtonCreateSphere
 unsigned NewtonCollisionGetUserID(const NewtonCollision* const collision)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -4424,7 +4422,7 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 */
 
 
-// Name: NewtonCreateBody 
+// Name: NewtonCreateDynamicBody 
 // Create a rigid body.
 //
 // Parameters:
@@ -4522,7 +4520,7 @@ NewtonBody* NewtonCreateDeformableBody (const NewtonWorld* const newtonWorld, co
 // This function will decrease the reference count of the collision geometry by one. If the reference count reaches zero, then the collision 
 // geometry will be destroyed. This function will destroy all joints associated with this body.
 //
-// See also: NewtonCreateBody
+// See also: NewtonCreateDynamicBody
 void NewtonDestroyBody (const NewtonBody* const bodyPtr)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -5618,7 +5616,7 @@ void* NewtonContactGetCollisionID1(const void* const contact)
 // of the old collision geometry. If the reference count of the old collision geometry reaches zero, the old collision geometry is destroyed.
 // This function can be used to swap the collision geometry of bodies at runtime.
 //
-// See also: NewtonCreateBody, NewtonBodyGetCollision
+// See also: NewtonCreateDynamicBody, NewtonBodyGetCollision
 void NewtonBodySetCollision(const NewtonBody* const bodyPtr, const NewtonCollision* const collisionPtr)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -5659,7 +5657,7 @@ void NewtonBodySetCollisionScale (const NewtonBody* const bodyPtr, dFloat scaleX
 //
 // Remarks: This function does not increment the reference count of the collision geometry. 
 //
-// See also: NewtonCreateBody, NewtonBodySetCollision
+// See also: NewtonCreateDynamicBody, NewtonBodySetCollision
 NewtonCollision* NewtonBodyGetCollision(const NewtonBody* const bodyPtr)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -5885,7 +5883,7 @@ void NewtonBodySetFreezeState(const NewtonBody* const bodyPtr, int state)
 // In that case, the application may call NewtonBodySetAutoSleep (body, 0) followed by
 // NewtonBodySetFreezeState(body), this will make the body active forever. 
 //
-// See also: NewtonBodyGetFreezeState, NewtonBodySetFreezeState, NewtonBodyGetAutoSleep, NewtonBodySetFreezeTreshold
+// See also: NewtonBodyGetFreezeState, NewtonBodySetFreezeState, NewtonBodyGetAutoSleep
 void NewtonBodySetAutoSleep(const NewtonBody* const bodyPtr, int state)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -6435,7 +6433,7 @@ void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
     @{
 
 
-// fixme:  NewtonConstraintCreateHinge
+// fixme: delete NewtonConstraintCreateHinge?
 // Create a hinge joint. 
 //
 // Parameters:
@@ -6460,7 +6458,7 @@ NewtonJoint*  NewtonConstraintCreateHinge(const NewtonWorld* const newtonWorld, 
 }
 
 
-// fixme: NewtonHingeSetUserCallback
+// fixme: delete NewtonHingeSetUserCallback?
 // Set an update call back to be called when either of the two body linked by the joint is active.
 //
 // Parameters:
@@ -6484,7 +6482,7 @@ void NewtonHingeSetUserCallback(const NewtonJoint* const hinge, NewtonHingeCallb
 }
 
 
-// fixme: NewtonHingeGetJointAngle
+// fixme: delete NewtonHingeGetJointAngle?
 // Get the relative joint angle between the two bodies.
 //
 // Parameters:
@@ -6494,8 +6492,6 @@ void NewtonHingeSetUserCallback(const NewtonJoint* const hinge, NewtonHingeCallb
 //
 // Remarks: this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play a bell sound when the joint angle passes some max value.
-// 
-// See also: NewtonHingeSetUserCallback
 dFloat NewtonHingeGetJointAngle (const NewtonJoint* const hinge)
 {
 	dgHingeConstraint* contraint;
@@ -6506,7 +6502,7 @@ dFloat NewtonHingeGetJointAngle (const NewtonJoint* const hinge)
 
 }
 
-// fixme: NewtonHingeGetJointOmega
+// fixme: delete NewtonHingeGetJointOmega?
 // Get the relative joint angular velocity between the two bodies.
 //
 // Parameters:
@@ -6516,8 +6512,6 @@ dFloat NewtonHingeGetJointAngle (const NewtonJoint* const hinge)
 //
 // Remarks: this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play the creaky noise of a hanging lamp.
-// 
-// See also: NewtonHingeSetUserCallback
 dFloat NewtonHingeGetJointOmega(const NewtonJoint* const hinge)
 {
 	dgHingeConstraint* contraint;
@@ -6527,7 +6521,7 @@ dFloat NewtonHingeGetJointOmega(const NewtonJoint* const hinge)
 	return contraint->GetJointOmega ();
 }
 
-// fixme: NewtonHingeGetJointForce
+// fixme: delete NewtonHingeGetJointForce?
 // Calculate the angular acceleration needed to stop the hinge at the desired angle.
 //
 // Parameters:
@@ -6538,8 +6532,6 @@ dFloat NewtonHingeGetJointOmega(const NewtonJoint* const hinge)
 // Return: the relative angular acceleration needed to stop the hinge.
 //
 // Remarks: this function can only be called from a *NewtonHingeCallback* and it can be used by the application to implement hinge limits.
-// 
-// See also: NewtonHingeSetUserCallback
 dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const NewtonHingeSliderUpdateDesc* const desc, dFloat angle)
 {
 	dgHingeConstraint* contraint;
@@ -6549,7 +6541,7 @@ dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const Newt
 	return contraint->CalculateStopAlpha (angle, (dgJointCallbackParam*) desc);
 }
 
-// fixme: NewtonHingeGetJointForce
+// fixme: delete NewtonHingeGetJointForce?
 // Get the total force asserted over the joint pivot point, to maintain the constraint.
 //
 // Parameters:
@@ -6560,8 +6552,6 @@ dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const Newt
 //
 // Remarks: this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can destroy the joint if the force exceeds some predefined value.
-// 
-// See also: NewtonHingeSetUserCallback
 void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const force)
 {
 	dgHingeConstraint* contraint;
@@ -7212,7 +7202,7 @@ NewtonJoint* NewtonConstraintCreateUpVector (const NewtonWorld* const newtonWorl
 // if the application is going to animated the up vector, it must do so by applying only small rotation, 
 // too large rotation can cause vibration of the joint.
 // 
-// See also: NewtonUpVectorSetUserCallback, NewtonUpVectorSetPin
+// See also: NewtonUpVectorSetPin
 void NewtonUpVectorGetPin(const NewtonJoint* const upVector, dFloat *pin)
 {
 	dgUpVectorConstraint* contraint;
@@ -7240,7 +7230,7 @@ void NewtonUpVectorGetPin(const NewtonJoint* const upVector, dFloat *pin)
 // if the application is going to animated the up vector, it must do so by applying only small rotation, 
 // too large rotation can cause vibration of the joint.
 // 
-// See also: NewtonUpVectorSetUserCallback, NewtonUpVectorGetPin
+// See also: NewtonUpVectorGetPin
 void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 {
 	dgUpVectorConstraint* contraint;
@@ -7359,7 +7349,7 @@ void NewtonUserJointAddLinearRow(const NewtonJoint* const joint, const dFloat* c
 //
 // Remark: This function is of not practical to enforce hard constraints, but it is very useful for making angular motors.
 //
-// See also: NewtonUserJointAddLinearRow, NewtonUserJointAddIndependentAngularRow  
+// See also: NewtonUserJointAddLinearRow
 void NewtonUserJointAddAngularRow(const NewtonJoint* const joint, dFloat relativeAngleError, const dFloat* const pin)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -7572,7 +7562,7 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 // Remarks: The application can store a user defined value with the Joint. This value can be the pointer to a structure containing some application data for special effect. 
 // if the application allocate some resource to store the user data, the application can register a joint destructor to get rid of the allocated resource when the Joint is destroyed
 // 
-// See also: NewtonConstraintCreateJoint, NewtonJointSetDestructor
+// See also: NewtonJointSetDestructor
 void NewtonJointSetUserData(const NewtonJoint* const joint, void* const userData)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -7840,7 +7830,7 @@ void NewtonJointSetDestructor(const NewtonJoint* const joint, NewtonConstraintDe
 // Remarks: The application can call this function when it wants to destroy a joint. This function can be used by the application to simulate
 // breakable joints
 //
-// See also: NewtonConstraintCreateJoint,  NewtonConstraintCreateHinge, NewtonConstraintCreateSlider
+// See also: NewtonConstraintCreateSlider
 void NewtonDestroyJoint(const NewtonWorld* const newtonWorld, const NewtonJoint* const joint)
 {
 	TRACE_FUNCTION(__FUNCTION__);
