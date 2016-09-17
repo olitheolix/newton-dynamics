@@ -57,7 +57,7 @@
 
 
 
-/** @defgroup Misc
+/** @defgroup Misc Misc
     Misc
     @{
 */
@@ -159,7 +159,7 @@ void NewtonFree (void* const ptr)
 /** @} */ // end of group Misc
 
 
-/** @defgroup World
+/** @defgroup World World
     World interface
     @{
 */
@@ -1339,7 +1339,7 @@ void NewtonIslandGetBodyAABB(const void* const island, int bodyIndex, dFloat* co
 
 /** @} */ // end of group World
 
-/** @defgroup GroupID
+/** @defgroup GroupID GroupID
     GroupID interface
     @{
 */
@@ -1408,7 +1408,7 @@ void NewtonMaterialDestroyAllGroupID(const NewtonWorld* const newtonWorld)
 
 /** @} */ // end of GroupID
 
-/** @defgroup MaterialSetup
+/** @defgroup MaterialSetup MaterialSetup
     Material setup interface
     @{
 */
@@ -1711,7 +1711,7 @@ NewtonMaterial* NewtonWorldGetNextMaterial(const NewtonWorld* const newtonWorld,
 /** @} */ // end of MaterialSetup
 
 
-/** @defgroup ContactBehaviour
+/** @defgroup ContactBehaviour ContactBehaviour
     Contact behavior control interface
     @{
 */
@@ -2275,7 +2275,7 @@ void NewtonMaterialContactRotateTangentDirections(const NewtonMaterial* const ma
 
 /** @} */ // end of ContactBehaviour
 
-/** @defgroup CshapesConvexSimple
+/** @defgroup CshapesConvexSimple CshapesConvexSimple
     Convex collision primitives interface
     @{
 */
@@ -3147,7 +3147,7 @@ const void* NewtonCollisionDataPointer (const NewtonCollision* const convexColli
 
 /** @} */ // end of CshapesConvexSimple
 
-/** @defgroup CshapesConvexComplex
+/** @defgroup CshapesConvexComplex CshapesConvexComplex
     Complex collision primitives interface
     @{
 */
@@ -3691,7 +3691,7 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 /** @} */ // end of CshapesConvexComples
 
 
-/** @defgroup CollisionLibraryGeneric
+/** @defgroup CollisionLibraryGeneric CollisionLibraryGeneric
     Generic collision library functions
     @{
 */
@@ -4309,7 +4309,7 @@ void NewtonCollisionGetInfo(const NewtonCollision* const collision, NewtonCollis
 /** @} */ // end of CollisionLibraryGeneric
 
 
-/** @defgroup TransUtil
+/** @defgroup TransUtil TransUtil
     Transform utility functions 
     @{
 */
@@ -4418,7 +4418,7 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 
 /** @} */ // end of TransUtil
 
-/** @defgroup RigidBodyInterface
+/** @defgroup RigidBodyInterface RigidBodyInterface
     Rigid Body Interface
     @{
 */
@@ -6251,7 +6251,7 @@ void NewtonBodyIntegrateVelocity (const NewtonBody* const bodyPtr, dFloat timest
 
 /** @} */ // end of RigidBodyInterface
 
-/** @defgroup ConstraintBall
+/** @defgroup ConstraintBall ConstraintBall
     Ball and Socket joint interface
     @{
 */
@@ -6429,7 +6429,7 @@ void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
 
 /** @} */ // end of ConstraintBall
 
-/** @defgroup JointHinge
+/** @defgroup JointHinge JointHinge
     Hinge joint interface
     fixme: all functions are commented out. Can we delete them?
     @{
@@ -6576,7 +6576,7 @@ void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const forc
 
 /** @} */ // end of JointHinge
 
-/** @defgroup JointSlider
+/** @defgroup JointSlider JointSlider
     Slider joint interface
     @{
 */
@@ -6724,7 +6724,7 @@ void NewtonSliderGetJointForce(const NewtonJoint* const slider, dFloat* const fo
 
 /** @} */ // end of JointSlider
 
-/** @defgroup JointCorkscrew
+/** @defgroup JointCorkscrew JointCorkscrew
     Corkscrew joint interface
     @{
 */
@@ -6939,7 +6939,7 @@ void NewtonCorkscrewGetJointForce(const NewtonJoint* const corkscrew, dFloat* co
 
 /** @} */ // end of
 
-/** @defgroup JointUniversal
+/** @defgroup JointUniversal JointUniversal
     Universal joint interface
     @{
 */
@@ -7168,7 +7168,7 @@ void NewtonUniversalGetJointForce(const NewtonJoint* const universal, dFloat* co
 
 /** @} */ // end of JointUniversal
 
-/** @defgroup JointUpVector
+/** @defgroup JointUpVector JointUpVector
     UpVector joint Interface
     @{
 */
@@ -7254,7 +7254,7 @@ void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 
 /** @} */ // end of JointUniversal
 
-/** @defgroup JointUser
+/** @defgroup JointUser JointUser
     User defined joint interface
     @{
 */
@@ -7555,7 +7555,7 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 
 /** @} */ // end of JointUser
 
-/** @defgroup JointCommon
+/** @defgroup JointCommon JointCommon
     Joint common function s
     @{
 */
@@ -7850,7 +7850,7 @@ void NewtonDestroyJoint(const NewtonWorld* const newtonWorld, const NewtonJoint*
 
 /** @} */ // end of JointCommon
 
-/** @defgroup SpecialEffectMesh
+/** @defgroup SpecialEffectMesh SpecialEffectMesh
     Special effect mesh interface
     @{
 */
@@ -8734,7 +8734,7 @@ const int* NewtonDeformableMeshSegmentGetIndexList (const NewtonCollision* const
 
 /** @} */ // end of
 
-/** @defgroup Unclassified
+/** @defgroup Unclassified Unclassified
 
     @{
 */
