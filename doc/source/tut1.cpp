@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include "Newton.h"
+
+
+void cb_applyForce(const NewtonBody* const body, dFloat timestep, int threadIndex)
+{
+  // Apply a force to the object. Note: NewtonBodySetForce has no
+  // effect unless it is called from within thi callback function.
+  dFloat force[3] = {0, 1.0, 0};
+  NewtonBodySetForce(body, force);
+
+  // Query the state of the object (4x4 matrix to encode rotation and
+  // translation).
+  float state[16];
+  NewtonBodyGetMatrix(body, state);
+  printf("Time %.2fs: x=%.2f  y=%.2f  z=%.2f\n",
+         timestep, state[12], state[13], state[14]);
+}
+
+
+void addBoxToSimulation(NewtonWorld *world) {
+  // fixme: what is this?
+  float	foo[16] = {
+    1.0f, 0.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 0.0f, 1.0f
+  };
+	
+  // Create the cube with 10m side length.
+  NewtonCollision* const collision = NewtonCreateBox(world, 10, 10, 10, 0, NULL);
+
+  // fixme: what is this for?
+  NewtonBody* const body = NewtonCreateDynamicBody(world, collision, foo);
+
+  // fixme: has no doc string. Is this mass, I_xx, I_yy, and I_zz?
+  NewtonBodySetMassMatrix(body, 1.0f, 1, 1, 1);
+
+  // Install callback. Newton will call it whenever the object moves.
+  NewtonBodySetForceAndTorqueCallback(body, cb_applyForce);
+}
+
+
+int main (int argc, const char * argv[])
+{
+  // Create the Newton world.
+  NewtonWorld* const world = NewtonCreate();
+	
+  // Add the box.
+  addBoxToSimulation(world);
+
+  // Step the (empty) world 60 times in increments of 1/60 second.
+  const float timestep = 1.0f / 60;
+  for(int i=0; i<60; i++) {
+    NewtonUpdate(world, timestep);
+  }
+	
+  // Clean up.
+  NewtonDestroyAllBodies(world);
+  NewtonDestroy(world);
+
+  return 0;
+}

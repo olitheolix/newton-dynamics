@@ -13,4 +13,4 @@ supported by Newton.
    :maxdepth: 1
 
    Compile and link an empty Newton simulation <tut_0>
-
+   Apply a force to a spherical body and track its position <tut_1>
