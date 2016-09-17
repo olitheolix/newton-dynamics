@@ -57,7 +57,7 @@
 
 
 
-/** @defgroup Misc Misc
+/*! @defgroup Misc Misc
     Misc
     @{
 */
@@ -155,10 +155,10 @@ void NewtonFree (void* const ptr)
 	dgFreeStack(ptr); 
 }
 
-/** @} */ // end of group Misc
+/*! @} */ // end of group Misc
 
 
-/** @defgroup World World
+/*! @defgroup World World
     World interface
     @{
 */
@@ -1338,9 +1338,9 @@ void NewtonIslandGetBodyAABB(const void* const island, int bodyIndex, dFloat* co
 	}
 }
 
-/** @} */ // end of group World
+/*! @} */ // end of group World
 
-/** @defgroup GroupID GroupID
+/*! @defgroup GroupID GroupID
     GroupID interface
     @{
 */
@@ -1407,9 +1407,9 @@ void NewtonMaterialDestroyAllGroupID(const NewtonWorld* const newtonWorld)
 	world->	RemoveAllGroupID();
 }
 
-/** @} */ // end of GroupID
+/*! @} */ // end of GroupID
 
-/** @defgroup MaterialSetup MaterialSetup
+/*! @defgroup MaterialSetup MaterialSetup
     Material setup interface
     @{
 */
@@ -1708,10 +1708,10 @@ NewtonMaterial* NewtonWorldGetNextMaterial(const NewtonWorld* const newtonWorld,
 	return (NewtonMaterial*)world->GetNextMaterial ((dgContactMaterial*) material);
 }
 
-/** @} */ // end of MaterialSetup
+/*! @} */ // end of MaterialSetup
 
 
-/** @defgroup ContactBehaviour ContactBehaviour
+/*! @defgroup ContactBehaviour ContactBehaviour
     Contact behavior control interface
     @{
 */
@@ -2271,9 +2271,9 @@ void NewtonMaterialContactRotateTangentDirections(const NewtonMaterial* const ma
 	}
 }
 
-/** @} */ // end of ContactBehaviour
+/*! @} */ // end of ContactBehaviour
 
-/** @defgroup CshapesConvexSimple CshapesConvexSimple
+/*! @defgroup CshapesConvexSimple CshapesConvexSimple
     Convex collision primitives interface
     @{
 */
@@ -3139,9 +3139,9 @@ const void* NewtonCollisionDataPointer (const NewtonCollision* const convexColli
 	return coll->GetChildShape();
 }
 
-/** @} */ // end of CshapesConvexSimple
+/*! @} */ // end of CshapesConvexSimple
 
-/** @defgroup CshapesConvexComplex CshapesConvexComplex
+/*! @defgroup CshapesConvexComplex CshapesConvexComplex
     Complex collision primitives interface
     @{
 */
@@ -3682,10 +3682,10 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 	return instance->GetChildShape()->GetSkinThickness();
 }
 
-/** @} */ // end of CshapesConvexComples
+/*! @} */ // end of CshapesConvexComples
 
 
-/** @defgroup CollisionLibraryGeneric CollisionLibraryGeneric
+/*! @defgroup CollisionLibraryGeneric CollisionLibraryGeneric
     Generic collision library functions
     @{
 */
@@ -4299,10 +4299,10 @@ void NewtonCollisionGetInfo(const NewtonCollision* const collision, NewtonCollis
 }
 
 
-/** @} */ // end of CollisionLibraryGeneric
+/*! @} */ // end of CollisionLibraryGeneric
 
 
-/** @defgroup TransUtil TransUtil
+/*! @defgroup TransUtil TransUtil
     Transform utility functions 
     @{
 */
@@ -4409,9 +4409,9 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 	return accel;
 }
 
-/** @} */ // end of TransUtil
+/*! @} */ // end of TransUtil
 
-/** @defgroup RigidBodyInterface RigidBodyInterface
+/*! @defgroup RigidBodyInterface RigidBodyInterface
     Rigid Body Interface
     @{
 */
@@ -6242,9 +6242,9 @@ void NewtonBodyIntegrateVelocity (const NewtonBody* const bodyPtr, dFloat timest
 	}
 }
 
-/** @} */ // end of RigidBodyInterface
+/*! @} */ // end of RigidBodyInterface
 
-/** @defgroup ConstraintBall ConstraintBall
+/*! @defgroup ConstraintBall ConstraintBall
     Ball and Socket joint interface
     @{
 */
@@ -6421,9 +6421,9 @@ void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
 }
 
 
-/** @} */ // end of ConstraintBall
+/*! @} */ // end of ConstraintBall
 
-/** @defgroup JointHinge JointHinge
+/*! @defgroup JointHinge JointHinge
     Hinge joint interface
     fixme: all functions are commented out. Can we delete them?
     @{
@@ -6554,9 +6554,9 @@ void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const forc
 	force[2] = forceVector.m_z;
 }
 
-/** @} */ // end of JointHinge
+/*! @} */ // end of JointHinge
 
-/** @defgroup JointSlider JointSlider
+/*! @defgroup JointSlider JointSlider
     Slider joint interface
     @{
 */
@@ -6702,9 +6702,9 @@ void NewtonSliderGetJointForce(const NewtonJoint* const slider, dFloat* const fo
 }
 
 
-/** @} */ // end of JointSlider
+/*! @} */ // end of JointSlider
 
-/** @defgroup JointCorkscrew JointCorkscrew
+/*! @defgroup JointCorkscrew JointCorkscrew
     Corkscrew joint interface
     @{
 */
@@ -6917,9 +6917,9 @@ void NewtonCorkscrewGetJointForce(const NewtonJoint* const corkscrew, dFloat* co
 }
 
 
-/** @} */ // end of
+/*! @} */ // end of
 
-/** @defgroup JointUniversal JointUniversal
+/*! @defgroup JointUniversal JointUniversal
     Universal joint interface
     @{
 */
@@ -7146,9 +7146,9 @@ void NewtonUniversalGetJointForce(const NewtonJoint* const universal, dFloat* co
 }
 
 
-/** @} */ // end of JointUniversal
+/*! @} */ // end of JointUniversal
 
-/** @defgroup JointUpVector JointUpVector
+/*! @defgroup JointUpVector JointUpVector
     UpVector joint Interface
     @{
 */
@@ -7232,9 +7232,9 @@ void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 	contraint->SetPinDir (pinVector);
 }
 
-/** @} */ // end of JointUniversal
+/*! @} */ // end of JointUniversal
 
-/** @defgroup JointUser JointUser
+/*! @defgroup JointUser JointUser
     User defined joint interface
     @{
 */
@@ -7533,9 +7533,9 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 }
 
 
-/** @} */ // end of JointUser
+/*! @} */ // end of JointUser
 
-/** @defgroup JointCommon JointCommon
+/*! @defgroup JointCommon JointCommon
     Joint common function s
     @{
 */
@@ -7826,9 +7826,9 @@ void NewtonDestroyJoint(const NewtonWorld* const newtonWorld, const NewtonJoint*
 	world->DestroyJoint ((dgConstraint*) joint);
 }
 
-/** @} */ // end of JointCommon
+/*! @} */ // end of JointCommon
 
-/** @defgroup SpecialEffectMesh SpecialEffectMesh
+/*! @defgroup SpecialEffectMesh SpecialEffectMesh
     Special effect mesh interface
     @{
 */
@@ -8710,9 +8710,9 @@ const int* NewtonDeformableMeshSegmentGetIndexList (const NewtonCollision* const
 	return NULL;
 }
 
-/** @} */ // end of
+/*! @} */ // end of
 
-/** @defgroup Unclassified Unclassified
+/*! @defgroup Unclassified Unclassified
 
     @{
 */
@@ -8867,5 +8867,5 @@ void NewtonCollisionAggregateSetSelfCollision(void* const aggregatePtr, int stat
 	dgBroadPhaseAggregate* const aggregate = (dgBroadPhaseAggregate*) aggregatePtr;
 	aggregate->SetSelfCollision(state ? true : false);
 }
-/** @} */ // end of
+/*! @} */ // end of
 
