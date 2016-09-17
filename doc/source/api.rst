@@ -30,7 +30,7 @@ API functions by group.
 
 Doxygen
 -------
-It is also possible to produce the API documentaion via Doxygen:
+It is also possible to produce the API documentation via Doxygen:
 
 .. code-block:: bash
 

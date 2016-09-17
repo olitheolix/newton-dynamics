@@ -2,9 +2,9 @@ Tutorials
 =========
 
 The tutorials are for people who have never used Newton before. The examples
-are as minimalistic as possible for the task at hand. Instead of Makefiles you
+are as minimalist as possible for the task at hand. Instead of Makefiles you
 will need to type the compile command. Instead of 3D visualisations there will
-only be `printf` statements - you have been warned :)
+only be ``printf`` statements - you have been warned :)
 
 The tutorials were developed on Kubuntu 16.04, but should run on all platforms
 supported by Newton.
@@ -12,5 +12,5 @@ supported by Newton.
 .. toctree::
    :maxdepth: 1
 
-   Compile and link an empty Newton simulation <tut_0>
-   Apply a force to a spherical body and track its position <tut_1>
+   Compiling A Simulation <tut_0>
+   Apply A Force To A Box <tut_1>

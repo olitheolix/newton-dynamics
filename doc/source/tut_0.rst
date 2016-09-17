@@ -25,7 +25,7 @@ This may look intimidating but is straightforward. The ``-I
 ../../coreLibrary_300/source/newton/`` flag tells the compiler where to find
 ``Newton.h``. Similarly,  ``-L ../../build/lib/`` tells the linker where to look
 for additional libraries. The next flag (``-lNewton``) tells the linker to link
-our prgram against the ``libNewton.so`` libray we built in :ref:`Installation`.
+our program against the ``libNewton.so`` library we built in :ref:`Installation`.
 Finally, Newton uses threads internally and thus needs a ``-lpthread``.
 
 

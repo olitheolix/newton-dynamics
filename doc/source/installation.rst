@@ -3,8 +3,8 @@
 Installation
 ============
 
-You can build Newton with or without graphical demos. For the core library (ie
-no graphcial demos) you only need a C++ compiler, CMake, a Git client, and the
+You can build Newton with- or without graphical demos. For the core library (ie
+no graphical demos) you only need a C++ compiler, CMake, a Git client, and the
 `TinyXML <http://www.grinninglizard.com/tinyxml/>`_ library.
 
 The sections below outline the process for the both options.
@@ -46,7 +46,7 @@ Library + Demos
    mkdir build && cd build
    cmake -DNEWTON_DEMOS_SANDBOX=ON .. && make
 
-The demos are all contained in a single exectuable. To start it from the
+The demos are all contained in a single executable. To start it from the
 ``build`` directory type:
 
 .. code-block:: bash
