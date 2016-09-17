@@ -58,7 +58,9 @@
 
 
 /*! @defgroup Misc Misc
-Misc@{*/
+Misc
+@{
+*/
 
 //#define SAVE_COLLISION
 
@@ -157,7 +159,9 @@ void NewtonFree (void* const ptr)
 
 
 /*! @defgroup World World
-World interface@{*/
+World interface
+@{
+*/
 
 /*!
   Create an instance of the Newton world.
@@ -1337,7 +1341,9 @@ void NewtonIslandGetBodyAABB(const void* const island, int bodyIndex, dFloat* co
 /*! @} */ // end of group World
 
 /*! @defgroup GroupID GroupID
-GroupID interface@{*/
+GroupID interface
+@{
+*/
 
 
 /*!
@@ -1404,7 +1410,9 @@ void NewtonMaterialDestroyAllGroupID(const NewtonWorld* const newtonWorld)
 /*! @} */ // end of GroupID
 
 /*! @defgroup MaterialSetup MaterialSetup
-Material setup interface@{*/
+Material setup interface
+@{
+*/
 
 
 /*!
@@ -1704,7 +1712,9 @@ NewtonMaterial* NewtonWorldGetNextMaterial(const NewtonWorld* const newtonWorld,
 
 
 /*! @defgroup ContactBehaviour ContactBehaviour
-Contact behavior control interface@{*/
+Contact behavior control interface
+@{
+*/
 
 // fixme: delete NewtonMaterialDisableContact?
 // Disable processing for the contact. 
@@ -2264,7 +2274,9 @@ void NewtonMaterialContactRotateTangentDirections(const NewtonMaterial* const ma
 /*! @} */ // end of ContactBehaviour
 
 /*! @defgroup CshapesConvexSimple CshapesConvexSimple
-Convex collision primitives interface@{*/
+Convex collision primitives interface
+@{
+*/
 
 
 /*!
@@ -3130,7 +3142,9 @@ const void* NewtonCollisionDataPointer (const NewtonCollision* const convexColli
 /*! @} */ // end of CshapesConvexSimple
 
 /*! @defgroup CshapesConvexComplex CshapesConvexComplex
-Complex collision primitives interface@{*/
+Complex collision primitives interface
+@{
+*/
 
 
 /*!
@@ -3672,7 +3686,9 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 
 
 /*! @defgroup CollisionLibraryGeneric CollisionLibraryGeneric
-Generic collision library functions@{*/
+Generic collision library functions
+@{
+*/
 
 /*!
   Calculate the closest point between a point and convex collision primitive.
@@ -4287,7 +4303,9 @@ void NewtonCollisionGetInfo(const NewtonCollision* const collision, NewtonCollis
 
 
 /*! @defgroup TransUtil TransUtil
-Transform utility functions@{*/
+Transform utility functions
+@{
+*/
 
 
 /*!
@@ -4394,7 +4412,9 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 /*! @} */ // end of TransUtil
 
 /*! @defgroup RigidBodyInterface RigidBodyInterface
-Rigid Body Interface@{*/
+Rigid Body Interface
+@{
+*/
 
 
 /*!
@@ -6225,7 +6245,9 @@ void NewtonBodyIntegrateVelocity (const NewtonBody* const bodyPtr, dFloat timest
 /*! @} */ // end of RigidBodyInterface
 
 /*! @defgroup ConstraintBall ConstraintBall
-Ball and Socket joint interface@{*/
+Ball and Socket joint interface
+@{
+*/
 
 
 /*!
@@ -6465,12 +6487,15 @@ dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const Newt
   
   this function can be used during a function update call back to provide the application with some special effect.
   for example the application can destroy the joint if the force exceeds some predefined value.
-void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const force){dgHingeConstraint* contraint;TRACE_FUNCTION(__FUNCTION__);contraint = (dgHingeConstraint*) hinge;dgVector forceVector (contraint->GetJointForce ());force[0] = forceVector.m_x;force[1] = forceVector.m_y;force[2] = forceVector.m_z;}*/
+void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const force){dgHingeConstraint* contraint;TRACE_FUNCTION(__FUNCTION__);contraint = (dgHingeConstraint*) hinge;dgVector forceVector (contraint->GetJointForce ());force[0] = forceVector.m_x;force[1] = forceVector.m_y;force[2] = forceVector.m_z;}
+*/
 
 /*! @} */ // end of JointHinge
 
 /*! @defgroup JointSlider JointSlider
-Slider joint interface@{*/
+Slider joint interface
+@{
+*/
 
 /*!
   Create a slider joint.
@@ -6616,7 +6641,9 @@ void NewtonSliderGetJointForce(const NewtonJoint* const slider, dFloat* const fo
 /*! @} */ // end of JointSlider
 
 /*! @defgroup JointCorkscrew JointCorkscrew
-Corkscrew joint interface@{*/
+Corkscrew joint interface
+@{
+*/
 
 /*!
   Create a corkscrew joint.
@@ -6826,10 +6853,12 @@ void NewtonCorkscrewGetJointForce(const NewtonJoint* const corkscrew, dFloat* co
 }
 
 
-/*! @} */ // end of
+/*! @} */ // end of JointSlider
 
 /*! @defgroup JointUniversal JointUniversal
-Universal joint interface@{*/
+Universal joint interface
+@{
+*/
 
 /*!
   Create a universal joint.
@@ -7056,7 +7085,9 @@ void NewtonUniversalGetJointForce(const NewtonJoint* const universal, dFloat* co
 /*! @} */ // end of JointUniversal
 
 /*! @defgroup JointUpVector JointUpVector
-UpVector joint Interface@{*/
+UpVector joint Interface
+@{
+*/
 
 /*!
   Create a UpVector joint.
@@ -7137,10 +7168,12 @@ void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 	contraint->SetPinDir (pinVector);
 }
 
-/*! @} */ // end of JointUniversal
+/*! @} */ // end of JointUpVector
 
 /*! @defgroup JointUser JointUser
-User defined joint interface@{*/
+User defined joint interface
+@{
+*/
 
 /*!
   Create a user define bilateral joint.
@@ -7439,7 +7472,9 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 /*! @} */ // end of JointUser
 
 /*! @defgroup JointCommon JointCommon
-Joint common function s@{*/
+Joint common function s
+@{
+*/
 
 /*!
   Store a user defined data value with the joint.
@@ -7730,7 +7765,9 @@ void NewtonDestroyJoint(const NewtonWorld* const newtonWorld, const NewtonJoint*
 /*! @} */ // end of JointCommon
 
 /*! @defgroup SpecialEffectMesh SpecialEffectMesh
-Special effect mesh interface@{*/
+Special effect mesh interface
+@{
+*/
 
 NewtonMesh* NewtonMeshCreate(const NewtonWorld* const newtonWorld)
 {
@@ -8612,7 +8649,9 @@ const int* NewtonDeformableMeshSegmentGetIndexList (const NewtonCollision* const
 /*! @} */ // end of
 
 /*! @defgroup Unclassified Unclassified
-@{*/
+
+@{
+*/
 
 
 NewtonSkeletonContainer* NewtonSkeletonContainerCreate(NewtonWorld* const worldPtr, NewtonBody* const rootBone, NewtonSkeletontDestructor destructor)
