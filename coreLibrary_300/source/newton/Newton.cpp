@@ -6553,6 +6553,7 @@ void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const forc
 	force[1] = forceVector.m_y;
 	force[2] = forceVector.m_z;
 }
+*/
 
 /*! @} */ // end of JointHinge
 
