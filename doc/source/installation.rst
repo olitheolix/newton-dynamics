@@ -1,4 +1,4 @@
-.. installation_
+.. _installation:
 
 Installation
 ============
@@ -47,7 +47,7 @@ Library + Demos
    cmake -DNEWTON_DEMOS_SANDBOX=ON .. && make
 
 The demos are all contained in a single exectuable. To start it from the
-``build` directory type:
+``build`` directory type:
 
 .. code-block:: bash
 
