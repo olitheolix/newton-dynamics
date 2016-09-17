@@ -6414,6 +6414,7 @@ void NewtonBallGetJointOmega(const NewtonJoint* const ball, dFloat* omega)
 // See also: NewtonBallSetUserCallback
 void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
 {
+  // fixme: type? "constraint" instead of "contraint"?
 	dgBallConstraint* contraint;
 
 	TRACE_FUNCTION(__FUNCTION__);
