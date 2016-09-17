@@ -1,24 +1,39 @@
 API Documentation
 =================
 
-.. doxygengroup:: Misc
-.. doxygengroup:: World
-.. doxygengroup:: GroupID
-.. doxygengroup:: MaterialSetup
-.. doxygengroup:: ContactBehaviour
-.. doxygengroup:: CshapesConvexSimple
-.. doxygengroup:: CshapesConvexComplex
-.. doxygengroup:: CollisionLibraryGeneric
-.. doxygengroup:: TransUtil
-.. doxygengroup:: RigidBodyInterface
-.. doxygengroup:: ConstraintBall
-.. doxygengroup:: JointHinge
-.. doxygengroup:: JointSlider
-.. doxygengroup:: JointCorkscrew
-.. doxygengroup:: JointUniversal
-.. doxygengroup:: JointUpVector
-.. doxygengroup:: JointUser
-.. doxygengroup:: JointCommon
-.. doxygengroup:: SpecialEffectMesh
-.. doxygengroup:: Unclassified
+API functions by group.
 
+.. toctree::
+   :maxdepth: 1
+
+   Misc <api/Misc>
+   World <api/World>
+   GroupID <api/GroupID>
+   MaterialSetup <api/MaterialSetup>
+   ContactBehaviour <api/ContactBehaviour>
+   CshapesConvexSimple <api/CshapesConvexSimple>
+   CshapesConvexComplex <api/CshapesConvexComplex>
+   CollisionLibraryGeneric <api/CollisionLibraryGeneric>
+   TransUtil <api/TransUtil>
+   RigidBodyInterface <api/RigidBodyInterface>
+   ConstraintBall <api/ConstraintBall>
+   JointHinge <api/JointHinge>
+   JointSlider <api/JointSlider>
+   JointCorkscrew <api/JointCorkscrew>
+   JointUniversal <api/JointUniversal>
+   JointUpVector <api/JointUpVector>
+   JointUser <api/JointUser>
+   JointCommon <api/JointCommon>
+   SpecialEffectMesh <api/SpecialEffectMesh>
+   Unclassified <api/Unclassified>
+
+
+Doxygen
+-------
+It is also possible to produce the API documentaion via Doxygen:
+
+.. code-block:: bash
+
+   cd doc
+   doxygen Doxyfile
+   firefox html/index.html
