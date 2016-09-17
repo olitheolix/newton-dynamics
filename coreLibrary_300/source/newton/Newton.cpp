@@ -94,7 +94,7 @@ void SaveCollision (const NewtonCollision* const collisionPtr)
 fixme: where does this belong?
 
 // globalScale - global scale factor that will scale all internal tolerance.
-// Remarks: the physics system in theory should be dimensionless, however in practice the engine have to be implemented with
+// the physics system in theory should be dimensionless, however in practice the engine have to be implemented with
 // limited precision floating numbers and is also built for real-time simulation, it is inevitable that tolerances have to be used in order to increase performance, and 
 // reduce instabilities. These tolerances make the engine dimension dependent, for example let say a rigid body is considered at rest when 
 // its velocity is less than 0.01 units per second for some frames. For a program using meters as unit this translate to 0.01 meters per second, 
@@ -113,7 +113,7 @@ fixme: where does this belong?
 // 
 // Return: total memory use by the engine.
 //
-// Remarks: this function is useful for application to determine if the memory use by the engine is balanced at all time.
+// this function is useful for application to determine if the memory use by the engine is balanced at all time.
 //
 // See also: NewtonCreate
 int NewtonGetMemoryUsed()
@@ -169,7 +169,7 @@ void NewtonFree (void* const ptr)
 // 
 // Return: a pointer to an instance of the Newton world.
 //
-// Remarks: this function must be called before any of the other API functions.
+// this function must be called before any of the other API functions.
 //
 //
 // See also: NewtonDestroy, NewtonDestroyAllBodies
@@ -190,7 +190,7 @@ NewtonWorld* NewtonCreate()
 // 
 // Return: Nothing.
 //
-// Remarks: This function will destroy the entire Newton world.
+// This function will destroy the entire Newton world.
 //
 // See also: NewtonCreate, NewtonDestroyAllBodies
 void NewtonDestroy(const NewtonWorld* const newtonWorld)
@@ -241,12 +241,12 @@ void NewtonSetContactMergeTolerance (const NewtonWorld* const newtonWorld, dFloa
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 // 
-// Remarks: When an application wants to reset the state of all the objects in the world to a predefined initial condition, 
+// When an application wants to reset the state of all the objects in the world to a predefined initial condition, 
 // just setting the initial position and velocity is not sufficient to reproduce equal runs since the engine maintain 
 // there are internal states that in order to take advantage of frame to frame coherence.
 // In this cases this function will reset all of the internal states.
 //
-// Remarks: This function must be call outside of a Newton Update. this function should only be used for special case of synchronization, 
+// This function must be call outside of a Newton Update. this function should only be used for special case of synchronization, 
 // using it as part of the simulation loop will severally affect the engine performance.
 //
 // See also: NewtonUpdate
@@ -342,7 +342,7 @@ void NewtonGetDeviceString (const NewtonWorld* const newtonWorld, int deviceInde
 // *newtonWorld - is the pointer to the Newton world.
 // threadIndex -  thread index from whe thsi function is called, zero if call form outsize a newton update
 //
-// Remarks: this function should use to present racing conditions when when a call back ins executed form a mutithreaded loop. 
+// this function should use to present racing conditions when when a call back ins executed form a mutithreaded loop. 
 // In general most call back are thread safe when they do not write to object outside the scope of the call back.
 // this means for example that the application can modify values of object pointed by the arguments and or call that function
 // that are allowed to be call for such callback.
@@ -351,9 +351,9 @@ void NewtonGetDeviceString (const NewtonWorld* const newtonWorld, int deviceInde
 // In these situations it is possible the the same critical code could be execute at the same time but several thread causing unpredictable side effect.
 // so it is necessary to block all of the thread from executing any pieces of critical code.
 //
-// Remarks: Not calling function *NewtonWorldCriticalSectionUnlock* will result on the engine going into an infinite loop.
+// Not calling function *NewtonWorldCriticalSectionUnlock* will result on the engine going into an infinite loop.
 //
-// Remarks: it is important that the critical section wrapped by functions *NewtonWorldCriticalSectionLock* and 
+// it is important that the critical section wrapped by functions *NewtonWorldCriticalSectionLock* and 
 // *NewtonWorldCriticalSectionUnlock* be keep small if the application is using the multi threaded functionality of the engine
 // no doing so will lead to serialization of the parallel treads since only one thread can run the a critical section at a time.
 // 
@@ -395,7 +395,7 @@ void NewtonYield ()
 // *newtonWorld - is the pointer to the Newton world.
 //
 //
-// Remarks: this function should use to present racing conditions when when a call back ins executed form a mutithreaded loop. 
+// this function should use to present racing conditions when when a call back ins executed form a mutithreaded loop. 
 // In general most call back are thread safe when they do not write to object outside the scope of the call back.
 // this means for example that the application can modify values of object pointed by the arguments and or call that function
 // that are allowed to be call for such callback.
@@ -404,7 +404,7 @@ void NewtonYield ()
 // In these situations it is possible the the same critical code could be execute at the same time but several thread causing unpredictable side effect.
 // so it is necessary to block all of the thread from executing any pieces of critical code.
 //
-// Remarks: it is important that the critical section wrapped by functions *NewtonWorldCriticalSectionLock* and 
+// it is important that the critical section wrapped by functions *NewtonWorldCriticalSectionLock* and 
 // *NewtonWorldCriticalSectionUnlock* be keep small if the application is using the multi threaded functionality of the engine
 // no doing so will lead to serialization of the parallel treads since only one thread can run the a critical section at a time.
 // 
@@ -430,12 +430,12 @@ void NewtonWorldCriticalSectionUnlock(const NewtonWorld* const newtonWorld)
 // 
 // Return: Nothing
 //
-// Remarks: The maximum number of threaded is set on initialization to the maximum number of CPU in the system.
+// The maximum number of threaded is set on initialization to the maximum number of CPU in the system.
 //
-// Remarks: The engine will only allow a maximum number of thread equal are lower to the maximum number of cores visible in the system.
+// The engine will only allow a maximum number of thread equal are lower to the maximum number of cores visible in the system.
 // if *threads* is set to a value larger that then number of logical CPUs in the system, the *threads* will be clamped to the number of logical CPUs.
 //
-// Remarks: the function is only only have effect on the multi core version of the engine.
+// the function is only only have effect on the multi core version of the engine.
 //
 // See also: NewtonGetThreadsCount
 void NewtonSetThreadsCount(const NewtonWorld* const newtonWorld, int threads)
@@ -455,9 +455,9 @@ void NewtonSetThreadsCount(const NewtonWorld* const newtonWorld, int threads)
 // 
 // Return: number threads
 //
-// Remarks: The maximum number of threaded is set on initialization to the maximum number of CPU in the system.
+// The maximum number of threaded is set on initialization to the maximum number of CPU in the system.
 //
-// Remarks: the function will always return 1 on the none multi core version of the library..
+// the function will always return 1 on the none multi core version of the library..
 //
 // See also: NewtonSetThreadsCount, NewtonSetMultiThreadSolverOnSingleIsland 
 int NewtonGetThreadsCount(const NewtonWorld* const newtonWorld)
@@ -477,9 +477,9 @@ int NewtonGetThreadsCount(const NewtonWorld* const newtonWorld)
 // 
 // Return: number threads
 //
-// Remarks: The maximum number of threaded is set on initialization to the maximum number of CPU in the system.
+// The maximum number of threaded is set on initialization to the maximum number of CPU in the system.
 //
-// Remarks: the function will always return 1 on the none multi core version of the library..
+// the function will always return 1 on the none multi core version of the library..
 //
 // See also: NewtonSetThreadsCount, NewtonSetMultiThreadSolverOnSingleIsland 
 int NewtonGetMaxThreadsCount(const NewtonWorld* const newtonWorld)
@@ -501,9 +501,9 @@ int NewtonGetMaxThreadsCount(const NewtonWorld* const newtonWorld)
 // 
 // Return: the index to the current workir thread runnin the call back. -1 if the function is called ourxoed of a call back
 //
-// Remarks: This function let application to read the current thread running in a callback
+// This function let application to read the current thread running in a callback
 //
-// Remarks: the function will always return 1 on the none multi core version of the library..
+// the function will always return 1 on the none multi core version of the library..
 //
 // See also: NewtonGetThreadsCount, NewtonSetThreadsCount, NewtonSetMultiThreadSolverOnSingleIsland 
 int NewtonGetThreadNumber(const NewtonWorld* const newtonWorld)
@@ -524,17 +524,17 @@ int NewtonGetThreadNumber(const NewtonWorld* const newtonWorld)
 // 
 // Return: Nothing
 //
-// Remarks: When running in multi threaded mode it is not always faster to calculate constraint forces in parallel.
+// When running in multi threaded mode it is not always faster to calculate constraint forces in parallel.
 // there reasons for this are: 
 // 1 - there is a significant software cost for setting threads both in memory and instructions overhead. 
 // 2 - different systems have different cost for running separate threads in a share memory environment
 // 3 - numerical algorithms have decreased converge rate when implemented in parallel, typical lost of converge can be as high as half 
 // of the of the sequential version, for this reason the parallel version require higher number of interaction to achieve similar convergence.
 //
-// Remarks: It is recommended this option is enabled on system with more than two cores, since the performance gain in a dual core system are marginally better.
+// It is recommended this option is enabled on system with more than two cores, since the performance gain in a dual core system are marginally better.
 // at the very list the application must test the option to verify the performance gains.
 //
-// Remarks: disabling or enabling this option have not impact on the execution of the any of the other subsystems of the engine.
+// disabling or enabling this option have not impact on the execution of the any of the other subsystems of the engine.
 //
 // See also: NewtonGetThreadsCount, NewtonSetThreadsCount 
 void NewtonSetMultiThreadSolverOnSingleIsland(const NewtonWorld* const newtonWorld, int mode)
@@ -578,7 +578,7 @@ int NewtonGetMultiThreadSolverOnSingleIsland(const NewtonWorld* const newtonWorl
 // 
 // Return: Nothing
 //
-// Remarks: This function allows the application to configure the Newton solver to work in three different modes.  
+// This function allows the application to configure the Newton solver to work in three different modes.  
 //
 // 0: Is the exact mode. This is good for application where precision is more important than speed, ex: realistic simulation.
 //
@@ -590,7 +590,7 @@ int NewtonGetMultiThreadSolverOnSingleIsland(const NewtonWorld* const newtonWorl
 // but it will terminate when the number of passes is exhausted regardless of the error magnitude. 
 // In general this is the fastest mode and is is good for applications where speed is the only important factor, ex: video games.
 //
-// Remarks: the adaptive friction model combined with the linear model make for the fastest possible configuration 
+// the adaptive friction model combined with the linear model make for the fastest possible configuration 
 // of the Newton solver. This setup is best for games.
 // If you need the best realistic behavior, we recommend the use of the exact solver and exact friction model which are the defaults.
 //
@@ -624,7 +624,7 @@ void NewtonSetSolverConvergenceQuality (const NewtonWorld* const newtonWorld, in
 // 
 // Return: Nothing.
 //
-// Remarks: This function allows the application to chose between and exact or an adaptive coulomb friction model 
+// This function allows the application to chose between and exact or an adaptive coulomb friction model 
 // 
 // 0: Is the exact model. Friction forces are calculated in each frame. 
 // This model is good for applications where precision is more important than speed, ex: realistic simulation.
@@ -636,7 +636,7 @@ void NewtonSetSolverConvergenceQuality (const NewtonWorld* const newtonWorld, in
 // friction values is used. The second effect is that if a normal force is very strong, and if the contact is suddenly 
 // destroyed, a very strong friction force will be generated at the contact point making the object react in a non-familiar way. 
 //
-// Remarks: the adaptive friction model combined with the linear model make for the fastest possible configuration 
+// the adaptive friction model combined with the linear model make for the fastest possible configuration 
 // of the Newton solver. This setup is best for games.
 // If you need the best realistic behavior, we recommend the use of the exact solver and exact friction model which are the defaults.
 //
@@ -686,7 +686,7 @@ unsigned NewtonReadThreadPerformanceTicks (const NewtonWorld* newtonWorld, unsig
 //
 // Return: Nothing
 //
-// Remarks: This function will advance the simulation by the amount of time specified by *timestep*. The Newton Engine does 
+// This function will advance the simulation by the amount of time specified by *timestep*. The Newton Engine does 
 // not perform sub-steps, and does not need tuning parameters. It is the responsibility of the application to 
 // ensure that *timestep* is small enough to guarantee physics stability. 
 //
@@ -743,7 +743,7 @@ void NewtonWaitForUpdateToFinish (const NewtonWorld* const newtonWorld)
 // 
 // Return: nothing
 //
-// Remarks: the default minimum frame rate of the simulation is 60 frame per second. When the simulation falls below the specified minimum frame, Newton will
+// the default minimum frame rate of the simulation is 60 frame per second. When the simulation falls below the specified minimum frame, Newton will
 // perform sub steps in order to meet the desired minimum FPS. 
 void NewtonSetMinimumFrameRate(const NewtonWorld* const newtonWorld, dFloat frameRate)
 {
@@ -762,7 +762,7 @@ void NewtonSetMinimumFrameRate(const NewtonWorld* const newtonWorld, dFloat fram
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 //
-// Remark: This application can used this function to get the current simulation time step. 
+// This application can used this function to get the current simulation time step. 
 // 
 // Return: correct update timestep.
 dFloat NewtonGetTimeStep(const NewtonWorld* const newtonWorld)
@@ -781,7 +781,7 @@ dFloat NewtonGetTimeStep(const NewtonWorld* const newtonWorld)
 // 
 // Return: Nothing
 //
-// Remarks: This function will destroy all bodies and all joints in the Newton world, but it will retain group IDs. 
+// This function will destroy all bodies and all joints in the Newton world, but it will retain group IDs. 
 // Use this function for when you want to clear the world but preserve all the group IDs and material pairs.
 //
 // See also: NewtonMaterialDestroyAllGroupID
@@ -814,14 +814,14 @@ void NewtonDestroyAllBodies(const NewtonWorld* const newtonWorld)
 // 
 // Return: Nothing.
 //
-//Remarks: The application can set a function callback to be called just after the array of all bodies making an island of articulated and colliding bodies are collected for resolution. 
+//The application can set a function callback to be called just after the array of all bodies making an island of articulated and colliding bodies are collected for resolution. 
 //This function will be called just before the array is accepted for solution and integration. 
 //The function callback may return one to validate the array or zero to skip the resolution of this array of bodies on this frame only.
 //This functionality can be used by the application to implement in game physics LOD. For example the application can determine the AABB of the 
 //island and check against the view frustum, if the entire island AABB is invisible then the application can suspend simulation even if they are not in equilibrium.
 //another functionality is the implementation of visual debuggers, and also the implementation of auto frozen bodies under arbitrary condition set by the logic of the application.
 //
-//Remarks: The application should not modify the position, velocity, or it create or destroy any body or joint during this function call. Doing so will result in unpredictable malfunctions.
+//The application should not modify the position, velocity, or it create or destroy any body or joint during this function call. Doing so will result in unpredictable malfunctions.
 //
 // See also: NewtonIslandGetBody
 void NewtonSetIslandUpdateEvent(const NewtonWorld* const newtonWorld, NewtonIslandUpdate islandUpdate) 
@@ -841,9 +841,9 @@ void NewtonSetIslandUpdateEvent(const NewtonWorld* const newtonWorld, NewtonIsla
 //
 // Return: nothing
 // 
-// Remarks: The application can call this function to iterate thought every body in the world. 
+// The application can call this function to iterate thought every body in the world. 
 //
-// Remarks: The application call this function for debugging purpose
+// The application call this function for debugging purpose
 // See also: NewtonWorldGetNextBody, NewtonWorldForEachBodyInAABBDo, NewtonWorldForEachJointDo
 NewtonBody* NewtonWorldGetFirstBody(const NewtonWorld* const newtonWorld)
 {
@@ -874,9 +874,9 @@ NewtonBody* NewtonWorldGetFirstBody(const NewtonWorld* const newtonWorld)
 //
 // Return: nothing
 // 
-// Remarks: The application can call this function to iterate thought every body in the world. 
+// The application can call this function to iterate thought every body in the world. 
 //
-// Remarks: The application call this function for debugging purpose
+// The application call this function for debugging purpose
 // See also: NewtonWorldGetFirstBody, NewtonWorldForEachBodyInAABBDo, NewtonWorldForEachJointDo
 NewtonBody* NewtonWorldGetNextBody(const NewtonWorld* const newtonWorld, const NewtonBody* const curBody)
 {
@@ -904,10 +904,10 @@ NewtonBody* NewtonWorldGetNextBody(const NewtonWorld* const newtonWorld, const N
 //
 // Return: nothing
 // 
-// Remarks: The application can call this function to iterate thought every joint in the world. 
+// The application can call this function to iterate thought every joint in the world. 
 // the application should provide the function *NewtonJointIterator callback* to be called by Newton for every joint in the world 
 //
-// Remarks: this function affect severally the performance of Newton. The application should call this function only for debugging
+// this function affect severally the performance of Newton. The application should call this function only for debugging
 // or for serialization purposes.
 //
 // See also: NewtonWorldForEachBodyInAABBDo, NewtonWorldGetFirstBody
@@ -945,10 +945,10 @@ void NewtonWorldForEachJointDo(const NewtonWorld* const newtonWorld, NewtonJoint
 //
 // Return: nothing
 // 
-// Remarks: The application can call this function to iterate thought every body in the world. 
+// The application can call this function to iterate thought every body in the world. 
 // the application should provide the function *NewtonBodyIterator callback* to be called by Newton for every body in the world 
 //
-// Remarks: For relatively small AABB volumes this function is much more inefficients 
+// For relatively small AABB volumes this function is much more inefficients 
 // that NewtonWorldGetFirstBody, however in case where the AABB contain must of the objects in the scene, 
 // the overhead of scanning the internal Broad face collision plus the AABB test make this function more expensive.
 //
@@ -1002,7 +1002,7 @@ int NewtonWorldFloatSize ()
 //
 // Return: Nothing.
 //
-// Remarks: The application can store a user defined value with the Newton world. The user data is useful for application developing 
+// The application can store a user defined value with the Newton world. The user data is useful for application developing 
 // object oriented classes based on the Newton API.
 // 
 // See also: NewtonWorldGetUserData 
@@ -1021,7 +1021,7 @@ void NewtonWorldSetUserData(const NewtonWorld* const newtonWorld, void* const us
 //
 // Return: user data value.
 //
-// Remarks: The application can store a user defined value with the Newton world. The user data is useful for application developing 
+// The application can store a user defined value with the Newton world. The user data is useful for application developing 
 // object oriented classes based on the Newton API.
 // 
 // See also: NewtonWorldSetDestructorCallback, NewtonWorldGetUserData  
@@ -1039,7 +1039,7 @@ void* NewtonWorldGetUserData(const NewtonWorld* const newtonWorld)
 // *newtonWorld - is the pointer to the Newton world.
 // *NewtonWorldDestructorCallback* destructor - function poiter callback
 //
-// Remarks: The application can store a user defined destructor call back function to be called at the  time the world is to be destroyed
+// The application can store a user defined destructor call back function to be called at the  time the world is to be destroyed
 // 
 // See also: NewtonWorldGetUserData  
 void NewtonWorldSetDestructorCallback(const NewtonWorld* const newtonWorld, NewtonWorldDestructorCallback destructor)
@@ -1056,7 +1056,7 @@ void NewtonWorldSetDestructorCallback(const NewtonWorld* const newtonWorld, Newt
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world.
 //
-// Remarks: The application can store a user defined destructor call back function to be called at the  time the world is to be destroyed
+// The application can store a user defined destructor call back function to be called at the  time the world is to be destroyed
 // 
 // See also: NewtonWorldGetUserData, NewtonWorldSetDestructorCallback  
 NewtonWorldDestructorCallback NewtonWorldGetDestructorCallback(const NewtonWorld* const newtonWorld)
@@ -1150,7 +1150,7 @@ int NewtonWorldGetBodyCount(const NewtonWorld* const newtonWorld)
 // Parameters:
 // *newtonWorld - is the pointer to the Newton world
 //
-// remark: this function will return the total number of joint including contacts
+// this function will return the total number of joint including contacts
 // 
 // Return: number of rigid bodies in this world.
 //
@@ -1176,23 +1176,23 @@ int NewtonWorldGetConstraintCount(const NewtonWorld* const newtonWorld)
 // 
 // Return: nothing
 // 
-// Remarks: The ray cast function will call the application with each body intersecting the line segment. 
+// The ray cast function will call the application with each body intersecting the line segment. 
 // By writing the callback filter function in different ways the application can implement different flavors of ray casting. 
 // For example an all body ray cast can be easily implemented by having the filter function always returning 1.0, and copying each 
 // rigid body into an array of pointers; a closest hit ray cast can be implemented by saving the body with the smaller intersection 
 // parameter and returning the parameter t; and a report the first body hit can be implemented by having the filter function returning 
 // zero after the first call and saving the pointer to the rigid body.
 //
-// Remarks: The most common use for the ray cast function is the closest body hit, In this case it is important, for performance reasons, 
+// The most common use for the ray cast function is the closest body hit, In this case it is important, for performance reasons, 
 // that the filter function returns the intersection parameter. If the filter function returns a value of zero the ray cast will terminate 
 // immediately.
 //
-// Remarks: if prefilter is not NULL, Newton will call the application right before executing the intersections between the ray and the primitive.
+// if prefilter is not NULL, Newton will call the application right before executing the intersections between the ray and the primitive.
 // if the function returns zero the Newton will not ray cast the primitive. passing a NULL pointer will ray cast the. 
 // The application can use this implement faster or smarter filters when implementing complex logic, otherwise for normal all ray cast
 // this parameter could be NULL.
 //
-// Remarks: The ray cast function is provided as an utility function, this means that even thought the function is very high performance 
+// The ray cast function is provided as an utility function, this means that even thought the function is very high performance 
 // by function standards, it can not by batched and therefore it can not be an incremental function. For example the cost of calling 1000 
 // ray cast is 1000 times the cost of calling one ray cast. This is much different than the collision system where the cost of calculating 
 // collision for 1000 pairs in much, much less that the 1000 times the cost of one pair. Therefore this function must be used with care, 
@@ -1229,21 +1229,21 @@ void NewtonWorldRayCast(const NewtonWorld* const newtonWorld, const dFloat* cons
 // Return: the number of contact at the intesection point (a value equal o lower than maxContactsCount.
 // variable *hitParam* will be set the uintesation parameter an the momen of impact.
 //
-// Remarks: passing and value of NULL in *info* an dzero in maxContactsCount will turn thos function into a spcial Ray cast
+// passing and value of NULL in *info* an dzero in maxContactsCount will turn thos function into a spcial Ray cast
 // where the function will only calculate the *hitParam* at the momenet of contacts. tshi si one of the most effiecnet way to use thsio function.
 // 
-// Remarks: these function is similar to *NewtonWorldRayCast* but instead of casting a point it cast a simple convex shape along a ray for maoprix.m_poit
+// these function is similar to *NewtonWorldRayCast* but instead of casting a point it cast a simple convex shape along a ray for maoprix.m_poit
 // to target position. the shape is global orientation and position is set to matrix and then is swept along the segment to target and it will stop at the very first intersession contact. 
 // 
-// Remarks: for case where the application need to cast solid short to medium rays, it is better to use this function instead of casting and array of parallel rays segments.  
+// for case where the application need to cast solid short to medium rays, it is better to use this function instead of casting and array of parallel rays segments.  
 // examples of these are: implementation of ray cast cars with cylindrical tires, foot placement of character controllers, kinematic motion of objects, user controlled continuous collision, etc.
 // this function may not be as efficient as sampling ray for long segment, for these cases try using parallel ray cast.
 //
-// Remarks: The most common use for the ray cast function is the closest body hit, In this case it is important, for performance reasons, 
+// The most common use for the ray cast function is the closest body hit, In this case it is important, for performance reasons, 
 // that the filter function returns the intersection parameter. If the filter function returns a value of zero the ray cast will terminate 
 // immediately.
 //
-// Remarks: if prefilter is not NULL, Newton will call the application right before executing the intersections between the ray and the primitive.
+// if prefilter is not NULL, Newton will call the application right before executing the intersections between the ray and the primitive.
 // if the function returns zero the Newton will not ray cast the primitive. 
 // The application can use this callback to implement faster or smarter filters when implementing complex logic, otherwise for normal all ray cast
 // this parameter could be NULL.
@@ -1279,16 +1279,16 @@ int NewtonWorldCollide (const NewtonWorld* const newtonWorld, const dFloat* cons
 // 
 // Return: body at location bodtIndex.
 //
-// Remarks: This function can only be called from an island update callback.
+// This function can only be called from an island update callback.
 //
-//Remarks: The application can set a function callback to be called just after the array of all bodies making an island of connected bodies are collected. 
+//The application can set a function callback to be called just after the array of all bodies making an island of connected bodies are collected. 
 //This function will be called just before the array is accepted for solution and integration. 
 //The function callback may return one to validate the array of zero to freeze it.
 //This functionality can be used by the application to implement in game physics LOD. For example the application can determine the AABB of the 
 //island and check against the view frustum, if the entire island AABB is invisible then the application can suspend simulation even if they are not in equilibrium.
 //another functionality is the implementation of visual debuggers, and also the implementation of auto frozen bodies under arbitrary condition set by the logic of the application.
 //
-//Remarks: The application should not modify any parameter of the origin body when the callback is called, nor it should create or destroy any body or joint. Do so will result in unpredictable malfunction.
+//The application should not modify any parameter of the origin body when the callback is called, nor it should create or destroy any body or joint. Do so will result in unpredictable malfunction.
 //
 // See also: NewtonSetIslandUpdateEvent
 NewtonBody* NewtonIslandGetBody(const void* const island, int bodyIndex)
@@ -1308,9 +1308,9 @@ NewtonBody* NewtonIslandGetBody(const void* const island, int bodyIndex)
 //   p0 - fixme
 //   p1 - fixme
 // 
-// Remarks: This function can only be called from an island update callback.
+// This function can only be called from an island update callback.
 //
-// Remarks: The application can set a function callback to be called
+// The application can set a function callback to be called
 // just after the array of all bodies making an island of connected
 // bodies are collected. This function will be called just before the
 // array is accepted for solution and integration. The function
@@ -1324,7 +1324,7 @@ NewtonBody* NewtonIslandGetBody(const void* const island, int bodyIndex)
 // auto frozen bodies under arbitrary condition set by the logic of the
 // application.
 // 
-// Remarks: The application should not modify any parameter of the
+// The application should not modify any parameter of the
 // origin body when the callback is called, nor it should create or
 // destroy any body or joint. Do so will result in unpredictable
 // malfunction.
@@ -1355,7 +1355,7 @@ void NewtonIslandGetBodyAABB(const void* const island, int bodyIndex, dFloat* co
 // 
 // Return: The ID number for the default Group ID.
 //
-// Remarks: Group IDs can be interpreted as the nodes of a dense graph. The edges of the graph are the physics materials.
+// Group IDs can be interpreted as the nodes of a dense graph. The edges of the graph are the physics materials.
 // When the Newton world is created, the default Group ID is created by the engine.	
 // When bodies are created the application assigns a group ID to the body. 
 int NewtonMaterialGetDefaultGroupID(const NewtonWorld* const newtonWorld)
@@ -1374,7 +1374,7 @@ int NewtonMaterialGetDefaultGroupID(const NewtonWorld* const newtonWorld)
 // 
 // Return: The ID of a new GroupID.
 //
-// Remarks: Group IDs can be interpreted as the nodes of a dense graph. The edges of the graph are the physics materials.
+// Group IDs can be interpreted as the nodes of a dense graph. The edges of the graph are the physics materials.
 // When the Newton world is created, the default Group ID is created by the engine.	
 // When bodies are created the application assigns a group ID to the body. 
 //
@@ -1396,7 +1396,7 @@ int NewtonMaterialCreateGroupID(const NewtonWorld* const newtonWorld)
 // 
 // Return: Nothing.
 //
-// Remarks: This function removes all groups ID from the Newton world. 
+// This function removes all groups ID from the Newton world. 
 // This function must be called after there are no more rigid bodies in the word.
 //
 // See also: NewtonDestroyAllBodies
@@ -1452,15 +1452,15 @@ void NewtonMaterialSetDefaultCollidable(const NewtonWorld* const newtonWorld, in
 // 	
 // Return: Nothing.
 //
-// Remarks: when two bodies collide the engine resolve contact inter penetration by applying a small restoring 
+// when two bodies collide the engine resolve contact inter penetration by applying a small restoring 
 // velocity at each contact point. By default this restoring velocity will stop when the two contacts are
 // at zero inter penetration distance. However by setting a non zero thickness the restoring velocity will
 // continue separating the contacts until the distance between the two point of the collision geometry is equal 
 // to the surface thickness.
 //
-// Remark: Surfaces thickness can improve the behaviors of rolling objects on flat surfaces. 
+// Surfaces thickness can improve the behaviors of rolling objects on flat surfaces. 
 //
-// Remarks: Surface thickness does not alter the performance of contact calculation.
+// Surface thickness does not alter the performance of contact calculation.
 void NewtonMaterialSetSurfaceThickness(const NewtonWorld* const newtonWorld, int id0, int id1, dFloat thickness)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -1484,7 +1484,7 @@ void NewtonMaterialSetSurfaceThickness(const NewtonWorld* const newtonWorld, int
 // 
 // Return: Nothing.
 //
-// Remarks: *staticFriction* and *kineticFriction* must be positive values. *kineticFriction* must be lower than *staticFriction*.
+// *staticFriction* and *kineticFriction* must be positive values. *kineticFriction* must be lower than *staticFriction*.
 // It is recommended that *staticFriction* and *kineticFriction* be set to a value lower or equal to 1.0, however because some synthetic materials
 // can have higher than one coefficient of friction Newton allows for the coefficient of friction to be as high as 2.0.
 void NewtonMaterialSetDefaultFriction(const NewtonWorld* const newtonWorld, int id0, int id1, dFloat staticFriction, dFloat kineticFriction)
@@ -1525,7 +1525,7 @@ void NewtonMaterialSetDefaultFriction(const NewtonWorld* const newtonWorld, int 
 // 
 // Return: Nothing.
 //
-// Remarks: *elasticCoef* must be a positive value. 
+// *elasticCoef* must be a positive value. 
 // It is recommended that *elasticCoef* be set to a value lower or equal to 1.0
 void NewtonMaterialSetDefaultElasticity(const NewtonWorld* const newtonWorld, int id0, int id1, dFloat elasticCoef)
 {
@@ -1549,7 +1549,7 @@ void NewtonMaterialSetDefaultElasticity(const NewtonWorld* const newtonWorld, in
 // 
 // Return: Nothing.
 //
-// Remarks: *softnessCoef* must be a positive value. 
+// *softnessCoef* must be a positive value. 
 // It is recommended that *softnessCoef* be set to value lower or equal to 1.0
 // A low value for *softnessCoef* will make the material soft. A typical value for *softnessCoef* is 0.15
 void NewtonMaterialSetDefaultSoftness(const NewtonWorld* const newtonWorld, int id0, int id1, dFloat softnessCoef)
@@ -1582,7 +1582,7 @@ void NewtonMaterialSetCallbackUserData (const NewtonWorld* const newtonWorld, in
 // 
 // Return: Nothing.
 //
-// Remarks: When the AABB extend of the collision geometry of two bodies overlap, Newton collision system retrieves the material 
+// When the AABB extend of the collision geometry of two bodies overlap, Newton collision system retrieves the material 
 // interaction that defines the behavior between the pair of bodies. The material interaction is collected from a database of materials, 
 //  indexed by the material gruopID assigned to the bodies. If the material is tagged as non collidable, 
 // then no action is taken and the simulation continues. 
@@ -1628,7 +1628,7 @@ void NewtonMaterialSetContactGenerationCallback (const NewtonWorld* const newton
 // 
 // Return: Nothing.
 //
-// Remarks: When the AABB extend of the collision geometry of two bodies overlap, Newton collision system retrieves the material 
+// When the AABB extend of the collision geometry of two bodies overlap, Newton collision system retrieves the material 
 // interaction that defines the behavior between the pair of bodies. The material interaction is collected from a database of materials, 
 //  indexed by the material gruopID assigned to the bodies. If the material is tagged as non collidable, 
 // then no action is taken and the simulation continues. 
@@ -1724,7 +1724,7 @@ NewtonMaterial* NewtonWorldGetNextMaterial(const NewtonWorld* const newtonWorld,
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 // void NewtonMaterialDisableContact(const NewtonMaterial* const materialHandle)
@@ -1742,7 +1742,7 @@ NewtonMaterial* NewtonWorldGetNextMaterial(const NewtonWorld* const newtonWorld,
 // 
 // Return: Application user data.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 void* NewtonMaterialGetMaterialPairUserData(const NewtonMaterial* const materialHandle)
@@ -1760,9 +1760,9 @@ void* NewtonMaterialGetMaterialPairUserData(const NewtonMaterial* const material
 // 
 // Return: face attribute for collision trees. Zero if the contact was generated by two convex collisions. 
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 //
-// Remarks: this function can be used by the application to retrieve the face id of a polygon for a collision tree.
+// this function can be used by the application to retrieve the face id of a polygon for a collision tree.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 unsigned NewtonMaterialGetContactFaceAttribute(const NewtonMaterial* const materialHandle)
@@ -1783,7 +1783,7 @@ return 0;
 // 
 // Return: the current time step.
 //
-// Remarks: This function can only be called from a material callback event handler. The function can be useful for the implementation of powered contacts.
+// This function can only be called from a material callback event handler. The function can be useful for the implementation of powered contacts.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 dFloat NewtonMaterialGetCurrentTimestep(const NewtonMaterial* const materialHandle)
@@ -1805,7 +1805,7 @@ dFloat NewtonMaterialGetCurrentTimestep(const NewtonMaterial* const materialHand
 // 
 // Return: Contact speed. A positive value means the contact is repulsive.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 dFloat NewtonMaterialGetContactNormalSpeed(const NewtonMaterial* const materialHandle)
@@ -1840,7 +1840,7 @@ dFloat NewtonMaterialGetContactNormalSpeed(const NewtonMaterial* const materialH
 // 
 // Return: Contact tangent speed. 
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 dFloat NewtonMaterialGetContactTangentSpeed(const NewtonMaterial* const materialHandle, int index)
@@ -1891,7 +1891,7 @@ dFloat NewtonMaterialGetContactMaxTangentImpact(const NewtonMaterial* const mate
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handle.
+// This function can only be called from a material callback event handle.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 void NewtonMaterialGetContactPositionAndNormal(const NewtonMaterial* const materialHandle, const NewtonBody* const body, dFloat* const positPtr, dFloat* const normalPtr)
@@ -1926,11 +1926,11 @@ void NewtonMaterialGetContactPositionAndNormal(const NewtonMaterial* const mater
 // 
 // Return: Nothing.
 //
-// Remarks: The contact force value is only valid when calculating resting contacts. This means if two bodies collide with 
+// The contact force value is only valid when calculating resting contacts. This means if two bodies collide with 
 // non zero relative velocity, the reaction force will be an impulse, which is not a reaction force, this will return zero vector. 
 // this function will only return meaningful values when the colliding bodies are at rest.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 void NewtonMaterialGetContactForce(const NewtonMaterial* const materialHandle, const NewtonBody* const body, dFloat* const forcePtr)
@@ -1965,7 +1965,7 @@ void NewtonMaterialGetContactForce(const NewtonMaterial* const materialHandle, c
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 void NewtonMaterialGetContactTangentDirections(const NewtonMaterial* const materialHandle, const NewtonBody* const body, dFloat* const dir0, dFloat* const dir1)
@@ -2021,7 +2021,7 @@ NewtonCollision* NewtonMaterialGetBodyCollidingShape(const NewtonMaterial* const
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback, NewtonMaterialSetDefaultSoftness
 void NewtonMaterialSetContactSoftness(const NewtonMaterial* const materialHandle, dFloat softness)
@@ -2041,7 +2041,7 @@ void NewtonMaterialSetContactSoftness(const NewtonMaterial* const materialHandle
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback, NewtonMaterialSetDefaultElasticity
 void NewtonMaterialSetContactElasticity(const NewtonMaterial* const materialHandle, dFloat restitution)
@@ -2062,7 +2062,7 @@ void NewtonMaterialSetContactElasticity(const NewtonMaterial* const materialHand
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 void NewtonMaterialSetContactFrictionState(const NewtonMaterial* const materialHandle, int state, int index)
@@ -2098,12 +2098,12 @@ void NewtonMaterialSetContactFrictionState(const NewtonMaterial* const materialH
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 //
-// Remarks: It is recommended that *coef* be set to a value lower or equal to 1.0, however because some synthetic materials
+// It is recommended that *coef* be set to a value lower or equal to 1.0, however because some synthetic materials
 // can have hight than one coefficient of friction Newton allows for the coefficient of friction to be as high as 2.0.
 //
-// Remarks: the value *staticFrictionCoef* and *kineticFrictionCoef* will be clamped between 0.01f and 2.0.
+// the value *staticFrictionCoef* and *kineticFrictionCoef* will be clamped between 0.01f and 2.0.
 // If the application wants to set a kinetic friction higher than the current static friction it must increase the static friction first.
 // 
 // See also: NewtonMaterialSetCollisionCallback, NewtonMaterialSetDefaultFriction
@@ -2134,9 +2134,9 @@ void NewtonMaterialSetContactFrictionCoef(const NewtonMaterial* const materialHa
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 //
-// Remarks: This function can be used for spacial effects like implementing jump, of explosive contact in a call back.
+// This function can be used for spacial effects like implementing jump, of explosive contact in a call back.
 // 
 // See also: NewtonMaterialSetCollisionCallback
 void NewtonMaterialSetContactNormalAcceleration(const NewtonMaterial* const materialHandle, dFloat accel)
@@ -2158,7 +2158,7 @@ void NewtonMaterialSetContactNormalAcceleration(const NewtonMaterial* const mate
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // 
 // See also: NewtonMaterialSetCollisionCallback, NewtonMaterialContactRotateTangentDirections
 void NewtonMaterialSetContactTangentAcceleration(const NewtonMaterial* const materialHandle, dFloat accel, int index)
@@ -2200,11 +2200,11 @@ void NewtonMaterialSetContactTangentFriction (const NewtonMaterial* const materi
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // This function changes the basis of the contact point to one where the contact normal is aligned to the new direction vector
 // and the tangent direction are recalculated to be perpendicular to the new contact normal.
 //
-// Remarks: In 99.9% of the cases the collision system can calculates a very good contact normal.
+// In 99.9% of the cases the collision system can calculates a very good contact normal.
 // however this algorithm that calculate the contact normal use as criteria the normal direction
 // that will resolve the inter penetration with the least amount on motion. 
 // There are situations however when this solution is not the best. Take for example a rolling
@@ -2251,7 +2251,7 @@ void NewtonMaterialSetContactPosition(const NewtonMaterial* const materialHandle
 // 
 // Return: Nothing.
 //
-// Remarks: This function can only be called from a material callback event handler.
+// This function can only be called from a material callback event handler.
 // This function rotates the tangent vectors of the contact point until the primary tangent vector and the align vector
 // are perpendicular (ex. when the dot product between the primary tangent vector and the alignVector is 1.0). This 
 // function can be used in conjunction with NewtonMaterialSetContactTangentAcceleration in order to
@@ -2289,7 +2289,7 @@ void NewtonMaterialContactRotateTangentDirections(const NewtonMaterial* const ma
 // 
 // Return: Pointer to the collision object.
 //
-// Remarks: Some times the application needs to create helper rigid bodies that will never collide with other bodies,
+// Some times the application needs to create helper rigid bodies that will never collide with other bodies,
 // for example the neck of a rag doll, or an internal part of an articulated structure. This can be done by using the material system
 // but it too much work and it will increase unnecessarily the material count, and therefore the project complexity. The Null collision  
 // is a collision object that satisfy all this conditions without having to change the engine philosophy.
@@ -2337,10 +2337,10 @@ NewtonCollision* NewtonCreateBox(const NewtonWorld* const newtonWorld, dFloat dx
 // 
 // Return: Pointer to the generalized sphere.
 //
-// Remarks: Sphere collision are generalized ellipsoids, the application can create many different kind of objects by just playing with dimensions of the radius.
+// Sphere collision are generalized ellipsoids, the application can create many different kind of objects by just playing with dimensions of the radius.
 // for example to make a sphere set all tree radius to the same value, to make a ellipse of revolution just set two of the tree radius to the same value.
 //
-// Remarks: General ellipsoids are very good hull geometries to represent the outer shell of avatars in a game. 
+// General ellipsoids are very good hull geometries to represent the outer shell of avatars in a game. 
 //
 NewtonCollision* NewtonCreateSphere(const NewtonWorld* const newtonWorld, dFloat radius, int shapeID, const dFloat* const offsetMatrix)
 {
@@ -2399,7 +2399,7 @@ NewtonCollision* NewtonCreateCone(const NewtonWorld* const newtonWorld, dFloat r
 // 
 // Return: Pointer to the box
 // 
-// Remark: the capsule height must equal of larger than the sum of the cap radius. If this is not the case the height will be clamped the 2 * radius.
+// the capsule height must equal of larger than the sum of the cap radius. If this is not the case the height will be clamped the 2 * radius.
 //
 NewtonCollision* NewtonCreateCapsule(const NewtonWorld* const newtonWorld, dFloat radio0, dFloat radio1, dFloat height, int shapeID, const dFloat* const offsetMatrix)
 {
@@ -2476,19 +2476,19 @@ NewtonCollision* NewtonCreateChamferCylinder(const NewtonWorld* const newtonWorl
 // 
 // Return: Pointer to the collision mesh, NULL if the function fail to generate convex shape 
 //
-// Remarks: Convex hulls are the solution to collision primitive that can not be easily represented by an implicit solid.
+// Convex hulls are the solution to collision primitive that can not be easily represented by an implicit solid.
 // The implicit solid primitives (spheres, cubes, cylinders, capsules, cones, etc.), have constant time complexity for contact calculation
 // and are also extremely efficient on memory usage, therefore the application get perfect smooth behavior.
 // However for cases where the shape is too difficult or a polygonal representation is desired, convex hulls come closest to the to the model shape. 
 // For example it is a mistake to model a 10000 point sphere as a convex hull when the perfect sphere is available, but it is better to represent a 
 // pyramid by a convex hull than with a sphere or a box.
 //
-// Remarks: There is not upper limit as to how many vertex the application can pass to make a hull shape, 
+// There is not upper limit as to how many vertex the application can pass to make a hull shape, 
 // however for performance and memory usage concern it is the application responsibility to keep the max vertex at the possible minimum. 
 // The minimum number of vertex should be equal or larger than 4 and it is the application responsibility that the points are part of a solid geometry. 
 // Unpredictable results will occur if all points happen to be collinear or coplanar.  
 //
-// remark: The performance of collision with convex hull proxies is sensitive to the vertex count of the hull. Since a the convex hull
+// The performance of collision with convex hull proxies is sensitive to the vertex count of the hull. Since a the convex hull
 // of a visual geometry is already an approximation of the mesh, for visual purpose there is not significant difference between the
 // appeal of a exact hull and one close to the exact hull but with but with a smaller vertex count. 
 // It just happens that sometime complex meshes lead to generation of convex hulls with lots of small detail that play not 
@@ -2523,7 +2523,7 @@ NewtonCollision* NewtonCreateConvexHull(const NewtonWorld* const newtonWorld, in
 // 
 // Return: Pointer to the collision mesh, NULL if the function fail to generate convex shape 
 //
-// Remark: Because the in general this function is used for runtime special effect like debris and or solid particles
+// Because the in general this function is used for runtime special effect like debris and or solid particles
 // it is recommended that the source mesh complexity is kept small.
 //
 // See also: NewtonCreateConvexHull, NewtonMeshCreate
@@ -2545,9 +2545,9 @@ NewtonCollision* NewtonCreateConvexHullFromMesh(const NewtonWorld* const newtonW
 //
 // Return: Pointer to the compound collision.
 //
-// Remarks: Compound collision primitives can only be made of convex collision primitives and they can not contain compound collision. Therefore they are treated as convex primitives.
+// Compound collision primitives can only be made of convex collision primitives and they can not contain compound collision. Therefore they are treated as convex primitives.
 //
-// Remarks: Compound collision primitives are treated as instance collision objects that can not shared by multiples rigid bodies.
+// Compound collision primitives are treated as instance collision objects that can not shared by multiples rigid bodies.
 //
 NewtonCollision* NewtonCreateCompoundCollision(const NewtonWorld* const newtonWorld, int shapeID)
 {
@@ -2698,15 +2698,15 @@ NewtonCollision* NewtonCompoundCollisionGetCollisionFromNode (NewtonCollision* c
 //
 // Return: Pointer to the compound collision.
 //
-// Remarks: The algorithm will separated the the original mesh into a series of sub meshes until either 
+// The algorithm will separated the the original mesh into a series of sub meshes until either 
 // the worse concave point is smaller than the specified min concavity or the max number convex shapes is reached.
 //
-// Remarks: is is recommended that convex approximation are made by person with a graphics toll by physically overlaying collision primitives over the concave mesh.   
+// is is recommended that convex approximation are made by person with a graphics toll by physically overlaying collision primitives over the concave mesh.   
 // but for quit test of maybe for simple meshes and algorithm approximations can be used.
 //
-// Remarks: is is recommended that for best performance this function is used in an off line toll and serialize the output.
+// is is recommended that for best performance this function is used in an off line toll and serialize the output.
 //
-// Remarks: Compound collision primitives are treated as instanced collision objects that cannot be shared by multiples rigid bodies.
+// Compound collision primitives are treated as instanced collision objects that cannot be shared by multiples rigid bodies.
 //
 NewtonCollision* NewtonCreateCompoundCollisionFromMesh (const NewtonWorld* const newtonWorld, const NewtonMesh* const convexAproximation, dFloat hullTolerance, int shapeID, int subShapeID)
 {
@@ -2956,7 +2956,7 @@ int NewtonFracturedCompoundMeshPartGetIndexCount (const void* const segment)
 // 
 // Return: 0 if collision shape is solid, non zero is collision shape is a trigger volume.
 //
-// Remarks: this function can be used to place collision triggers in the scene. 
+// this function can be used to place collision triggers in the scene. 
 // Setting this flag is not really a necessary to place a collision trigger however this option hint the engine that 
 // this particular shape is a trigger volume and no contact calculation is desired.
 int NewtonCollisionGetMode(const NewtonCollision* const convexCollision)
@@ -2975,7 +2975,7 @@ int NewtonCollisionGetMode(const NewtonCollision* const convexCollision)
 // 
 // Return: nothing
 //
-// Remarks: this function can be used to place collision triggers in the scene. 
+// this function can be used to place collision triggers in the scene. 
 // Setting this flag is not really a necessary to place a collision trigger however this option hint the engine that 
 // this particular shape is a trigger volume and no contact calculation is desired.
 //
@@ -3019,9 +3019,9 @@ int NewtonConvexHullGetVertexData (const NewtonCollision* const convexHullCollis
 // 
 // Return: user face count of face. 
 //
-// Remarks: this function will return zero on all shapes other than a convex full collision shape.
+// this function will return zero on all shapes other than a convex full collision shape.
 //
-// Remarks: To get the number of faces of a convex hull shape see function *NewtonCollisionGetInfo*
+// To get the number of faces of a convex hull shape see function *NewtonCollisionGetInfo*
 //
 // See also: NewtonCollisionGetInfo, NewtonCreateConvexHull
 int NewtonConvexHullGetFaceIndices(const NewtonCollision* const convexHullCollision, int face, int* const faceIndices)
@@ -3045,9 +3045,9 @@ int NewtonConvexHullGetFaceIndices(const NewtonCollision* const convexHullCollis
 //
 // Return: collision geometry volume. This function will return zero if the body collision geometry is no convex.
 //
-// Remarks: The total volume calculated by the function is only an approximation of the ideal volume. This is not an error, it is a fact resulting from the polygonal representation of convex solids.
+// The total volume calculated by the function is only an approximation of the ideal volume. This is not an error, it is a fact resulting from the polygonal representation of convex solids.
 //
-// Remarks: This function can be used to assist the application in calibrating features like fluid density weigh factor when calibrating buoyancy forces for more realistic result.
+// This function can be used to assist the application in calibrating features like fluid density weigh factor when calibrating buoyancy forces for more realistic result.
 dFloat NewtonConvexCollisionCalculateVolume(const NewtonCollision* const convexCollision)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -3064,7 +3064,7 @@ dFloat NewtonConvexCollisionCalculateVolume(const NewtonCollision* const convexC
 // *inertia - pointer to and array of a least 3 floats to hold the values of the principal inertia.
 // *origin - pointer to and array of a least 3 floats to hold the values of the center of mass for the principal inertia.
 // 
-// Remarks: This function calculate a general inertial matrix for arbitrary convex collision including compound collisions.
+// This function calculate a general inertial matrix for arbitrary convex collision including compound collisions.
 //
 // See also: NewtonBodySetMassMatrix, NewtonBodyGetMass, NewtonBodySetCentreOfMass, NewtonBodyGetCentreOfMass
 void NewtonConvexCollisionCalculateInertialMatrix(const NewtonCollision* convexCollision, dFloat* const inertia, dFloat* const origin)
@@ -3102,13 +3102,13 @@ void NewtonConvexCollisionCalculateInertialMatrix(const NewtonCollision* convexC
 //
 // Return: Nothing.
 //
-// Remarks: This function is only effective when called from *NewtonApplyForceAndTorque callback*
+// This function is only effective when called from *NewtonApplyForceAndTorque callback*
 //
-// Remarks: This function adds buoyancy force and torque to a body when it is immersed in a fluid.
+// This function adds buoyancy force and torque to a body when it is immersed in a fluid.
 // The force is calculated according to Archimedes Buoyancy Principle. When the parameter *buoyancyPlane* is set to NULL, the body is considered
 // to completely immersed in the fluid. This can be used to simulate boats and lighter than air vehicles etc..
 //
-// Remarks: If *buoyancyPlane* return 0 buoyancy calculation for this collision primitive is ignored, this could be used to filter buoyancy calculation 
+// If *buoyancyPlane* return 0 buoyancy calculation for this collision primitive is ignored, this could be used to filter buoyancy calculation 
 // of compound collision geometry with different IDs. 
 //
 // See also: NewtonConvexCollisionCalculateVolume
@@ -3170,13 +3170,13 @@ const void* NewtonCollisionDataPointer (const NewtonCollision* const convexColli
 //
 // Return: Pointer to the user collision.
 //
-// Remarks: *UserMeshCollision* provides the application with a method of overloading the built-in collision system for background objects.
+// *UserMeshCollision* provides the application with a method of overloading the built-in collision system for background objects.
 // UserMeshCollision can be used for implementing collisions with height maps, collisions with BSP, and any other collision structure the application
 // supports and wishes to preserve.
 // However, *UserMeshCollision* can not take advantage of the efficient and sophisticated algorithms and data structures of the 
 // built-in *TreeCollision*. We suggest you experiment with both methods and use the method best suited to your situation.
 //
-// Remarks: When a *UserMeshCollision* is assigned to a body, the mass of the body is ignored in all dynamics calculations. 
+// When a *UserMeshCollision* is assigned to a body, the mass of the body is ignored in all dynamics calculations. 
 // This make the body behave as a static body.
 //
 NewtonCollision* NewtonCreateUserMeshCollision(
@@ -3245,11 +3245,11 @@ int NewtonUserMeshCollisionContinuousOverlapTest (const NewtonUserMeshCollisionC
 //
 // Return: Pointer to the collision tree.
 //
-// Remarks: *TreeCollision* is the preferred method within Newton for collision with polygonal meshes of arbitrary complexity.
+// *TreeCollision* is the preferred method within Newton for collision with polygonal meshes of arbitrary complexity.
 // The mesh must be made of flat non-intersecting polygons, but they do not explicitly need to be triangles.
 // *TreeCollision* can be serialized by the application to/from an arbitrary storage device. 
 //
-// Remarks: When a *TreeCollision* is assigned to a body the mass of the body is ignored in all dynamics calculations. 
+// When a *TreeCollision* is assigned to a body the mass of the body is ignored in all dynamics calculations. 
 // This makes the body behave as a static body.
 //
 // See also: NewtonTreeCollisionBeginBuild, NewtonTreeCollisionAddFace, NewtonTreeCollisionEndBuild, NewtonStaticCollisionSetDebugCallback, NewtonTreeCollisionGetFaceAttribute, NewtonTreeCollisionSetFaceAttribute
@@ -3280,10 +3280,10 @@ NewtonCollision* NewtonCreateTreeCollisionFromMesh (const NewtonWorld* const new
 // *staticCollision - is the pointer to the static collision (a CollisionTree of a HeightFieldCollision)
 // *userCallback - pointer to an event function to call before Newton evaluates the polygons colliding with a body. This parameter can be NULL.     
 //
-// Remarks: because debug display display report all the faces of a collision primitive, it could get slow on very large static collision.
+// because debug display display report all the faces of a collision primitive, it could get slow on very large static collision.
 // this function can be used for debugging purpose to just report only faces intersection the collision AABB of the collision shape colliding with the polyginal mesh collision.  
 //
-// Remarks: this function is not recommended to use for production code only for debug purpose. 
+// this function is not recommended to use for production code only for debug purpose. 
 //
 // See also: NewtonTreeCollisionGetFaceAttribute, NewtonTreeCollisionSetFaceAttribute 
 void NewtonStaticCollisionSetDebugCallback(const NewtonCollision* const staticCollision, NewtonTreeCollisionCallback userCallback)
@@ -3304,17 +3304,17 @@ void NewtonStaticCollisionSetDebugCallback(const NewtonCollision* const staticCo
 // *treeCollision - is the pointer to the collision tree.
 // rayHitCallback  - pointer to an event function for providing Newton with ray intersection information.
 //
-// Remarks: In general a ray cast on a collision tree will stops at the first intersections with the closest face in the tree
+// In general a ray cast on a collision tree will stops at the first intersections with the closest face in the tree
 // that was hit by the ray. In some cases the application may be interested in the intesation with faces other than the fiorst hit. 
 // In this cases the application can set this alternate callback and the ray scanner will notify the application of each face hit by the ray scan.
 //
-// Remarks: since this function faces the ray scanner to visit all of the potential faces intersected by the ray,
+// since this function faces the ray scanner to visit all of the potential faces intersected by the ray,
 // setting the function call back make the ray casting on collision tree less efficient than the default behavior. 
 // So it is this functionality is only recommended for cases were the application is using especial effects like transparencies, or other effects
 //
-// Remarks: calling this function with *rayHitCallback* = NULL will rest the collision tree to it default raycast mode, which is return with the closest hit.
+// calling this function with *rayHitCallback* = NULL will rest the collision tree to it default raycast mode, which is return with the closest hit.
 //
-// Remarks: when *rayHitCallback* is not null then the callback is dalled with the follwing arguments 
+// when *rayHitCallback* is not null then the callback is dalled with the follwing arguments 
 // *const NewtonCollisio* collision - pointer to the collision tree
 // interseption - inetstion parameters of the ray
 // *normal - unnormalized face mormal in the space fo eth parent of the collision.  
@@ -3382,7 +3382,7 @@ void NewtonTreeCollisionBeginBuild(const NewtonCollision* const treeCollision)
 //
 // Return: Nothing.
 //
-// Remarks: After the call to *NewtonTreeCollisionBeginBuild* the *TreeCollision* is ready to accept polygons. The application should iterate
+// After the call to *NewtonTreeCollisionBeginBuild* the *TreeCollision* is ready to accept polygons. The application should iterate
 // through the application's mesh, adding the mesh polygons to the *TreeCollision* one at a time.
 // The polygons must be flat and non-self intersecting.
 //
@@ -3405,7 +3405,7 @@ void NewtonTreeCollisionAddFace(const NewtonCollision* const treeCollision, int 
 // Return: Nothing.
 //
 //
-// Remarks: After the application has finished adding polygons to the *TreeCollision*, it must call this function to finalize the construction of the collision mesh.
+// After the application has finished adding polygons to the *TreeCollision*, it must call this function to finalize the construction of the collision mesh.
 // If concave polygons are added to the *TreeCollision*, the application must call this function with the parameter *optimize* set to 1.
 // With the *optimize* parameter set to 1, Newton will optimize the collision mesh by removing non essential edges from adjacent flat polygons.
 // Newton will not change the topology of the mesh but significantly reduces the number of polygons in the mesh. The reduction factor of the number of polygons in the mesh depends upon the irregularity of the mesh topology.
@@ -3432,7 +3432,7 @@ void NewtonTreeCollisionEndBuild(const NewtonCollision* const treeCollision, int
 //
 // Return: User id of the face.
 //
-// Remarks: This function is used to obtain the user data stored in faces of the collision geometry.
+// This function is used to obtain the user data stored in faces of the collision geometry.
 // The application can use this user data to achieve per polygon material behavior in large static collision meshes.
 //
 // See also: NewtonTreeCollisionSetFaceAttribute, NewtonCreateTreeCollision
@@ -3456,7 +3456,7 @@ int NewtonTreeCollisionGetFaceAttribute(const NewtonCollision* const treeCollisi
 //
 // Return: User id of the face.
 //
-// Remarks: This function is used to obtain the user data stored in faces of the collision geometry.
+// This function is used to obtain the user data stored in faces of the collision geometry.
 // The application can use this user data to achieve per polygon material behavior in large static collision meshes.
 // By changing the value of this user data the application can achieve modifiable surface behavior with the collision geometry.
 // For example, in a driving game, the surface of a polygon that represents the street can changed from pavement to oily or wet after
@@ -3499,11 +3499,11 @@ void NewtonTreeCollisionForEachFace (const NewtonCollision* const treeCollision,
 //
 // Return: the number of triangles in indexList.
 //
-// Remarks: indexList should be a list 3 * maxIndexCount the number of elements.
+// indexList should be a list 3 * maxIndexCount the number of elements.
 //
-// Remarks: faceAttributet should be a list maxIndexCount the number of elements.
+// faceAttributet should be a list maxIndexCount the number of elements.
 //
-// Remarks: this function could be used by the application for many purposes.
+// this function could be used by the application for many purposes.
 // for example it can be used to draw the collision geometry intersecting a collision primitive instead 
 // of drawing the entire collision tree in debug mode.
 // Another use for this function is to to efficient draw projective texture shadows.
@@ -3709,7 +3709,7 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 // Return: one if the two bodies are disjoint and the closest point could be found, 
 // zero if the point is inside the convex primitive.
 //
-// Remarks: This function can be used as a low-level building block for a stand-alone collision system. 
+// This function can be used as a low-level building block for a stand-alone collision system. 
 // Applications that have already there own physics system, and only want and quick and fast collision solution, 
 // can use Newton advanced collision engine as the low level collision detection part. 
 // To do this the application only needs to initialize Newton, create the collision primitives at application discretion, 
@@ -3717,7 +3717,7 @@ dFloat NewtonCollisionGetSkinThickness (const NewtonCollision* const collision)
 // only, are responsible for implementing their own broad phase collision determination, based on any high level tree structure. 
 // Also the application should implement their own trivial aabb test, before calling this function .
 //
-// Remarks: the current implementation of this function do work on collision trees, or user define collision.
+// the current implementation of this function do work on collision trees, or user define collision.
 //
 // See also: NewtonCollisionCollideContinue, NewtonCollisionClosestPoint, NewtonCollisionCollide, NewtonCollisionRayCast, NewtonCollisionCalculateAABB
 int NewtonCollisionPointDistance(const NewtonWorld* const newtonWorld, const dFloat* const point,
@@ -3747,7 +3747,7 @@ int NewtonCollisionPointDistance(const NewtonWorld* const newtonWorld, const dFl
 // Return: one if the tow bodies are disjoint and he closest point could be found, 
 // zero if the two collision primitives are intersecting.
 //
-// Remarks: This function can be used as a low-level building block for a stand-alone collision system. 
+// This function can be used as a low-level building block for a stand-alone collision system. 
 // Applications that have already there own physics system, and only want and quick and fast collision solution, 
 // can use Newton advanced collision engine as the low level collision detection part. 
 // To do this the application only needs to initialize Newton, create the collision primitives at application discretion, 
@@ -3755,7 +3755,7 @@ int NewtonCollisionPointDistance(const NewtonWorld* const newtonWorld, const dFl
 // only, are responsible for implementing their own broad phase collision determination, based on any high level tree structure. 
 // Also the application should implement their own trivial aabb test, before calling this function .
 //
-// Remarks: the current implementation of this function does not work on collision trees, or user define collision.
+// the current implementation of this function does not work on collision trees, or user define collision.
 //
 // See also: NewtonCollisionCollideContinue, NewtonCollisionPointDistance, NewtonCollisionCollide, NewtonCollisionRayCast, NewtonCollisionCalculateAABB
 int NewtonCollisionClosestPoint(const NewtonWorld* const newtonWorld, 
@@ -3800,7 +3800,7 @@ int NewtonCollisionIntersectionTest (const NewtonWorld* const newtonWorld, const
 // 
 // Return: the number of contact points.
 //
-// Remarks: This function can be used as a low-level building block for a stand-alone collision system. 
+// This function can be used as a low-level building block for a stand-alone collision system. 
 // Applications that have already there own physics system, and only want and quick and fast collision solution, 
 // can use Newton advanced collision engine as the low level collision detection part. 
 // To do this the application only needs to initialize Newton, create the collision primitives at application discretion, 
@@ -3849,13 +3849,13 @@ int NewtonCollisionCollide (const NewtonWorld* const newtonWorld, int maxSize,
 // 
 // Return: the number of contact points.
 //
-// Remarks: by passing zero as *maxSize* not contact will be calculated and the function will just determine the time of impact is any.
+// by passing zero as *maxSize* not contact will be calculated and the function will just determine the time of impact is any.
 //
-// Remarks: if the body are inter penetrating the time of impact will be zero.
+// if the body are inter penetrating the time of impact will be zero.
 //
-// Remarks: if the bodies do not collide time of impact will be set to *timestep*
+// if the bodies do not collide time of impact will be set to *timestep*
 //
-// Remarks: This function can be used as a low-level building block for a stand-alone collision system. 
+// This function can be used as a low-level building block for a stand-alone collision system. 
 // Applications that have already there own physics system, and only want and quick and fast collision solution, 
 // can use Newton advanced collision engine as the low level collision detection part. 
 // To do this the application only needs to initialize Newton, create the collision primitives at application discretion, 
@@ -3891,7 +3891,7 @@ int NewtonCollisionCollideContinue(const NewtonWorld* const newtonWorld, int max
 //
 // Return: nothing.
 //
-// Remarks: the search direction must be in the space of the collision shape.
+// the search direction must be in the space of the collision shape.
 //
 // See also: NewtonCollisionRayCast, NewtonCollisionClosestPoint, NewtonCollisionPointDistance
 void NewtonCollisionSupportVertex(const NewtonCollision* const collisionPtr, const dFloat* const dir, dFloat* const vertex)
@@ -3925,10 +3925,10 @@ void NewtonCollisionSupportVertex(const NewtonCollision* const collisionPtr, con
 //
 // Return: the parametric value of the intersection, between 0.0 and 1.0, an value larger than 1.0 if the ray miss.
 //
-// Remarks: This function is intended for applications using newton collision system separate from the dynamics system, also for applications  
+// This function is intended for applications using newton collision system separate from the dynamics system, also for applications  
 // implementing any king of special purpose logic like sensing distance to another object.
 //
-// Remarks: the ray most be local to the collisions geometry, for example and application ray casting the collision geometry of 
+// the ray most be local to the collisions geometry, for example and application ray casting the collision geometry of 
 // of a rigid body, must first take the points p0, and p1 to the local space of the rigid body by multiplying the points by the 
 // inverse of he rigid body transformation matrix. 
 //
@@ -3998,16 +3998,16 @@ void NewtonCollisionCalculateAABB(const NewtonCollision* const collisionPtr, con
 //
 // Return: nothing
 //
-// Remarks: This function used to be a member of the rigid body, but to making it a member of the collision object provides better
+// This function used to be a member of the rigid body, but to making it a member of the collision object provides better
 // low lever display capabilities. The application can still call this function to show the collision of a rigid body by 
 // getting the collision and the transformation matrix from the rigid, and then calling this functions. 
 // 
-// Remarks: This function can be called by the application in order to show the collision geometry. The application should provide a pointer to the function *NewtonCollisionIterator*, 
+// This function can be called by the application in order to show the collision geometry. The application should provide a pointer to the function *NewtonCollisionIterator*, 
 // Newton will convert the collision geometry into a polygonal mesh, and will call *callback* for every polygon of the mesh
 //
-// Remarks: this function affect severely the performance of Newton. The application should call this function only for debugging purpose
+// this function affect severely the performance of Newton. The application should call this function only for debugging purpose
 //
-// Remarks: This function will ignore user define collision mesh
+// This function will ignore user define collision mesh
 // See also: NewtonWorldGetFirstBody, NewtonWorldForEachBodyInAABBDo
 void NewtonCollisionForEachPolygonDo(const NewtonCollision* const collisionPtr, const dFloat* const matrixPtr, NewtonCollisionIterator callback, void* const userDataPtr)
 {
@@ -4047,7 +4047,7 @@ int NewtonCollisionIsStaticShape (const NewtonCollision* const collision)
 // 
 // Return: nothing
 //
-// Remarks: the application can store an id with any collision primitive. This id can be used to identify what type of collision primitive generated a contact.
+// the application can store an id with any collision primitive. This id can be used to identify what type of collision primitive generated a contact.
 //
 // See also: NewtonCollisionGetUserID, NewtonCreateBox, NewtonCreateSphere
 void NewtonCollisionSetUserID(const NewtonCollision* const collision, unsigned id)
@@ -4066,7 +4066,7 @@ void NewtonCollisionSetUserID(const NewtonCollision* const collision, unsigned i
 // 
 // Return: user id
 //
-// Remarks: the application can store an id with any collision primitive. This id can be used to identify what type of collision primitive generated a contact.
+// the application can store an id with any collision primitive. This id can be used to identify what type of collision primitive generated a contact.
 //
 // See also: NewtonCreateBox, NewtonCreateSphere
 unsigned NewtonCollisionGetUserID(const NewtonCollision* const collision)
@@ -4166,7 +4166,7 @@ void NewtonCollisionGetScale (const NewtonCollision* const collision, dFloat* co
 //
 // Return: Nothing.
 //
-// Remarks: to get the correct reference count of a collision primitive the application can call function *NewtonCollisionGetInfo* 
+// to get the correct reference count of a collision primitive the application can call function *NewtonCollisionGetInfo* 
 // 
 void NewtonDestroyCollision(const NewtonCollision* const collisionPtr)
 {
@@ -4196,7 +4196,7 @@ NewtonCollision* NewtonCollisionCreateInstance (const NewtonCollision* const col
 //
 // Return: Nothing.
 //
-// Remarks: Small and medium collision shapes like *TreeCollision* (under 50000 polygons) small convex hulls or compude collision can be constructed at application 
+// Small and medium collision shapes like *TreeCollision* (under 50000 polygons) small convex hulls or compude collision can be constructed at application 
 // startup without significant processing overhead.
 //
 //
@@ -4219,10 +4219,10 @@ void NewtonCollisionSerialize(const NewtonWorld* const newtonWorld, const Newton
 //
 // Return: Nothing.
 //
-// Remarks: this function is useful to to load collision primitive for and archive file. In the case of complex shapes like convex hull and compound collision the 
+// this function is useful to to load collision primitive for and archive file. In the case of complex shapes like convex hull and compound collision the 
 // it save a significant amount of construction time.
 //
-// Remarks: if this function is called to load a serialized tree collision, the tree collision will be loaded, but the function pointer callback will be set to NULL.
+// if this function is called to load a serialized tree collision, the tree collision will be loaded, but the function pointer callback will be set to NULL.
 // for this operation see function *NewtonCreateTreeCollisionFromSerialization*
 //
 // See also: NewtonCollisionSerialize, NewtonCollisionGetInfo
@@ -4245,9 +4245,9 @@ NewtonCollision* NewtonCreateCollisionFromSerialization(const NewtonWorld* const
 //
 // Return: Nothing.
 //
-// Remarks: if this function is call on a non tree collision, the results are unpredictable.
+// if this function is call on a non tree collision, the results are unpredictable.
 //
-// Remarks: Small and medium size *TreeCollision* objects (under 50000 polygons) can be constructed at application startup without significant processing overhead.
+// Small and medium size *TreeCollision* objects (under 50000 polygons) can be constructed at application startup without significant processing overhead.
 // However, for very large polygons sets (over 50000 polygons) it is recommended that the application use *NewtonCreateTreeCollision* 
 // in an off-line tool. Then the application can call this function to store the *TreeCollision* to a file or 
 // any file packer system the application is using. At run time the application can use the function *NewtonCreateTreeCollisionFromSerialization* 
@@ -4289,7 +4289,7 @@ NewtonCollision* NewtonCreateTreeCollisionFromSerialization(const NewtonWorld* c
 // collision - is the pointer to a convex collision primitive.
 // *collisionInfo - pointer to a collision information record.
 //
-// Remarks: This function can be used by the application for writing file format and for serialization.
+// This function can be used by the application for writing file format and for serialization.
 //
 // See also: NewtonCollisionGetInfo, NewtonCollisionSerialize  
 void NewtonCollisionGetInfo(const NewtonCollision* const collision, NewtonCollisionInfoRecord* const collisionInfo)
@@ -4323,7 +4323,7 @@ void NewtonCollisionGetInfo(const NewtonCollision* const collision, NewtonCollis
 //
 // Return: Nothing.
 //
-// Remarks: The motivation for this function is that many graphics engines still use Euler angles to represent the orientation
+// The motivation for this function is that many graphics engines still use Euler angles to represent the orientation
 // of graphics entities. 
 // The angles are expressed in radians and represent: 
 // *angle[0]* - rotation about first matrix row
@@ -4360,7 +4360,7 @@ void NewtonGetEulerAngle(const dFloat* const matrix, dFloat* const angles0, dFlo
 //
 // Return: Nothing.
 //
-// Remarks: The motivation for this function is that many graphics engines still use Euler angles to represent the orientation
+// The motivation for this function is that many graphics engines still use Euler angles to represent the orientation
 // of graphics entities. 
 // The angles are expressed in radians and represent: 
 // *angle[0]* - rotation about first matrix row
@@ -4397,7 +4397,7 @@ void NewtonSetEulerAngle(const dFloat* const angles, dFloat* const matrix)
 //
 // return: the spring acceleration.
 //
-// Remark: the acceleration calculated by this function represent the mass, spring system of the form
+// the acceleration calculated by this function represent the mass, spring system of the form
 // a = -ks * x - kd * v.
 dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, dFloat kd, dFloat s)
 {
@@ -4432,7 +4432,7 @@ dFloat NewtonCalculateSpringDamperAcceleration(dFloat dt, dFloat ks, dFloat x, d
 //
 // Return: Pointer to the rigid body.
 //
-// Remarks: This function creates a Newton rigid body and assigns a *collisionPtr* as the collision geometry representing the rigid body.
+// This function creates a Newton rigid body and assigns a *collisionPtr* as the collision geometry representing the rigid body.
 // This function increments the reference count of the collision geometry. 
 // All event functions are set to NULL and the material gruopID of the body is set to the default GroupID.
 //
@@ -4516,7 +4516,7 @@ NewtonBody* NewtonCreateDeformableBody (const NewtonWorld* const newtonWorld, co
 //
 // Return: Nothing.
 //
-// Remarks: If this function is called from inside a simulation step the destruction of the body will be delayed until end of the time step.
+// If this function is called from inside a simulation step the destruction of the body will be delayed until end of the time step.
 // This function will decrease the reference count of the collision geometry by one. If the reference count reaches zero, then the collision 
 // geometry will be destroyed. This function will destroy all joints associated with this body.
 //
@@ -4632,7 +4632,7 @@ int NewtonBodyGetID (const NewtonBody* const bodyPtr)
 //
 // Return: Nothing.
 //
-// Remarks: The application can store a user defined value with the Body. This value can be the pointer to a structure containing some application data for special effect. 
+// The application can store a user defined value with the Body. This value can be the pointer to a structure containing some application data for special effect. 
 // if the application allocate some resource to store the user data, the application can register a joint destructor to get rid of the allocated resource when the body is destroyed
 // 
 // See also: NewtonBodyGetUserData, NewtonBodySetDestructorCallback 
@@ -4651,7 +4651,7 @@ void  NewtonBodySetUserData(const NewtonBody* const bodyPtr, void* const userDat
 //
 // Return: The user defined data.
 //
-// Remarks: The application can store a user defined value with a rigid body. This value can be the pointer
+// The application can store a user defined value with a rigid body. This value can be the pointer
 // to a structure which is the graphical representation of the rigid body.
 // 
 // See also: NewtonBodySetUserData
@@ -4671,7 +4671,7 @@ void* NewtonBodyGetUserData(const NewtonBody* const bodyPtr)
 //
 // Return: the world that own this body.
 //
-// Remarks: The application can use this function to determine what world own this body. If the application 
+// The application can use this function to determine what world own this body. If the application 
 // have to get the world from a joint, it can do so by getting one of the bodies attached to the joint and getting the world from 
 // that body.
 // 
@@ -4692,11 +4692,11 @@ NewtonWorld* NewtonBodyGetWorld(const NewtonBody* const bodyPtr)
 //
 // Return: Nothing.
 //
-// Remarks: The function *NewtonSetTransform callback* is called by the Newton engine every time a visual object that represents the rigid body has changed.
+// The function *NewtonSetTransform callback* is called by the Newton engine every time a visual object that represents the rigid body has changed.
 // The application can obtain the pointer user data value that points to the visual object. 
 // The Newton engine does not call the *NewtonSetTransform callback* function for bodies that are inactive or have reached a state of stable equilibrium.
 //
-// Remarks: The matrix should be organized in row-major order (this is the way directX and OpenGL stores matrices).
+// The matrix should be organized in row-major order (this is the way directX and OpenGL stores matrices).
 // 
 // See also: NewtonBodyGetUserData, NewtonBodyGetUserData
 void  NewtonBodySetTransformCallback(const NewtonBody* const bodyPtr, NewtonSetTransform callback)
@@ -4715,11 +4715,11 @@ void  NewtonBodySetTransformCallback(const NewtonBody* const bodyPtr, NewtonSetT
 //
 // Return: Nothing.
 //
-// Remarks: The function *NewtonSetTransform callback* is called by the Newton engine every time a visual object that represents the rigid body has changed.
+// The function *NewtonSetTransform callback* is called by the Newton engine every time a visual object that represents the rigid body has changed.
 // The application can obtain the pointer user data value that points to the visual object. 
 // The Newton engine does not call the *NewtonSetTransform callback* function for bodies that are inactive or have reached a state of stable equilibrium.
 //
-// Remarks: The matrix should be organized in row-major order (this is the way directX and OpenGL stores matrices).
+// The matrix should be organized in row-major order (this is the way directX and OpenGL stores matrices).
 // 
 // See also: NewtonBodyGetUserData, NewtonBodyGetUserData
 NewtonSetTransform NewtonBodyGetTransformCallback (const NewtonBody* const bodyPtr)
@@ -4739,9 +4739,9 @@ NewtonSetTransform NewtonBodyGetTransformCallback (const NewtonBody* const bodyP
 //
 // Return: Nothing.
 //
-// Remarks: Before the *NewtonApplyForceAndTorque callback* is called for a body, Newton first clears the net force and net torque for the body. 
+// Before the *NewtonApplyForceAndTorque callback* is called for a body, Newton first clears the net force and net torque for the body. 
 //
-// Remarks: The function *NewtonApplyForceAndTorque callback* is called by the Newton Engine every time an active body is going to be simulated. 
+// The function *NewtonApplyForceAndTorque callback* is called by the Newton Engine every time an active body is going to be simulated. 
 // The Newton Engine does not call the *NewtonApplyForceAndTorque callback* function for bodies that are inactive or have reached a state of stable equilibrium.
 // 
 // See also: NewtonBodyGetUserData, NewtonBodyGetUserData, NewtonBodyGetForceAndTorqueCallback
@@ -4761,14 +4761,14 @@ void  NewtonBodySetForceAndTorqueCallback(const NewtonBody* const bodyPtr, Newto
 //
 // Return: pointer to the force call back.
 //
-// Remarks: This function can be used to concatenate different force calculation components making more modular the 
+// This function can be used to concatenate different force calculation components making more modular the 
 // design of function components dedicated to apply special effect. For example a body may have a basic force a force that
 // only apply the effect of gravity, but that application can place a region in where there can be a fluid volume, or another gravity field.
 // we this function the application can read the correct function and save into a local variable, and set a new one.
 // this new function will firs call the save function pointer and upon return apply the correct effect.
 // this similar to the concept of virtual methods on objected oriented languages.
 //
-// Remarks: The function *NewtonApplyForceAndTorque callback* is called by the Newton Engine every time an active body is going to be simulated. 
+// The function *NewtonApplyForceAndTorque callback* is called by the Newton Engine every time an active body is going to be simulated. 
 // The Newton Engine does not call the *NewtonApplyForceAndTorque callback* function for bodies that are inactive or have reached a state of stable equilibrium.
 // 
 // See also: NewtonBodyGetUserData, NewtonBodyGetUserData, NewtonBodySetForceAndTorqueCallback
@@ -4789,13 +4789,13 @@ NewtonApplyForceAndTorque NewtonBodyGetForceAndTorqueCallback(const NewtonBody* 
 //
 // Return: Nothing.
 //
-// Remarks: 
+// 
 // This function *NewtonBodyDestructor callback* acts like a destruction function in CPP. This function
 // is called when the body and all data joints associated with the body are about to be destroyed.
 // The application could use this function to destroy or release any resource associated with this body. 
 // The application should not make reference to this body after this function returns.
 //
-// Remarks: 
+// 
 // The destruction of a body will destroy all joints associated with the body.
 // 
 // See also: NewtonBodyGetUserData, NewtonBodyGetUserData
@@ -4823,7 +4823,7 @@ NewtonBodyDestructor NewtonBodyGetDestructorCallback (const NewtonBody* const bo
 //
 // Return: Nothing.
 //
-// Remarks: Newton algorithms have no restriction on the values for the mass, but due to floating point dynamic
+// Newton algorithms have no restriction on the values for the mass, but due to floating point dynamic
 // range (24 bit precision) it is best if the ratio between the heaviest and the lightest body in the scene is limited to 200.
 // There are no special utility functions in Newton to calculate the moment of inertia of common primitives. 
 // The application should specify the inertial values, keeping in mind that realistic inertia values are necessary for
@@ -4948,11 +4948,11 @@ void NewtonBodyGetInvInertiaMatrix(const NewtonBody* const bodyPtr, dFloat* cons
 //
 // Return: Nothing.
 //
-// Remarks: The matrix should be arranged in row-major order.
+// The matrix should be arranged in row-major order.
 // If you are using OpenGL matrices (column-major) you will need to transpose you matrices into a local array, before
 // passing them to Newton.
 //
-// Remarks: That application should make sure the transformation matrix has not scale, otherwise unpredictable result will occur. 
+// That application should make sure the transformation matrix has not scale, otherwise unpredictable result will occur. 
 //
 // See also: NewtonBodyGetMatrix
 void NewtonBodySetMatrix(const NewtonBody* const bodyPtr, const dFloat* const matrixPtr)
@@ -4990,17 +4990,17 @@ void NewtonBodySetMatrixNoSleep (const NewtonBody* const bodyPtr, const dFloat* 
 //
 // Return: Nothing.
 //
-// Remarks: This function applies the transformation matrix to the *body* and also applies the appropriate transformation matrix to
+// This function applies the transformation matrix to the *body* and also applies the appropriate transformation matrix to
 // set of articulated bodies. If the body is in contact with another body the other body is not transformed.
 //
-// Remarks: this function should not be used to transform set of articulated bodies that are connected to a static body.
+// this function should not be used to transform set of articulated bodies that are connected to a static body.
 // doing so will result in unpredictables results. Think for example moving a chain attached to a ceiling from one place to another,
 // to do that in real life a person first need to disconnect the chain (destroy the joint), move the chain (apply the transformation to the 
 // entire chain), the reconnect it in the new position (recreate the joint again).
 //
-// Remarks: this function will set to zero the linear and angular velocity of all bodies that are part of the set of articulated body array.
+// this function will set to zero the linear and angular velocity of all bodies that are part of the set of articulated body array.
 //
-// Remarks: The matrix should be arranged in row-major order (this is the way direct x stores matrices).
+// The matrix should be arranged in row-major order (this is the way direct x stores matrices).
 // If you are using OpenGL matrices (column-major) you will need to transpose you matrices into a local array, before
 // passing them to Newton.
 //
@@ -5024,7 +5024,7 @@ void NewtonBodySetMatrixRecursive(const NewtonBody* const bodyPtr, const dFloat*
 //
 // Return: Nothing.
 //
-// Remarks: The matrix should be arranged in row-major order (this is the way direct x stores matrices).
+// The matrix should be arranged in row-major order (this is the way direct x stores matrices).
 // If you are using OpenGL matrices (column-major) you will need to transpose you matrices into a local array, before
 // passing them to Newton.
 //
@@ -5056,12 +5056,12 @@ void NewtonBodyGetPosition(const NewtonBody* const bodyPtr, dFloat* const posPtr
 //
 // Return: Nothing.
 //
-// Remarks: The rotation matrix is written set in the form of a unit quaternion in the format Rot (q0, q1, q1, q3)
+// The rotation matrix is written set in the form of a unit quaternion in the format Rot (q0, q1, q1, q3)
 // 
-// Remarks: The rotation quaternion is the same as what the application would get by using at function to extract a quaternion form a matrix.
+// The rotation quaternion is the same as what the application would get by using at function to extract a quaternion form a matrix.
 // however since the rigid body already contained the rotation in it, it is more efficient to just call this function avoiding expensive conversion. 
 //
-// Remarks: this function could be very useful for the implementation of pseudo frame rate independent simulation.
+// this function could be very useful for the implementation of pseudo frame rate independent simulation.
 // by running the simulation at a fix rate and using linear interpolation between the last two simulation frames. 
 // to determine the exact fraction of the render step.
 //
@@ -5087,7 +5087,7 @@ void NewtonBodyGetRotation(const NewtonBody* const bodyPtr, dFloat* const rotPtr
 //
 // Return: Nothing.
 //
-// Remarks: This function is only effective when called from *NewtonApplyForceAndTorque callback*
+// This function is only effective when called from *NewtonApplyForceAndTorque callback*
 //
 // See also: NewtonBodyAddForce, NewtonBodyGetForce, NewtonBodyGetForceAcc 
 void  NewtonBodySetForce(const NewtonBody* const bodyPtr, const dFloat* const vectorPtr)
@@ -5107,7 +5107,7 @@ void  NewtonBodySetForce(const NewtonBody* const bodyPtr, const dFloat* const ve
 //
 // Return: Nothing.
 //
-// Remarks: This function is only effective when called from *NewtonApplyForceAndTorque callback*
+// This function is only effective when called from *NewtonApplyForceAndTorque callback*
 //
 // See also: NewtonBodySetForce, NewtonBodyGetForce, NewtonBodyGetForceAcc 
 void  NewtonBodyAddForce(const NewtonBody* const bodyPtr, const dFloat* const vectorPtr)
@@ -5127,7 +5127,7 @@ void  NewtonBodyAddForce(const NewtonBody* const bodyPtr, const dFloat* const ve
 // *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats to hold the net force of the body.
 //
-// Remark: this function can be useful to modify force from joint callback
+// this function can be useful to modify force from joint callback
 //
 // Return: Nothing.
 //
@@ -5173,9 +5173,9 @@ void NewtonBodyGetForce(const NewtonBody* const bodyPtr, dFloat* const vectorPtr
 // *desiredVeloc - pointer to an array of 3 floats containing the desired velocity.
 // *forceOut - pointer to an array of 3 floats to hold the calculated net force.
 //
-// Remark: this function can be useful when creating object for game play.
+// this function can be useful when creating object for game play.
 // 
-// remark: this treat the body as a point mass and is uses the solver to calculates the net force that need to be applied to the body
+// this treat the body as a point mass and is uses the solver to calculates the net force that need to be applied to the body
 // such that is reach the desired velocity in the net time step.
 // In general the force should be calculated by the expression f = M * (dsiredVeloc - bodyVeloc) / timestep
 // however due to algorithmic optimization and limitations if such equation is used then the solver will generate a different desired velocity.
@@ -5204,7 +5204,7 @@ void NewtonBodyCalculateInverseDynamicsForce(const NewtonBody* const bodyPtr, dF
 //
 // Return: Nothing.
 //
-// Remarks: This function is only effective when called from *NewtonApplyForceAndTorque callback*
+// This function is only effective when called from *NewtonApplyForceAndTorque callback*
 //
 // See also: NewtonBodyAddTorque, NewtonBodyGetTorque, NewtonBodyGetTorqueAcc
 void  NewtonBodySetTorque(const NewtonBody* const bodyPtr, const dFloat* const vectorPtr)
@@ -5225,7 +5225,7 @@ void  NewtonBodySetTorque(const NewtonBody* const bodyPtr, const dFloat* const v
 //
 // Return: Nothing.
 //
-// Remarks: This function is only effective when called from *NewtonApplyForceAndTorque callback*
+// This function is only effective when called from *NewtonApplyForceAndTorque callback*
 //
 // See also: NewtonBodySetTorque, NewtonBodyGetTorque, NewtonBodyGetTorqueAcc
 void  NewtonBodyAddTorque(const NewtonBody* const bodyPtr, const dFloat* const vectorPtr)
@@ -5263,7 +5263,7 @@ void NewtonBodyGetTorque(const NewtonBody* const bodyPtr, dFloat* const vectorPt
 // *bodyPtr - pointer to the body.
 // *vectorPtr - pointer to an array of 3 floats to hold the net force of the body.
 //
-// Remark: this function can be useful to modify torque form joint callback
+// this function can be useful to modify torque form joint callback
 //
 // Return: Nothing.
 //
@@ -5290,12 +5290,12 @@ void NewtonBodyGetTorqueAcc(const NewtonBody* const bodyPtr, dFloat* const vecto
 //
 // Return: Nothing.
 //
-// Remarks: This function can be used to set the relative offset of the center of mass of a rigid body.
+// This function can be used to set the relative offset of the center of mass of a rigid body.
 // when a rigid body is created the center of mass is set the the point c(0, 0, 0), and normally this is 
 // the best setting for a rigid body. However the are situations in which and object does not have symmetry or
 // simple some kind of special effect is desired, and this origin need to be changed.
 //
-// Remarks: Care must be taken when offsetting the center of mass of a body. 
+// Care must be taken when offsetting the center of mass of a body. 
 // The application must make sure that the external torques resulting from forces applied at at point
 // relative to the center of mass are calculated appropriately.
 // this could be done Transform and Torque callback function as the follow pseudo code fragment shows:
@@ -5336,12 +5336,12 @@ void NewtonBodySetCentreOfMass(const NewtonBody* const bodyPtr, const dFloat* co
 //
 // Return: Nothing.
 //
-// Remarks: This function can be used to set the relative offset of the center of mass of a rigid body.
+// This function can be used to set the relative offset of the center of mass of a rigid body.
 // when a rigid body is created the center of mass is set the the point c(0, 0, 0), and normally this is 
 // the best setting for a rigid body. However the are situations in which and object does not have symmetry or
 // simple some kind of special effect is desired, and this origin need to be changed.
 //
-// Remarks: This function can be used in conjunction with *NewtonConvexCollisionCalculateInertialMatrix* 
+// This function can be used in conjunction with *NewtonConvexCollisionCalculateInertialMatrix* 
 //
 // See also: NewtonConvexCollisionCalculateInertialMatrix, NewtonBodySetCentreOfMass 
 void NewtonBodyGetCentreOfMass(const NewtonBody* const bodyPtr, dFloat* const comPtr)
@@ -5363,9 +5363,9 @@ void NewtonBodyGetCentreOfMass(const NewtonBody* const bodyPtr, dFloat* const co
 //
 // Return: Joint if at least one is attached to the body, NULL if not joint is attached
 //
-// Remarks: this function will only return the pointer to user defined joints, older build in constraints will be skipped by this function.
+// this function will only return the pointer to user defined joints, older build in constraints will be skipped by this function.
 //
-// Remark: this function can be used to implement recursive walk of complex articulated arrangement of rodid bodies.
+// this function can be used to implement recursive walk of complex articulated arrangement of rodid bodies.
 //
 // See also: NewtonBodyGetNextJoint
 NewtonJoint* NewtonBodyGetFirstJoint(const NewtonBody* const bodyPtr)
@@ -5384,9 +5384,9 @@ NewtonJoint* NewtonBodyGetFirstJoint(const NewtonBody* const bodyPtr)
 //
 // Return: Joint is at least one joint is attached to the body, NULL if not joint is attached
 //
-// Remarks: this function will only return the pointer to User defined joint, older build in constraints will be skipped by this function.
+// this function will only return the pointer to User defined joint, older build in constraints will be skipped by this function.
 //
-// Remark: this function can be used to implement recursive walk of complex articulated arrangement of rodid bodies.
+// this function can be used to implement recursive walk of complex articulated arrangement of rodid bodies.
 //
 // See also: NewtonBodyGetFirstJoint
 NewtonJoint* NewtonBodyGetNextJoint(const NewtonBody* const bodyPtr, const NewtonJoint* const jointPtr)
@@ -5611,7 +5611,7 @@ void* NewtonContactGetCollisionID1(const void* const contact)
 //
 // Return: Nothing.
 //
-// Remarks: This function replaces a collision geometry of a body with the new collision geometry.
+// This function replaces a collision geometry of a body with the new collision geometry.
 // This function increments the reference count of the collision geometry and decrements the reference count
 // of the old collision geometry. If the reference count of the old collision geometry reaches zero, the old collision geometry is destroyed.
 // This function can be used to swap the collision geometry of bodies at runtime.
@@ -5655,7 +5655,7 @@ void NewtonBodySetCollisionScale (const NewtonBody* const bodyPtr, dFloat scaleX
 //
 // Return: Pointer to body collision geometry.
 //
-// Remarks: This function does not increment the reference count of the collision geometry. 
+// This function does not increment the reference count of the collision geometry. 
 //
 // See also: NewtonCreateDynamicBody, NewtonBodySetCollision
 NewtonCollision* NewtonBodyGetCollision(const NewtonBody* const bodyPtr)
@@ -5675,7 +5675,7 @@ NewtonCollision* NewtonBodyGetCollision(const NewtonBody* const bodyPtr)
 //
 // Return: Nothing.
 //
-// Remarks: When the application creates a body, the default material group, *defaultGroupId*, is applied by default.
+// When the application creates a body, the default material group, *defaultGroupId*, is applied by default.
 //
 // See also: NewtonBodyGetMaterialGroupID, NewtonMaterialCreateGroupID, NewtonMaterialGetDefaultGroupID
 void NewtonBodySetMaterialGroupID(const NewtonBody* const bodyPtr, int id)
@@ -5713,22 +5713,22 @@ int NewtonBodyGetMaterialGroupID(const NewtonBody* const bodyPtr)
 //
 // Return: Nothing.
 //
-// Remarks: continuous collision mode enable allow the engine to predict colliding contact on rigid bodies
+// continuous collision mode enable allow the engine to predict colliding contact on rigid bodies
 // Moving at high speed of subject to strong forces.
 //
-// Remarks: continuous collision mode does not prevent rigid bodies from inter penetration instead it prevent bodies from 
+// continuous collision mode does not prevent rigid bodies from inter penetration instead it prevent bodies from 
 // passing trough each others by extrapolating contact points when the bodies normal contact calculation determine the bodies are not colliding. 
 //
-// Remarks: for performance reason the bodies angular velocities is only use on the broad face of the collision, 
+// for performance reason the bodies angular velocities is only use on the broad face of the collision, 
 // but not on the contact calculation. 
 // 
-// Remarks: continuous collision does not perform back tracking to determine time of contact, instead it extrapolate contact by incrementally 
+// continuous collision does not perform back tracking to determine time of contact, instead it extrapolate contact by incrementally 
 // extruding the collision geometries of the two colliding bodies along the linear velocity of the bodies during the time step, 
 // if during the extrusion colliding contact are found, a collision is declared and the normal contact resolution is called. 
 //
-// Remarks: for continuous collision to be active the continuous collision mode must on the material pair of the colliding bodies as well as on at least one of the two colliding bodies.
+// for continuous collision to be active the continuous collision mode must on the material pair of the colliding bodies as well as on at least one of the two colliding bodies.
 //
-// Remarks: Because there is penalty of about 40% to 80% depending of the shape complexity of the collision geometry, this feature is set 
+// Because there is penalty of about 40% to 80% depending of the shape complexity of the collision geometry, this feature is set 
 // off by default. It is the job of the application to determine what bodies need this feature on. Good guidelines are: very small objects, 
 // and bodies that move a height speed.  
 // 
@@ -5749,12 +5749,12 @@ void NewtonBodySetContinuousCollisionMode(const NewtonBody* const bodyPtr, unsig
 //
 // Return: Nothing.
 //
-// Remarks: 
-//Remark: Because there is there is penalty of about 3 to 5 depending of the shape complexity of the collision geometry, this feature is set 
+// 
+//Because there is there is penalty of about 3 to 5 depending of the shape complexity of the collision geometry, this feature is set 
 //off by default. It is the job of the application to determine what bodies need this feature on. Good guidelines are: very small objects, 
 //and bodies that move a height speed.  
 //
-//Remark: this feature is currently disabled:
+//this feature is currently disabled:
 //
 // See also: NewtonBodySetContinuousCollisionMode, NewtonBodySetContinuousCollisionMode
 int NewtonBodyGetContinuousCollisionMode (const NewtonBody* const bodyPtr)
@@ -5775,7 +5775,7 @@ int NewtonBodyGetContinuousCollisionMode (const NewtonBody* const bodyPtr)
 //
 // Return: Nothing.
 //
-// Remarks: sometimes when making complicated arrangements of linked bodies it is possible the collision geometry of these bodies is in the way of the 
+// sometimes when making complicated arrangements of linked bodies it is possible the collision geometry of these bodies is in the way of the 
 // joints work space. This could be a problem for the normal operation of the joints. When this situation happens the application can determine which bodies
 // are the problem and disable collision for those bodies while they are linked by joints. For the collision to be disable for a pair of body, 
 // both bodies must have the collision disabled. If the joints connecting the bodies are destroyed these bodies become collidable automatically.
@@ -5831,10 +5831,10 @@ void NewtonBodySetMaxRotationPerStep(const NewtonBody* const bodyPtr, dFloat ang
 // 
 // Return: 1 id the bode is frozen, 0 if bode is unfrozen.
 //
-// Remarks: When a body is created it is automatically placed in the active simulation list. As an optimization 
+// When a body is created it is automatically placed in the active simulation list. As an optimization 
 // for large scenes, you may use this function to put background bodies in an inactive equilibrium state.
 //
-// Remarks: This function tells Newton that this body does not currently need to be simulated.
+// This function tells Newton that this body does not currently need to be simulated.
 // However, if the body is part of a larger configuration it may be affected indirectly by the reaction forces
 // of objects that it is connected to.
 //
@@ -5856,7 +5856,7 @@ int NewtonBodyGetFreezeState(const NewtonBody* const bodyPtr)
 // 
 // Return: Nothing
 //
-// Remarks: This function to no activate the body, is just lock or unlock the body for physics simulation.  
+// This function to no activate the body, is just lock or unlock the body for physics simulation.  
 //
 // See also: NewtonBodyGetFreezeState, NewtonBodySetAutoSleep, NewtonBodyGetAutoSleep
 void NewtonBodySetFreezeState(const NewtonBody* const bodyPtr, int state)
@@ -5875,9 +5875,9 @@ void NewtonBodySetFreezeState(const NewtonBody* const bodyPtr, int state)
 // 
 // Return: Nothing.
 //
-// Remarks: Bodies are created with auto-activation on by default. 
+// Bodies are created with auto-activation on by default. 
 //
-// Remarks: Auto activation enabled is the default state for the majority of bodies in a large scene.
+// Auto activation enabled is the default state for the majority of bodies in a large scene.
 // However, for player control, ai control or some other special circumstance, the application may want to control
 // the activation/deactivation of the body. 
 // In that case, the application may call NewtonBodySetAutoSleep (body, 0) followed by
@@ -6065,10 +6065,10 @@ void NewtonBodyGetOmega(const NewtonBody* const bodyPtr, dFloat* const omega)
 // *bodyPtr - is the pointer to the body.
 // linearDamp - linear damping coefficient.
 //
-// Remarks: the default value of *linearDamp* is clamped to a value between 0.0 and 1.0; the default value is 0.1,
+// the default value of *linearDamp* is clamped to a value between 0.0 and 1.0; the default value is 0.1,
 // There is a non zero implicit attenuation value of 0.0001 assume by the integrator.
 //
-// Remarks: The dampening viscous friction force is added to the external force applied to the body every frame before going to the solver-integrator. 
+// The dampening viscous friction force is added to the external force applied to the body every frame before going to the solver-integrator. 
 // This force is proportional to the square of the magnitude of the velocity to the body in the opposite direction of the velocity of the body. 
 // An application can set *linearDamp* to zero when the application takes control of the external forces and torque applied to the body, should the application
 // desire to have absolute control of the forces over that body. However, it is recommended that the *linearDamp* coefficient is set to a non-zero 
@@ -6109,10 +6109,10 @@ dFloat NewtonBodyGetLinearDamping(const NewtonBody* const bodyPtr)
 // *bodyPtr - is the pointer to the body.
 // *angularDamp - pointer to an array of at least three floats containing the angular damping coefficients for the principal axis of the body.
 //
-// Remarks: the default value of *angularDamp* is clamped to a value between 0.0 and 1.0; the default value is 0.1,
+// the default value of *angularDamp* is clamped to a value between 0.0 and 1.0; the default value is 0.1,
 // There is a non zero implicit attenuation value of 0.0001 assumed by the integrator.
 //
-// Remarks: The dampening viscous friction torque is added to the external torque applied to the body every frame before going to the solver-integrator. 
+// The dampening viscous friction torque is added to the external torque applied to the body every frame before going to the solver-integrator. 
 // This torque is proportional to the square of the magnitude of the angular velocity to the body in the opposite direction of the angular velocity of the body. 
 // An application can set *angularDamp* to zero when the to take control of the external forces and torque applied to the body, should the application
 // desire to have absolute control of the forces over that body. However, it is recommended that the *linearDamp* coefficient be set to a non-zero 
@@ -6174,14 +6174,14 @@ void NewtonBodyGetPointVelocity (const NewtonBody* const bodyPtr, const dFloat* 
 //
 // Return: Nothing.
 // 
-// Remarks: This function will activate the body.
+// This function will activate the body.
 //
-// Remarks: *pointPosit* and *pointDeltaVeloc* must be specified in global space.
+// *pointPosit* and *pointDeltaVeloc* must be specified in global space.
 //
-// Remarks: *pointDeltaVeloc* represent a change in velocity. For example, a value of *pointDeltaVeloc* of (1, 0, 0) changes the velocity 
+// *pointDeltaVeloc* represent a change in velocity. For example, a value of *pointDeltaVeloc* of (1, 0, 0) changes the velocity 
 // of *bodyPtr* in such a way that the velocity of point *pointDeltaVeloc* will increase by (1, 0, 0)
 //
-// Remarks: Because *pointDeltaVeloc* represents a change in velocity, this function must be used with care. Repeated calls
+// Because *pointDeltaVeloc* represents a change in velocity, this function must be used with care. Repeated calls
 // to this function will result in an increase of the velocity of the body and may cause to integrator to lose stability.
 void NewtonBodyAddImpulse(const NewtonBody* const bodyPtr, const dFloat* const pointDeltaVeloc, const dFloat* const pointPosit)
 {
@@ -6208,12 +6208,12 @@ void NewtonBodyAddImpulse(const NewtonBody* const bodyPtr, const dFloat* const p
 //
 // Return: Nothing.
 // 
-// Remarks: This function will activate the body.
+// This function will activate the body.
 //
-// Remarks: *pointPosit* and *pointDeltaVeloc* must be specified in global space.
+// *pointPosit* and *pointDeltaVeloc* must be specified in global space.
 //
 //
-// Remarks: this function apply at general impulse to a body a oppose to a desired change on velocity
+// this function apply at general impulse to a body a oppose to a desired change on velocity
 // this mean that the body mass, and Inertia will determine the gain on velocity.
 void NewtonBodyApplyImpulseArray (const NewtonBody* const bodyPtr, int impulseCount, int strideInByte, const dFloat* const impulseArray, const dFloat* const pointArray)
 {
@@ -6266,7 +6266,7 @@ void NewtonBodyIntegrateVelocity (const NewtonBody* const bodyPtr, dFloat timest
 //
 // Return: Pointer to the ball and socket joint.
 //
-// Remarks: This function creates a ball and socket and add it to the world. By default joint disables collision with the linked bodies. 
+// This function creates a ball and socket and add it to the world. By default joint disables collision with the linked bodies. 
 NewtonJoint* NewtonConstraintCreateBall(const NewtonWorld* const newtonWorld, 
 	const dFloat* pivotPoint, 
 	const NewtonBody* const childBody, 
@@ -6289,7 +6289,7 @@ NewtonJoint* NewtonConstraintCreateBall(const NewtonWorld* const newtonWorld,
 // maxConeAngle - max angle in radians the attached body is allow to swing relative to the pin axis, a value of zero will disable this limits. 
 // maxTwistAngle - max angle in radians the attached body is allow to twist relative to the pin axis, a value of zero will disable this limits. 
 //
-// Remarks: limits are disabled at creation time. A value of zero for *maxConeAngle* disable the cone limit, a value of zero for *maxTwistAngle* disable the twist limit
+// limits are disabled at creation time. A value of zero for *maxConeAngle* disable the cone limit, a value of zero for *maxTwistAngle* disable the twist limit
 // all non-zero value for *maxConeAngle* are clamped between 5 degree and 175 degrees   
 //
 // See also: NewtonConstraintCreateBall
@@ -6333,7 +6333,7 @@ void NewtonBallSetConeLimits(const NewtonJoint* const ball, const dFloat* pin, d
 //
 // Return: nothing.
 //
-// Remarks: if the application wants to have some feedback from the joint simulation, the application can register a function
+// if the application wants to have some feedback from the joint simulation, the application can register a function
 // update callback to be called every time any of the bodies linked by this joint is active. This is useful to provide special
 // effects like particles, sound or even to simulate breakable moving parts.
 // 
@@ -6357,7 +6357,7 @@ void NewtonBallSetUserCallback(const NewtonJoint* const ball, NewtonBallCallback
 //
 // Return: nothing.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play a bell sound when the joint angle passes some max value.
 // 
 // See also: NewtonBallSetUserCallback
@@ -6383,7 +6383,7 @@ void NewtonBallGetJointAngle (const NewtonJoint* const ball, dFloat* angle)
 //
 // Return: nothing.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play the creaky noise of a hanging lamp.
 // 
 // See also: NewtonBallSetUserCallback
@@ -6408,7 +6408,7 @@ void NewtonBallGetJointOmega(const NewtonJoint* const ball, dFloat* omega)
 //
 // Return: nothing.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can destroy the joint if the force exceeds some predefined value.
 // 
 // See also: NewtonBallSetUserCallback
@@ -6446,7 +6446,7 @@ void NewtonBallGetJointForce(const NewtonJoint* const ball, dFloat* const force)
 //
 // Return: Pointer to the hinge joint.
 //
-// Remarks: This function creates a hinge and add it to the world. By default joint disables collision with the linked bodies. 
+// This function creates a hinge and add it to the world. By default joint disables collision with the linked bodies. 
 NewtonJoint*  NewtonConstraintCreateHinge(const NewtonWorld* const newtonWorld, const dFloat* pivotPoint, const dFloat* pinDir, const NewtonBody* const childBody, const NewtonBody* const parentBody)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -6468,7 +6468,7 @@ NewtonJoint*  NewtonConstraintCreateHinge(const NewtonWorld* const newtonWorld, 
 //
 // Return: nothing.
 //
-// Remarks: if the application wants to have some feedback from the joint simulation, the application can register a function
+// if the application wants to have some feedback from the joint simulation, the application can register a function
 // update callback to be call every time any of the bodies linked by this joint is active. This is useful to provide special
 // effects like particles, sound or even to simulate breakable moving parts.
 // 
@@ -6491,7 +6491,7 @@ void NewtonHingeSetUserCallback(const NewtonJoint* const hinge, NewtonHingeCallb
 //
 // Return: the joint angle relative to the hinge pin.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play a bell sound when the joint angle passes some max value.
 dFloat NewtonHingeGetJointAngle (const NewtonJoint* const hinge)
 {
@@ -6511,7 +6511,7 @@ dFloat NewtonHingeGetJointAngle (const NewtonJoint* const hinge)
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play the creaky noise of a hanging lamp.
 dFloat NewtonHingeGetJointOmega(const NewtonJoint* const hinge)
 {
@@ -6532,7 +6532,7 @@ dFloat NewtonHingeGetJointOmega(const NewtonJoint* const hinge)
 //
 // Return: the relative angular acceleration needed to stop the hinge.
 //
-// Remarks: this function can only be called from a *NewtonHingeCallback* and it can be used by the application to implement hinge limits.
+// this function can only be called from a *NewtonHingeCallback* and it can be used by the application to implement hinge limits.
 dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const NewtonHingeSliderUpdateDesc* const desc, dFloat angle)
 {
 	dgHingeConstraint* contraint;
@@ -6551,7 +6551,7 @@ dFloat NewtonHingeCalculateStopAlpha (const NewtonJoint* const hinge, const Newt
 //
 // Return: nothing.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can destroy the joint if the force exceeds some predefined value.
 void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const force)
 {
@@ -6584,7 +6584,7 @@ void NewtonHingeGetJointForce(const NewtonJoint* const hinge, dFloat* const forc
 //
 // Return: Pointer to the slider joint.
 //
-// Remarks: This function creates a slider and add it to the world. By default joint disables collision with the linked bodies. 
+// This function creates a slider and add it to the world. By default joint disables collision with the linked bodies. 
 NewtonJoint* NewtonConstraintCreateSlider(const NewtonWorld* const newtonWorld, const dFloat* pivotPoint, const dFloat* pinDir, const NewtonBody* const childBody, const NewtonBody* const parentBody)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -6606,7 +6606,7 @@ NewtonJoint* NewtonConstraintCreateSlider(const NewtonWorld* const newtonWorld, 
 //
 // Return: nothing.
 //
-// Remarks: if the application wants to have some feedback from the joint simulation, the application can register a function
+// if the application wants to have some feedback from the joint simulation, the application can register a function
 // update callback to be call every time any of the bodies linked by this joint is active. This is useful to provide special
 // effects like particles, sound or even to simulate breakable moving parts.
 // 
@@ -6628,7 +6628,7 @@ void NewtonSliderSetUserCallback(const NewtonJoint* const slider, NewtonSliderCa
 //
 // Return: the joint angle relative to the hinge pin.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play a bell sound when the joint angle passes some max value.
 // 
 // See also: NewtonSliderSetUserCallback
@@ -6649,7 +6649,7 @@ dFloat NewtonSliderGetJointPosit (const NewtonJoint* Slider)
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play the creaky noise of a hanging lamp.
 // 
 // See also: NewtonSliderSetUserCallback
@@ -6675,7 +6675,7 @@ dFloat NewtonSliderGetJointVeloc(const NewtonJoint* Slider)
 // 
 // Return: the relative linear acceleration needed to stop the slider.
 //
-// Remarks: this function can only be called from a *NewtonSliderCallback* and it can be used by the application to implement slider limits.
+// this function can only be called from a *NewtonSliderCallback* and it can be used by the application to implement slider limits.
 // 
 // See also: NewtonSliderSetUserCallback
 dFloat NewtonSliderCalculateStopAccel(const NewtonJoint* const slider, const NewtonHingeSliderUpdateDesc* const desc, dFloat distance)
@@ -6696,7 +6696,7 @@ dFloat NewtonSliderCalculateStopAccel(const NewtonJoint* const slider, const New
 //
 // Return: nothing.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can destroy the joint if the force exceeds some predefined value.
 // 
 // See also: NewtonSliderSetUserCallback
@@ -6732,7 +6732,7 @@ void NewtonSliderGetJointForce(const NewtonJoint* const slider, dFloat* const fo
 //
 // Return: Pointer to the corkscrew joint.
 //
-// Remarks: This function creates a corkscrew and add it to the world. By default joint disables collision with the linked bodies. 
+// This function creates a corkscrew and add it to the world. By default joint disables collision with the linked bodies. 
 NewtonJoint* NewtonConstraintCreateCorkscrew(const NewtonWorld* const newtonWorld, const dFloat* pivotPoint, const dFloat* pinDir, const NewtonBody* const childBody, const NewtonBody* const parentBody)
 {
 	TRACE_FUNCTION(__FUNCTION__);
@@ -6753,11 +6753,11 @@ NewtonJoint* NewtonConstraintCreateCorkscrew(const NewtonWorld* const newtonWorl
 //
 // Return: nothing.
 //
-// Remarks: if the application wants to have some feedback from the joint simulation, the application can register a function
+// if the application wants to have some feedback from the joint simulation, the application can register a function
 // update callback to be call every time any of the bodies linked by this joint is active. This is useful to provide special
 // effects like particles, sound or even to simulate breakable moving parts.
 //
-// Remarks: the function *NewtonCorkscrewCallback callback* should return a bit field code.
+// the function *NewtonCorkscrewCallback callback* should return a bit field code.
 // if the application does not want to set the joint acceleration the return code is zero
 // if the application only wants to change the joint linear acceleration the return code is 1
 // if the application only wants to change the joint angular acceleration the return code is 2
@@ -6781,7 +6781,7 @@ void NewtonCorkscrewSetUserCallback(const NewtonJoint* const corkscrew, NewtonCo
 //
 // Return: the joint angle relative to the hinge pin.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play a bell sound when the joint angle passes some max value.
 // 
 // See also: NewtonCorkscrewSetUserCallback
@@ -6802,7 +6802,7 @@ dFloat NewtonCorkscrewGetJointPosit (const NewtonJoint* const corkscrew)
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play the creaky noise of a hanging lamp.
 // 
 // See also: NewtonCorkscrewSetUserCallback
@@ -6823,7 +6823,7 @@ dFloat NewtonCorkscrewGetJointVeloc(const NewtonJoint* const corkscrew)
 //
 // Return: the joint angle relative to the corkscrew pin.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play a bell sound when the joint angle passes some max value.
 // 
 // See also: NewtonCorkscrewSetUserCallback
@@ -6845,7 +6845,7 @@ dFloat NewtonCorkscrewGetJointAngle (const NewtonJoint* const corkscrew)
 //
 // Return: the joint angular velocity relative to the pin axis.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play the creaky noise of a hanging lamp.
 // 
 // See also: NewtonCorkscrewSetUserCallback
@@ -6869,7 +6869,7 @@ dFloat NewtonCorkscrewGetJointOmega(const NewtonJoint* const corkscrew)
 //
 // Return: the relative angular acceleration needed to stop the corkscrew.
 //
-// Remarks: this function can only be called from a *NewtonCorkscrewCallback* and it can be used by the application to implement corkscrew limits.
+// this function can only be called from a *NewtonCorkscrewCallback* and it can be used by the application to implement corkscrew limits.
 // 
 // See also: NewtonCorkscrewSetUserCallback
 dFloat NewtonCorkscrewCalculateStopAlpha (const NewtonJoint* const corkscrew, const NewtonHingeSliderUpdateDesc* const desc, dFloat angle)
@@ -6892,7 +6892,7 @@ dFloat NewtonCorkscrewCalculateStopAlpha (const NewtonJoint* const corkscrew, co
 //
 // Return: the relative linear acceleration needed to stop the corkscrew.
 //
-// Remarks: this function can only be called from a *NewtonCorkscrewCallback* and it can be used by the application to implement corkscrew limits.
+// this function can only be called from a *NewtonCorkscrewCallback* and it can be used by the application to implement corkscrew limits.
 // 
 // See also: NewtonCorkscrewSetUserCallback
 dFloat NewtonCorkscrewCalculateStopAccel(const NewtonJoint* const corkscrew, const NewtonHingeSliderUpdateDesc* const desc, dFloat distance)
@@ -6911,7 +6911,7 @@ dFloat NewtonCorkscrewCalculateStopAccel(const NewtonJoint* const corkscrew, con
 //
 // Return: nothing.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can destroy the joint if the force exceeds some predefined value.
 // 
 // See also: NewtonCorkscrewSetUserCallback
@@ -6948,9 +6948,9 @@ void NewtonCorkscrewGetJointForce(const NewtonJoint* const corkscrew, dFloat* co
 //
 // Return: Pointer to the universal joint.
 //
-// Remarks: This function creates a universal joint and add it to the world. By default joint disables collision with the linked bodies. 
+// This function creates a universal joint and add it to the world. By default joint disables collision with the linked bodies. 
 //
-// Remark: a universal joint is a constraint that restricts twp rigid bodies to be connected to a point fixed on both bodies, 
+// a universal joint is a constraint that restricts twp rigid bodies to be connected to a point fixed on both bodies, 
 // while and allowing one body to spin around a fix axis in is own frame, and the other body to spin around another axis fixes on 
 // it own frame. Both axis must be mutually perpendicular. 
 NewtonJoint* NewtonConstraintCreateUniversal(const NewtonWorld* const newtonWorld, const dFloat* pivotPoint, 
@@ -6976,11 +6976,11 @@ NewtonJoint* NewtonConstraintCreateUniversal(const NewtonWorld* const newtonWorl
 //
 // Return: nothing.
 //
-// Remarks: if the application wants to have some feedback from the joint simulation, the application can register a function
+// if the application wants to have some feedback from the joint simulation, the application can register a function
 // update callback to be called every time any of the bodies linked by this joint is active. This is useful to provide special
 // effects like particles, sound or even to simulate breakable moving parts.
 //
-// Remarks: the function *NewtonUniversalCallback callback* should return a bit field code.
+// the function *NewtonUniversalCallback callback* should return a bit field code.
 // if the application does not want to set the joint acceleration the return code is zero
 // if the application only wants to change the joint linear acceleration the return code is 1
 // if the application only wants to change the joint angular acceleration the return code is 2
@@ -7005,7 +7005,7 @@ void NewtonUniversalSetUserCallback(const NewtonJoint* const universal, NewtonUn
 //
 // Return: the joint angle relative to the universal pin0.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play a bell sound when the joint angle passes some max value.
 // 
 // See also: NewtonUniversalSetUserCallback
@@ -7026,7 +7026,7 @@ dFloat NewtonUniversalGetJointAngle0(const NewtonJoint* const universal)
 //
 // Return: the joint angle relative to the universal pin1.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play a bell sound when the joint angle passes some max value.
 // 
 // See also: NewtonUniversalSetUserCallback
@@ -7048,7 +7048,7 @@ dFloat NewtonUniversalGetJointAngle1(const NewtonJoint* const universal)
 //
 // Return: the joint angular velocity relative to the pin0 axis.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play the creaky noise of a hanging lamp.
 // 
 // See also: NewtonUniversalSetUserCallback
@@ -7070,7 +7070,7 @@ dFloat NewtonUniversalGetJointOmega0(const NewtonJoint* const universal)
 //
 // Return: the joint angular velocity relative to the pin1 axis.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can play the creaky noise of a hanging lamp.
 // 
 // See also: NewtonUniversalSetUserCallback
@@ -7095,7 +7095,7 @@ dFloat NewtonUniversalGetJointOmega1(const NewtonJoint* const universal)
 //
 // Return: the relative angular acceleration needed to stop the universal.
 //
-// Remarks: this function can only be called from a *NewtonUniversalCallback* and it can be used by the application to implement universal limits.
+// this function can only be called from a *NewtonUniversalCallback* and it can be used by the application to implement universal limits.
 // 
 // See also: NewtonUniversalSetUserCallback
 dFloat NewtonUniversalCalculateStopAlpha0(const NewtonJoint* const universal, const NewtonHingeSliderUpdateDesc* const desc, dFloat angle)
@@ -7117,7 +7117,7 @@ dFloat NewtonUniversalCalculateStopAlpha0(const NewtonJoint* const universal, co
 //
 // Return: the relative angular acceleration needed to stop the universal.
 //
-// Remarks: this function can only be called from a *NewtonUniversalCallback* and it can be used by the application to implement universal limits.
+// this function can only be called from a *NewtonUniversalCallback* and it can be used by the application to implement universal limits.
 // 
 // See also: NewtonUniversalSetUserCallback
 dFloat NewtonUniversalCalculateStopAlpha1(const NewtonJoint* const universal, const NewtonHingeSliderUpdateDesc* const desc, dFloat angle)
@@ -7140,7 +7140,7 @@ dFloat NewtonUniversalCalculateStopAlpha1(const NewtonJoint* const universal, co
 //
 // Return: nothing.
 //
-// Remarks: this function can be used during a function update call back to provide the application with some special effect.
+// this function can be used during a function update call back to provide the application with some special effect.
 // for example the application can destroy the joint if the force exceeds some predefined value.
 // 
 // See also: NewtonUniversalSetUserCallback
@@ -7174,11 +7174,11 @@ void NewtonUniversalGetJointForce(const NewtonJoint* const universal, dFloat* co
 //
 // Return: Pointer to the up vector joint.
 //
-// Remarks: This function creates an up vector joint. An up vector joint is a constraint that allows a body to translate freely in 3d space,
+// This function creates an up vector joint. An up vector joint is a constraint that allows a body to translate freely in 3d space,
 // but it only allows the body to rotate around the pin direction vector. This could be use by the application to control a character 
 // with physics and collision.
 //
-// Remark: Since the UpVector joint is a unary constraint, there is not need to have user callback or user data assigned to it.
+// Since the UpVector joint is a unary constraint, there is not need to have user callback or user data assigned to it.
 // The application can simple hold to the joint handle and update the pin on the force callback function of the rigid body owning the joint.
 NewtonJoint* NewtonConstraintCreateUpVector (const NewtonWorld* const newtonWorld, const dFloat* pinDir, const NewtonBody* const body)
 {
@@ -7199,7 +7199,7 @@ NewtonJoint* NewtonConstraintCreateUpVector (const NewtonWorld* const newtonWorl
 //
 // Return: nothing.
 //
-// Remarks: the application ca call this function to read the up vector, this is useful to animate the up vector.
+// the application ca call this function to read the up vector, this is useful to animate the up vector.
 // if the application is going to animated the up vector, it must do so by applying only small rotation, 
 // too large rotation can cause vibration of the joint.
 // 
@@ -7227,7 +7227,7 @@ void NewtonUpVectorGetPin(const NewtonJoint* const upVector, dFloat *pin)
 //
 // Return: nothing.
 //
-// Remarks: the application ca call this function to change the joint up vector, this is useful to animate the up vector.
+// the application ca call this function to change the joint up vector, this is useful to animate the up vector.
 // if the application is going to animated the up vector, it must do so by applying only small rotation, 
 // too large rotation can cause vibration of the joint.
 // 
@@ -7261,21 +7261,21 @@ void NewtonUpVectorSetPin(const NewtonJoint* const upVector, const dFloat *pin)
 // *childBody - is the pointer to the attached rigid body, this body can not be NULL or it can not have an infinity (zero) mass.
 // *parentBody - is the pointer to the parent rigid body, this body can be NULL or any kind of rigid body.
 //
-// Remark: Bilateral joint are constraints that can have up to 6 degree of freedoms, 3 linear and 3 angular. 
+// Bilateral joint are constraints that can have up to 6 degree of freedoms, 3 linear and 3 angular. 
 // By restricting the motion along any number of these degree of freedom a very large number of useful joint between 
 // two rigid bodies can be accomplished. Some of the degree of freedoms restriction makes no sense, and also some 
 // combinations are so rare that only make sense to a very specific application, the Newton engine implements the more 
 // commons combinations like, hinges, ball and socket, etc. However if and application is in the situation that any of 
 // the provided joints can achieve the desired effect, then the application can design it own joint.
 //
-// Remark: User defined joint is a very advance feature that should be look at, only for very especial situations. 
+// User defined joint is a very advance feature that should be look at, only for very especial situations. 
 // The designer must be a person with a very good understanding of constrained dynamics, and it may be the case 
 // that many trial have to be made before a good result can be accomplished.
 //
-// Remark: function *submitConstraints* is called before the solver state to get the jacobian derivatives and the righ hand acceleration 
+// function *submitConstraints* is called before the solver state to get the jacobian derivatives and the righ hand acceleration 
 // for the definition of the constraint.
 //
-// Remark: maxDOF is and upper bound as to how many degrees of freedoms the joint can control, usually this value 
+// maxDOF is and upper bound as to how many degrees of freedoms the joint can control, usually this value 
 // can be 6 for bilateral joints, but it can be higher for special joints like vehicles where by the used of friction clamping
 // the number of rows can be higher.
 // In general the application should determine maxDof correctly, passing an unnecessary excessive value will lead to performance decreased.
@@ -7304,15 +7304,15 @@ NewtonJoint* NewtonConstraintCreateUserJoint(const NewtonWorld* const newtonWorl
 // *pivot1 - pointer of a vector in global space fixed on body one.  
 // *dir - pointer of a unit vector in global space along which the relative position, velocity and acceleration between the bodies will be driven to zero.
 //
-// Remark: A linear constraint row calculates the Jacobian derivatives and relative acceleration required to enforce the constraint condition at
+// A linear constraint row calculates the Jacobian derivatives and relative acceleration required to enforce the constraint condition at
 // the attachment point and the pin direction considered fixed to both bodies. 
 //
-// Remark: The acceleration is calculated such that the relative linear motion between the two points is zero, the application can
+// The acceleration is calculated such that the relative linear motion between the two points is zero, the application can
 // afterward override this value to create motors.
 // 
-// Remark: after this function is call and internal DOF index will point to the current row entry in the constraint matrix.
+// after this function is call and internal DOF index will point to the current row entry in the constraint matrix.
 //
-// Remark: This function call only be called from inside a *NewtonUserBilateralCallback* callback.
+// This function call only be called from inside a *NewtonUserBilateralCallback* callback.
 //
 // See also: NewtonUserJointAddAngularRow,  
 void NewtonUserJointAddLinearRow(const NewtonJoint* const joint, const dFloat* const pivot0, const dFloat* const pivot1, const dFloat* const dir)
@@ -7338,17 +7338,17 @@ void NewtonUserJointAddLinearRow(const NewtonJoint* const joint, const dFloat* c
 // relativeAngleError - relative angle error between both bodies around pin axis.  
 // *pin - pointer of a unit vector in global space along which the relative position, velocity and acceleration between the bodies will be driven to zero.
 //
-// Remark: An angular constraint row calculates the Jacobian derivatives and relative acceleration required to enforce the constraint condition at
+// An angular constraint row calculates the Jacobian derivatives and relative acceleration required to enforce the constraint condition at
 // pin direction considered fixed to both bodies. 
 //
-// Remark: The acceleration is calculated such that the relative angular motion between the two points is zero, The application can
+// The acceleration is calculated such that the relative angular motion between the two points is zero, The application can
 // afterward override this value to create motors.
 // 
-// Remark: After this function is called and internal DOF index will point to the current row entry in the constraint matrix.
+// After this function is called and internal DOF index will point to the current row entry in the constraint matrix.
 //
-// Remark: This function call only be called from inside a *NewtonUserBilateralCallback* callback.
+// This function call only be called from inside a *NewtonUserBilateralCallback* callback.
 //
-// Remark: This function is of not practical to enforce hard constraints, but it is very useful for making angular motors.
+// This function is of not practical to enforce hard constraints, but it is very useful for making angular motors.
 //
 // See also: NewtonUserJointAddLinearRow
 void NewtonUserJointAddAngularRow(const NewtonJoint* const joint, dFloat relativeAngleError, const dFloat* const pin)
@@ -7370,12 +7370,12 @@ void NewtonUserJointAddAngularRow(const NewtonJoint* const joint, dFloat relativ
 // *jacobian0 - pointer of a set of six values defining the linear and angular Jacobian for body0.
 // *jacobian1 - pointer of a set of six values defining the linear and angular Jacobian for body1.
 //
-// Remark: In general this function must be used for very special effects and in combination with other joints. 
+// In general this function must be used for very special effects and in combination with other joints. 
 // it is expected that the user have a knowledge of Constrained dynamics to make a good used of this function.
 // Must typical application of this function are the creation of synchronization or control joints like gears, pulleys, 
 // worm gear and some other mechanical control.
 //
-// Remark: this function set the relative acceleration for this degree of freedom to zero. It is the 
+// this function set the relative acceleration for this degree of freedom to zero. It is the 
 // application responsibility to set the relative acceleration after a call to this function
 // 
 // See also: NewtonUserJointAddLinearRow, NewtonUserJointAddAngularRow  
@@ -7407,7 +7407,7 @@ void NewtonUserJointGetGeneralRow(const NewtonJoint* const joint, int index, dFl
 // *joint - pointer to the joint.
 // friction - maximum friction value for this row. It must be a positive value between 0.0 and INFINITY.  
 //
-// Remark: This function will override the default friction values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
+// This function will override the default friction values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint friction is a Max friction force, for angular constraint friction is a 
 // max friction is a Max friction torque.
 //
@@ -7426,7 +7426,7 @@ void NewtonUserJointSetRowMaximumFriction(const NewtonJoint* const joint, dFloat
 // *joint - pointer to the joint.
 // friction -  friction value for this row. It must be a negative value between 0.0 and -INFINITY.  
 //
-// Remark: This function will override the default friction values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
+// This function will override the default friction values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint friction is a Min friction force, for angular constraint friction is a 
 // friction is a Min friction torque.
 //
@@ -7445,7 +7445,7 @@ void NewtonUserJointSetRowMinimumFriction(const NewtonJoint* const joint, dFloat
 // *joint - pointer to the joint.
 // acceleration -  desired acceleration value for this row. 
 //
-// Remark: This function will override the default acceleration values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
+// This function will override the default acceleration values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint acceleration is a linear acceleration, for angular constraint acceleration is an 
 // angular acceleration.
 //
@@ -7472,14 +7472,14 @@ dFloat NewtonUserCalculateRowZeroAccelaration (const NewtonJoint* const joint)
 // spring - desired spring stiffness, it must be a positive value.
 // damper - desired damper coefficient, it must be a positive value.
 //
-// Remark: This function will override the default acceleration values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
+// This function will override the default acceleration values set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // friction value is context sensitive, if for linear constraint acceleration is a linear acceleration, for angular constraint acceleration is an 
 // angular acceleration.
 //
-// Remark: the acceleration calculated by this function represent the mass, spring system of the form
+// the acceleration calculated by this function represent the mass, spring system of the form
 // a = -ks * x - kd * v.
 //
-// Remark: for this function to take place the joint stiffness must be set to a values lower than 1.0
+// for this function to take place the joint stiffness must be set to a values lower than 1.0
 //
 // See also: NewtonUserJointSetRowAcceleration, NewtonUserJointSetRowStiffness  
 void NewtonUserJointSetRowSpringDamperAcceleration(const NewtonJoint* const joint, dFloat spring, dFloat damper)
@@ -7497,7 +7497,7 @@ void NewtonUserJointSetRowSpringDamperAcceleration(const NewtonJoint* const join
 // *joint - pointer to the joint.
 // stiffness - row stiffness, it must be a values between 0.0 and 1.0, the default is 0.9. 
 //
-// Remark: This function will override the default stiffness value set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
+// This function will override the default stiffness value set after a call to NewtonUserJointAddLinearRow or NewtonUserJointAddAngularRow.
 // the row stiffness is the percentage of the constraint force that will be applied to the rigid bodies. Ideally the value should be
 // 1.0 (100% stiff) but dues to numerical integration error this could be the joint a little unstable, and lower values are preferred.
 //
@@ -7516,9 +7516,9 @@ void NewtonUserJointSetRowStiffness(const NewtonJoint* const joint, dFloat stiff
 // *joint - pointer to the joint.
 // row - index to the constraint row. 
 //
-// Remark: This function can be call for any of the previews row for this particular joint, The application must keep track of the meaning of the row.
+// This function can be call for any of the previews row for this particular joint, The application must keep track of the meaning of the row.
 // 
-// Remark: This function can be used to produce special effects like breakable or malleable joints, fro example a hinge can turn into ball and socket 
+// This function can be used to produce special effects like breakable or malleable joints, fro example a hinge can turn into ball and socket 
 // after the force in some of the row exceed  certain high value. 
 dFloat NewtonUserJointGetRowForce(const NewtonJoint* const joint, int row)
 {
@@ -7560,7 +7560,7 @@ void NewtonUserJointSetFeedbackCollectorCallback(const NewtonJoint* const joint,
 //
 // Return: Nothing.
 //
-// Remarks: The application can store a user defined value with the Joint. This value can be the pointer to a structure containing some application data for special effect. 
+// The application can store a user defined value with the Joint. This value can be the pointer to a structure containing some application data for special effect. 
 // if the application allocate some resource to store the user data, the application can register a joint destructor to get rid of the allocated resource when the Joint is destroyed
 // 
 // See also: NewtonJointSetDestructor
@@ -7579,7 +7579,7 @@ void NewtonJointSetUserData(const NewtonJoint* const joint, void* const userData
 //
 // Return: The user defined data.
 //
-// Remarks: The application can store a user defined value with a joint. This value can be the pointer
+// The application can store a user defined value with a joint. This value can be the pointer
 // to a structure to store some game play data for special effect.
 // 
 // See also: NewtonJointSetUserData
@@ -7649,7 +7649,7 @@ NewtonBody* NewtonJointGetBody1(const NewtonJoint* const joint)
 // joint - is the pointer to a convex collision primitive.
 // *jointInfo - pointer to a collision information record.
 //
-// Remarks: This function can be used by the application for writing file format and for serialization.
+// This function can be used by the application for writing file format and for serialization.
 //
 // See also: 
 void NewtonJointGetInfo(const NewtonJoint* const joint, NewtonJointRecord* const jointInfo)
@@ -7703,12 +7703,12 @@ NewtonBody* NewtonJointGetBody1(const NewtonJoint* const joint)
 //
 // Return: nothing.
 //
-// Remarks: usually when two bodies are linked by a joint, the application wants collision between this two bodies to be disabled. 
+// usually when two bodies are linked by a joint, the application wants collision between this two bodies to be disabled. 
 // This is the default behavior of joints when they are created, however when this behavior is not desired the application can change
 // it by setting collision on. If the application decides to enable collision between jointed bodies, the application should make sure the 
 // collision geometry do not collide in the work space of the joint.
 //
-// Remarks: if the joint is destroyed the collision state of the two bodies linked by this joint is determined by the material pair assigned to each body.
+// if the joint is destroyed the collision state of the two bodies linked by this joint is determined by the material pair assigned to each body.
 // 
 // See also: NewtonJointGetCollisionState, NewtonBodySetJointRecursiveCollision
 void NewtonJointSetCollisionState(const NewtonJoint* const joint, int state)
@@ -7726,7 +7726,7 @@ void NewtonJointSetCollisionState(const NewtonJoint* const joint, int state)
 //
 // Return: the collision state.
 //
-// Remarks: usually when two bodies are linked by a joint, the application wants collision between this two bodies to be disabled. 
+// usually when two bodies are linked by a joint, the application wants collision between this two bodies to be disabled. 
 // This is the default behavior of joints when they are created, however when this behavior is not desired the application can change
 // it by setting collision on. If the application decides to enable collision between jointed bodies, the application should make sure the 
 // collision geometry do not collide in the work space of the joint.
@@ -7749,7 +7749,7 @@ int NewtonJointGetCollisionState(const NewtonJoint* const joint)
 //
 // Return: nothing.
 //
-// Remarks: Constraint keep bodies together by calculating the exact force necessary to cancel the relative acceleration between one or 
+// Constraint keep bodies together by calculating the exact force necessary to cancel the relative acceleration between one or 
 // more common points fixed in the two bodies. The problem is that when the bodies drift apart due to numerical integration inaccuracies, 
 // the reaction force work to pull eliminated the error but at the expense of adding extra energy to the system, does violating the rule 
 // that constraint forces must be work less. This is a inevitable situation and the only think we can do is to minimize the effect of the 
@@ -7757,7 +7757,7 @@ int NewtonJointGetCollisionState(const NewtonJoint* const joint)
 // by only apply a fraction of it to the joint point. And value of 1.0 will apply the exact force, and a value of zero will apply only 
 // 10 percent. 
 //
-// Remark: The stiffness is set to a all around value that work well for most situation, however the application can play with these 
+// The stiffness is set to a all around value that work well for most situation, however the application can play with these 
 // parameter to make finals adjustment. A high value will make the joint stronger but more prompt to vibration of instability; a low 
 // value will make the joint more stable but weaker.  
 // 
@@ -7777,7 +7777,7 @@ void NewtonJointSetStiffness(const NewtonJoint* const joint, dFloat stiffness)
 //
 // Return: stiffness coefficient.
 //
-// Remarks: Constraint keep bodies together by calculating the exact force necessary to cancel the relative acceleration between one or 
+// Constraint keep bodies together by calculating the exact force necessary to cancel the relative acceleration between one or 
 // more common points fixed in the two bodies. The problem is that when the bodies drift apart due to numerical integration inaccuracies, 
 // the reaction force work to pull eliminated the error but at the expense of adding extra energy to the system, does violating the rule 
 // that constraint forces must be work less. This is a inevitable situation and the only think we can do is to minimize the effect of the 
@@ -7785,7 +7785,7 @@ void NewtonJointSetStiffness(const NewtonJoint* const joint, dFloat stiffness)
 // by only apply a fraction of it to the joint point. And value of 1.0 will apply the exact force, and a value of zero will apply only 
 // 10 percent. 
 //
-// Remark: The stiffness is set to a all around value that work well for most situation, however the application can play with these 
+// The stiffness is set to a all around value that work well for most situation, however the application can play with these 
 // parameter to make finals adjustment. A high value will make the joint stronger but more prompt to vibration of instability; a low 
 // value will make the joint more stable but weaker.  
 // 
@@ -7807,7 +7807,7 @@ dFloat NewtonJointGetStiffness(const NewtonJoint* const joint)
 //
 // Return: nothing.
 //
-// Remarks: If application stores any resource with the joint, or the application wants to be notified when the
+// If application stores any resource with the joint, or the application wants to be notified when the
 // joint is about to be destroyed. The application can register a destructor call back with the joint.
 // 
 // See also: NewtonJointSetUserData
@@ -7828,7 +7828,7 @@ void NewtonJointSetDestructor(const NewtonJoint* const joint, NewtonConstraintDe
 //
 // Return: nothing
 // 
-// Remarks: The application can call this function when it wants to destroy a joint. This function can be used by the application to simulate
+// The application can call this function when it wants to destroy a joint. This function can be used by the application to simulate
 // breakable joints
 //
 // See also: NewtonConstraintCreateSlider
