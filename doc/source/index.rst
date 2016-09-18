@@ -18,7 +18,7 @@ Contents:
    :maxdepth: 2
 
    Installation <installation>
-   Tutorials <tutorials>
+   Starter Kit <tutorials>
    API Documentation <api>
 
 

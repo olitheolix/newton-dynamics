@@ -13,7 +13,17 @@ is the :download:`code <./tut0.cpp>`:
 
 Linux
 -----
-To compile, link, and run the program type:
+If you installed the Newton library into your system the you can compile, link,
+and run the program with these commands:
+
+.. code-block:: bash
+    :linenos:
+
+    $ g++ tut0.cpp -o tut0 -lNewton -lpthread
+    $ ./tut0
+
+If you did _not_ install the library and want to use the version from your
+``source`` and ``build`` directory, then you need a longer command:
 
 .. code-block:: bash
     :linenos:
@@ -26,7 +36,9 @@ This may look intimidating but is straightforward. The ``-I
 ``Newton.h``. Similarly,  ``-L ../../build/lib/`` tells the linker where to look
 for additional libraries. The next flag (``-lNewton``) tells the linker to link
 our program against the ``libNewton.so`` library we built in :ref:`Installation`.
-Finally, Newton uses threads internally and thus needs a ``-lpthread``.
+Newton uses threads, thus we linke it to ``-lpthread``. Finally, the purpose of
+``-Wl,"-rpath=../../build/lib/"`` is to bake the location of the Newton library
+into the executable, or otherwise the runtime linker will probably not find it.
 
 
 Other

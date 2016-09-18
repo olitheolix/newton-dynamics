@@ -4,13 +4,11 @@
 
 void cb_applyForce(const NewtonBody* const body, dFloat timestep, int threadIndex)
 {
-  // Apply a force to the object. Note: NewtonBodySetForce has no
-  // effect unless it is called from within thi callback function.
+  // Apply a force to the object.
   dFloat force[3] = {0, 1.0, 0};
   NewtonBodySetForce(body, force);
 
-  // Query the state of the object (4x4 matrix to encode rotation and
-  // translation).
+  // Query the state (4x4 matrix) and extract the body's position.
   float state[16];
   NewtonBodyGetMatrix(body, state);
   printf("Time %.2fs: x=%.2f  y=%.2f  z=%.2f\n",
