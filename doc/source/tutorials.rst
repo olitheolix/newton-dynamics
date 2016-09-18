@@ -16,6 +16,6 @@ have been warned :)
 .. toctree::
    :maxdepth: 1
 
-   Compiling A Simulation <tut_0>
-   Apply A Force To A Box <tut_1>
-   Attach User Data <tut_userdata>
+   Compile Simulation <tut_0>
+   Apply Force To Box <tut_1>
+   Attach User Data To Body <tut_userdata>
