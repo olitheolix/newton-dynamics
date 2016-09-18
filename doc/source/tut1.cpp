@@ -11,7 +11,7 @@ void cb_applyForce(const NewtonBody* const body, dFloat timestep, int threadInde
   // Query the state (4x4 matrix) and extract the body's position.
   float state[16];
   NewtonBodyGetMatrix(body, state);
-  printf("Time %.2fs: x=%.2f  y=%.2f  z=%.2f\n",
+  printf("Time %.3fs: x=%.3f  y=%.3f  z=%.2f\n",
          timestep, state[12], state[13], state[14]);
 }
 
