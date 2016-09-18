@@ -16,7 +16,7 @@ void cb_applyForce(const NewtonBody* const body, dFloat timestep, int threadInde
 }
 
 
-void addBoxToSimulation(NewtonWorld *world) {
+void addSphereToSimulation(NewtonWorld *world) {
   // fixme: what is this?
   float	foo[16] = {
     1.0f, 0.0f, 0.0f, 0.0f,
@@ -25,8 +25,8 @@ void addBoxToSimulation(NewtonWorld *world) {
     0.0f, 0.0f, 0.0f, 1.0f
   };
 	
-  // Create the cube with 10m side length.
-  NewtonCollision* const collision = NewtonCreateBox(world, 10, 10, 10, 0, NULL);
+  // Create the sphere. Is this radius or diameter?
+  NewtonCollision* const collision = NewtonCreateSphere(world, 1, 0, NULL);
 
   // fixme: what is this for?
   NewtonBody* const body = NewtonCreateDynamicBody(world, collision, foo);
@@ -49,8 +49,8 @@ int main (int argc, const char * argv[])
   // Create the Newton world.
   NewtonWorld* const world = NewtonCreate();
 	
-  // Add the box.
-  addBoxToSimulation(world);
+  // Add the sphere.
+  addSphereToSimulation(world);
 
   // Step the (empty) world 60 times in increments of 1/60 second.
   const float timestep = 1.0f / 60;

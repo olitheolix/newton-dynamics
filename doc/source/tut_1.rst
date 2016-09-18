@@ -1,11 +1,11 @@
 Basic Rigid Bodies And Forces
 =============================
 
-Purpose: create a box-shaped body, apply a force, and track its motion over time.
+Purpose: create a spherical body, apply a force, and track its motion over time.
 
 
-We are now adding two more functions. The first, ``addBoxToSimulation`` creates
-a box in the Newton world and parameterises it (mass, inertia). It also
+We are now adding two more functions. The first, ``addSphereToSimulation``
+creates a sphere in the Newton world and parameterises it (mass, inertia). It also
 installs the second new function ``cb_applyForce`` as a callback. Newton will
 trigger that callback whenever it moves the body. It will *not* trigger it if
 the body is already at rest.
@@ -42,5 +42,4 @@ Questions/Problems
 ------------------
 
 * What is the third parameter to ``NewtonCreateDynamicBody``?
-* Are the side lengths for the box. Half- or full lengths?
 * What is ``shapeID``?

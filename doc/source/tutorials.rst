@@ -17,5 +17,5 @@ have been warned :)
    :maxdepth: 1
 
    Compile Simulation <tut_0>
-   Apply Force To Box <tut_1>
+   Add Sphere And Apply Force <tut_1>
    Attach User Data To Body <tut_userdata>
