@@ -2,7 +2,7 @@
 #include "Newton.h"
 
 
-// Defnie a custom data structure to store a body ID.
+// Define a custom data structure to store a body ID.
 struct UserData {
   int bodyID=0;
 };
